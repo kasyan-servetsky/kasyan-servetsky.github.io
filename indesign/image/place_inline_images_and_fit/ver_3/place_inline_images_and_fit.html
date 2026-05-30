@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Place inline images and fit</title>
+<!-- #EndEditable -->
+<script src="../../../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../../../index.html">Home</a></li>
+<li><a href="../../../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../../../tips/all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../../../tips/all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../../../tips/all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../../../tips/all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../../../tips/all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../../../tips/indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../../../tips/all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../../../snippets/array.html">Array</a></li>
+          <li><a href="../../../../snippets/number.html">Number</a></li>
+          <li><a href="../../../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../../../../tips/indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../../../scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../../../all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../../../custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../../../enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../../../scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>Place inline images and fit</h1>
+    <p>Script for InDesign: written in  2021 by <em>Kasyan</em>. Version 3.1</p>
+    <p>The original idea belongs to <em>Peter Kahrel</em> who posted his (simple) <em>place inline images</em> script on the Adobe  scripting forum. I developed his approach further and made a few   much more complex scripts. One of them was even written about in InDesign  Magazine: issue #149, page 55.<br />
+      About  a year ago I wrote this script at a client&rsquo;s request, and now I worked further on  it adding new features.    </p>
+    <p><img src="place_inline_images_and_fit.png" width="250" height="342" alt=""/></p>
+    <p>When you  run the script, a dialog box appears where you can  set the  maximum dimensions of the images (<strong>in the  current document measurement units</strong>) before placing them and fit the images using  one of the following options:</p>
+    <ul>
+      <li>Use frame fitting options</li>
+      <li>Center content</li>
+      <li>Content-aware fit</li>
+      <li>Fit content to frame</li>
+      <li>Fill frame proportionally</li>
+      <li>Fit content proportionally</li>
+    </ul>
+<p><img src="place_inline_images_and_fit-5.png" width="250" height="342" alt=""/></p>
+<p>Select some text or a text frame to process only this selection;  otherwise, the whole document will be processed.</p>
+<p><img src="place_inline_images_and_fit-8.png" width="502" height="100" alt=""/></p>
+<p>The script gives a warning in the dialog box about <strong>how many  tags are about to be replaced with images</strong>. With a great number, it may take too  long to process the whole document so you may prefer to hit <em>Cancel</em> and process  it in a few goes: selecting parts of the text.</p>
+<p><img src="place_inline_images_and_fit-16.png" width="263" height="85" alt=""/></p>
+<p>Next you  have to choose a folder where the images to be placed are located:</p>
+<p><img src="../ver_2/place_inline_images_and_fit-5.png" width="333" height="281" alt=""/></p>
+<p><strong>Image types</strong> (extensions) available  for placing:</p>
+<ul>
+  <li>jp(e)g</li>
+  <li>psd</li>
+  <li>png</li>
+  <li>gif</li>
+  <li>ai</li>
+  <li>eps</li>
+  <li>bmp</li>
+  <li>tif(f)</li>
+</ul>
+<hr/>
+<p>The <strong>Fit frame to contents </strong>option is  available only<strong> </strong>when <strong>Fill / fit frame proportionally</strong> is  selected, as an extra step. For example:</p>
+<h4> Fit frame to contents is <strong>OFF</strong></h4>
+<p><img src="place_inline_images_and_fit-10.png" width="800" height="225" alt=""/></p>
+<h4> Fit  frame to contents is <strong>ON</strong></h4>
+<p><img src="place_inline_images_and_fit-9.png" width="500" height="268" alt=""/></p>
+<hr/>
+<p>The script can <strong>make a log file </strong><strong>on the desktop</strong>. If no images  are found for some tags, they will be listed in the report created on the  desktop:    </p>
+    <p><img src="place_inline_images_and_fit-4.png" width="570" height="374" alt=""/></p>
+
+<p>The script can also <strong>add</strong> as many as necessary <strong>pages i</strong><strong>f the text overflows</strong> at the end of the document (I mean the  main text flow).</p>
+<hr/>
+<h2>Example of using:</h2>
+<h3>Before</h3>
+<p><img src="place_inline_images_and_fit-1.png" width="800" height="343" alt=""/></p>
+<h3>After</h3>
+<p><img src="place_inline_images_and_fit-2.png" width="800" height="338" alt=""/></p>
+<hr/>
+<h2>Pictures in tables</h2>
+<p>In the client&rsquo;s book, some tags were located in tables. Replacing  them with illustrations was problematic because the tables were originally too  small with cells overflown. </p>
+<p>For example, here is the original table:</p>
+<p><img src="place_inline_images_and_fit-12.png" width="693" height="248" alt=""/></p>
+<p>To solve this problem I wrote this simple <em><a href="set_tables.zip">Set tables</a></em> script  that makes all tables in the current document 180 mm wide, rows 4 mm high, and  applies the <em>text in tables </em>paragraph style to the text in cells. (Assuming  that current ruler units are set to millimeters). This script should be run <u>before</u> the <em>Place inline images and fit</em>.</p>
+<p> Here&rsquo;s this table after running the <em>Set tables</em> script:</p>
+<p><img src="place_inline_images_and_fit-13.png" width="735" height="219" alt=""/> </p>
+<p>And finally here&rsquo;s the same table after running the <em>Place  inline images and fit</em> script:</p>
+<p><img src="place_inline_images_and_fit-14.png" width="716" height="369" alt=""/></p>
+<p>If you want to use this script, make  sure to make edits according to your requirements (read the comments):</p>
+<p><img src="place_inline_images_and_fit-11.png" width="675" height="563" alt=""/></p>
+<hr/>
+<p>You can undo/redo the whole script:</p>
+<p><img src="place_inline_images_and_fit-7.png" width="436" height="82" alt=""/></p>
+<p>As I&rsquo;ve already mentioned above, the script uses the current  document measurement units. As in InDesign, you can have different units for  horizontal and vertical rulers (width and height). </p>
+<p><img src="place_inline_images_and_fit-15.png" width="233" height="84" alt=""/></p>
+<p>The script saves and  restores chosen values in the <strong>Max. width/height</strong> fields <u>for each available  unit separately</u>. I did this to avoid problems with units that differ  drastically. For example, 20x30 is fine in millimeters but would be too much if  the user uses inches.</p>
+<hr/>
+<p><span id="docs-internal-guid-f91a61a9-7fff-c95d-5e3e-12d1c2c1fd29">If you found my scripts useful and want me to develop more free scripts</span>, consider supporting me by donating via <em>PayPal</em> directly to my e-mail: <strong>askoldich</strong> [at] <strong>yahoo</strong> [dot] <strong>com</strong>. (Due to PayPal's restrictions for Ukraine, I can't have a <em>Donate</em> button on my site.)</p>
+    <hr />
+<p><a href="place_inline_images_and_fit.zip">Click</a> here to download the latest version of the script. (The previous version 2.0 is <a href="../ver_2/place_inline_images_and_fit.html">here</a>.)</p>
+<p id="similar_scripts">See also similar scripts:</p>
+<ul>
+  <li><a href="../../place_images.html">Place  images</a></li>
+  <li><a href="../../place_inline_images.html">Place inline images</a></li>
+  <li><a href="../../place_inline_images_in_nested_folders/place_inline_images_in_nested_folders.html">Place inline images in nested folders</a></li>
+</ul>
+<p>&nbsp;</p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

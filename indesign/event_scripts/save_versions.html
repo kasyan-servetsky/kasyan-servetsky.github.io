@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Save versions</title>
+<!-- #EndEditable -->
+<script src="../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../index.html">Home</a></li>
+<li><a href="../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../tips/all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../tips/all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../tips/all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../tips/all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../tips/all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../tips/indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../tips/all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../snippets/array.html">Array</a></li>
+          <li><a href="../../snippets/number.html">Number</a></li>
+          <li><a href="../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../../tips/indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>Save versions</h1>
+    <p>Author: <em>Martin Fische</em>r. German to English translation by <em>Kasyan</em>. The source is <a href="http://indesign.hilfdirselbst.ch/ausgabe-export/automatische-sicherungskopien-in-unterordner-erstellen-1.html">here</a>.</p>
+    <p><strong>saveVersions.jsx</strong> does a &quot;Save As Copy&quot; in the  background every time you &quot;Save&quot; or &quot;Save As&quot; of  your document. The versions are saved to a folder named &quot;Versions&quot;  just in the same folder where your original InDesign file resides. The versions  are numbered (you'll be prompted for the max. number the first time you are  using it). You can reset the maximum number with <a href="../../downloads/scripts_for_indesign/event_scripts/VersionsCounter.zip">VersionsCounter.jsx</a>.</p>
+    <p>It should work with every version of InDesign from CS3 and  above. (I tested it in CC 2018 on Windows and it worked for me).</p>
+    <p>You have to put the <a href="../../downloads/scripts_for_indesign/event_scripts/saveVersions.zip">Save versions</a> script into the <a href="http://kasyan.ho.com.ua/tips/indesign_script/all/start_up_folder.html">startup scripts folder</a> of  the InDesign's <em>Scripts</em> folder. </p>
+    <p><a href="../../downloads/scripts_for_indesign/event_scripts/VersionsCounter.zip">VersionsCounter.jsx</a> should be installed as a regular script: in the <em>Scripts Panel</em> folder.</p>
+    <p>This <a href="http://kasyan.ho.com.ua/indesign/event_scripts/event_scripts.html">event script</a> does the  following:</p>
+    <p>1. The second time you save a document (that is, before the  first saved version is overwritten), you will be prompted to enter the maximum  number of versions to manage (default is 5). </p>
+    <p><img border="0" width="523" height="164" src="../../images/indesign/event_scripts/save_versions_001.png" /></p>
+    <p>2. After confirming the dialog (be careful, it is persistent  and expects a number &gt; 0) a backup copy of the old  version will be created in a subfolder of the folder in which the  document is located called <strong>&ldquo;Versions&rdquo;</strong>. This backup copy  is named &ldquo;<em>[documentname] _1.indd</em>&rdquo;. </p>
+    <p><img border="0" width="416" height="282" src="../../images/indesign/event_scripts/save_versions_002.png" /></p>
+    <p>3. Each time you save (only if something has changed in the  document), the version number will increase until the maximum version number is  reached; when the maximum version number is reached, the counter is reset to 1  and the numbering loop starts over again (first &ldquo;<em>[document name]  _1.indd</em>&rdquo; is<strong> overwritten (!)</strong>, next time &ldquo;<em>[document name] _2.indd</em>&rdquo;. </p>
+    <p><img border="0" width="378" height="293" src="../../images/indesign/event_scripts/save_versions_003.png" /></p>
+    <p>4. The undo history in the current document is retained. </p>
+    <p>The maximum number of versions that  the <strong>saveVersions.jsx</strong> manages can be changed with the script <a href="../../downloads/scripts_for_indesign/event_scripts/VersionsCounter.zip">VersionsCounter.jsx</a>.  The currently assigned value is shown in the input dialog as default.</p>
+<p><a href="../../downloads/scripts_for_indesign/event_scripts/saveVersions.zip">Click here</a> to download the <strong>saveVersions</strong> script.</p>
+<p>See also <a href="../all/save_with_backup.html">Save with backup</a> by <em>Gregor Fellenz</em> (grefel)</p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

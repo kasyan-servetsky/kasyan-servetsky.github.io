@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Writing info to link's metadata in InDesign</title>
+<!-- #EndEditable -->
+<script src="../../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../../index.html">Home</a></li>
+<li><a href="../../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../../tips/all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../../tips/all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../../tips/all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../../tips/all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../../tips/all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../../tips/indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../../tips/all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../../snippets/array.html">Array</a></li>
+          <li><a href="../../../snippets/number.html">Number</a></li>
+          <li><a href="../../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../../../tips/indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../../scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../../all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../../custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../../enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../../scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>Writing info to link&rsquo;s metadata in InDesign</h1>
+    <h2>Part 1</h2>
+<p>At first glance, this may seem impossible: all the properties in the <a href="https://www.indesignjs.de/extendscriptAPI/indesign-latest/#LinkMetadata.html">linkXmp</a> (LinkMetadata) are read-only. If we open the <strong>XMP File info </strong>dialog from the <em>Links</em> panel, we can read it but can&rsquo;t change it.</p>
+<p>Applying metadata via the <strong>AdobeXMPScript library</strong> directly from InDesign is problematic because of the <a href="../../../tips/indesign_script/all/adobe_xmp_script_library_bug.html">bug</a> in the recent version. (I wonder if it has been in the latest version of InDesign 2023).</p>
+<p>A client asked me to write a script where the content of a paragraph goes to the <strong>document title</strong> metadata field:</p>
+<p><em>&ldquo;What I need is tool, that copy all the text from the paragraph where picture is linked and paste that text to the picture file metadata filed.<br /> Picture is always anchored to the beginning of the paragraph. If there is another object anchored to the end of same paragraph, it should be ignored.</em></p>
+<p><em>If the picture is linked to empty paragraph some default text will be used to fill that alt tag.<br /> I can change that default text by modifying the script, there is no need for dialog box for that.&rdquo;</em></p>
+<p><img src="add_metadata_to_linked_images.png" width="897" height="613" alt=""/></p>
+<p>Here I found a solution. This script requires both InDesign and Bridge.</p>
+<p>Run it in InDesign. The script collects the list of image links and the corresponding paragraph content to which the image is anchored. Then it sends the list to Bridge &mdash; via <em>BridgeTalk</em> &mdash; where the paragraph content is added to the document title metadata field.</p>
+<p>I wrote it in InDesign 2022 (17.2.1) and Bridge 12.0.0.234 for Windows.</p>
+<p>This script also illustrates how to:</p>
+<ul>
+<li>send an array as a parameter via <em>BridgeTalk</em></li>
+<li>return an error message from <em>BridgeTalk</em></li>
+<li>check if the Bridge app is installed and running</li>
+</ul>
+    <p><a href="add_metadata_to_linked_images_1.0.zip">Click here</a> to download the script.</p>
+    <hr/>
+    <h2>Part 2</h2>
+<p>I asked a <a href="https://community.adobe.com/t5/indesign-discussions/loading-adobexmpscript-library-in-indesign-2023/m-p/13341514#M502179">question</a> on the Adobe InDesign forum, and it turned out that the bug was fixed in version 17.4.0.51. Also, it&rsquo;s OK with the latest (at the moment) version of InDesign 2023: 18.0.0.312. I wrote another script using a more elegant approach: the AdobeXMPScript library is called directly from InDesign so no Bridge is needed.</p>
+<p><a href="add_metadata_to_linked_images_1.1.zip">Here&rsquo;s</a> the new version of the script.</p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

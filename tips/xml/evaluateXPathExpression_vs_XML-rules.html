@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>evaluateXPathExpression vs XML-rules: which is better?</title>
+<!-- #EndEditable -->
+<script src="../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../index.html">Home</a></li>
+<li><a href="../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../snippets/array.html">Array</a></li>
+          <li><a href="../../snippets/number.html">Number</a></li>
+          <li><a href="../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../../indesign/scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../../indesign/all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../../indesign/custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../../indesign/enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../../indesign/scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>evaluateXPathExpression vs XML-rules: which is better?</h1>
+    <p><img src="../../images/all/under_construction.png" width="539" height="309" alt=""/></p>
+    <p>The discussion is <a href="https://community.adobe.com/t5/indesign-discussions/evaluatexpathexpression-vs-xml-rules-which-is-better/m-p/7130941#M287704">here</a>.</p>
+<p>Hi all,</p>
+    <p>After a few months I decided to answer my own question in  hope it may come in handy to the future generations.<br />
+    Here&rsquo;s a screenshot of the script&rsquo;s dialog box I&rsquo;m talking  about:</p>
+    <p>&nbsp;</p>
+    <p>I added a couple of radio buttons so the user could choose  either xml-rules or evaluateXPathExpression option.<br />
+      After some testing I came to conclusion that the latter is  much better because it allows overcoming xPath limitations (not all, of course).<br />
+      Here&rsquo;s a quote from the XML rules chapter (page 200-201):<br />
+      Due to the one-pass nature of this implementation, the  following XPath expressions are specifically<br />
+      excluded:<br />
+       No ancestor or preceding-sibling axes, including .., ancestor::,  preceding-sibling::.<br />
+       No path specifications in predicates; for example, foo[bar/c].<br />
+       No last() function.<br />
+       No text() function or text comparisons; however, you can  use InDesign scripting to examine the text<br />
+      content of an XML element matched by a given XML rule.<br />
+       No compound Boolean predicates; for example, foo[@bar=font  or @c=size].<br />
+       No relational predicates; for example, foo[@bar &lt; font  or @c &gt; 3].<br />
+       No relative paths; for example, doc/chapter.</p>
+    <p>Frankly speaking, I&rsquo;m not an xPath-man and don&rsquo;t quite understand  what it means. But my client wanted the script to work with the last() function.<br />
+      When I tried to use it with xml-rules, the script wrote the  following error to console: &ldquo;Adobe InDesign cannot process^1XPath expression  '^2', line: 43&rdquo;.<br />
+      But with evaluateXPathExpression it worked as expected.<br />
+      Since I know almost nothing about xPath, I used the  information found on these two pages – XML and XPath and XPath Syntax – because  it&rsquo;s given in an easy-to-understand manner for me. (I know some coding gurus here  on the scripting forum will be angry at me for mentioning the <a href="http://www.w3schools.com">http://www.w3schools.com</a> but please have  mercy on me – a mere mortal retoucher.) I created a couple of documents for  testing -- copied the xml-structure and imported it to InDesign – and tested  them against the path expressions posted as examples on the pages. Here&rsquo;s an  archive with the InDesign documents (CC 2014) – their IDML versions are also  included – and the scripts I used for testing.</p>
+    <p>Here are the examples that work with evaluateXPathExpression,  but don&rsquo;t work with xml-rules producing an error:<br />
+      /bookstore/book[last()] Selects the last book element that  is the child of the bookstore element<br />
+      /bookstore/book[last()-1] Selects the last but one book  element that is the child of the bookstore element<br />
+      /bookstore/book[position()&lt;3] Selects the first two book  elements that are children of the bookstore element<br />
+      /bookstore/book[price&gt;35.00] Selects all the book  elements of the bookstore element that have a price element with a value  greater than 35.00<br />
+      /bookstore/book[price&gt;35.00]/title Selects all the title  elements of the book elements of the bookstore element that have a price  element with a value greater than 35.00<br />
+      //book/title | //book/price Selects all the title AND price  elements of all book elements<br />
+      //title | //price Selects all the title AND price elements  in the document<br />
+      /bookstore/book/title | //price Selects all the title  elements of the book element of the bookstore element AND all the price  elements in the document<br />
+      . (Selects the current node)</p>
+    <p>This one doesn&rsquo;t work with xml-rules silently producing no  error:<br />
+      bookstore//book Selects all book elements that are  descendant of the bookstore element, no matter where they are under the  bookstore element</p>
+    <p>The following doesn&rsquo;t work with both -- xml-rules (producing  an error) and evaluateXPathExpression (no error):<br />
+      //@lang Selects all attributes that are named lang</p>
+    <p>The following doesn&rsquo;t work with both silently:<br />
+      bookstore/book Selects all book elements that are children  of bookstore<br />
+      bookstore//book Selects all book elements that are  descendant of the bookstore element, no matter where they are under the  bookstore element</p>
+    <p>Here are the simple scripts I used for testing (I just copied-pasted  xPath expressions into the relative lines):</p>
+    <p>evaluateXPathExpression</p>
+    <p>XML-rules</p>
+    <p>Now a very important note: when I tested xPath expressions using  evaluateXPathExpression, it worked well with my simple test files, but when my  client gave me his &ldquo;real&rdquo; document with a complex xml-structure, it stopped  working for some reason.</p>
+    <p>A couple of years ago (or more) I found out that it was somehow  associated with namespaces: no namespaces – no problem.<br />
+      Now, after a more careful investigation I&rsquo;ve discovered that  it depends on the attributes in all the parent xml-elements starting from the  element we&rsquo;re looking for and up to the root. The problem occurs because of the  elements whose names contain colons.<br />
+      For example, we&rsquo;re looking for //sec/p[last()] (the last p element  in every sec element). In the screenshot below, it&rsquo;s marked in green.<br />
+      The elements marked in red prevent the script from working  properly. My idea was to temporarily replace colons, say, with underscores -- or  any other valid character, in case underscores are used in attribute names – so  I came up with the following script:</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+<p><a href="../../downloads/tips/indesign_script/xpath_test.zip">Blah-blah-blah</a></p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

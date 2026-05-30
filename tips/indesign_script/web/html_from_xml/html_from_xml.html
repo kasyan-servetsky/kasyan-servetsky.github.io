@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Do you need to generate HTML table rows from XML in InDesign?</title>
+<!-- #EndEditable -->
+<script src="../../../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../../../index.html">Home</a></li>
+<li><a href="../../../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../../all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../../all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../../all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../../all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../../all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../../indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../../all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../../../snippets/array.html">Array</a></li>
+          <li><a href="../../../../snippets/number.html">Number</a></li>
+          <li><a href="../../../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../../code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../../../../indesign/scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../../../../indesign/all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../../../../indesign/custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../../../../indesign/enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../../../../indesign/scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>Do you need to generate HTML table rows from XML in InDesign?</h1>
+    <p><strong>General issue:</strong> you export XML and you get a bunch of content for xml elements that were a table in inDesign. But they don't have any rows, just cell after cell. What will make rows in your output?</p>
+    <p><strong>Solution:</strong> XSLT; you need to use the @aid:tcols attribute of exported XML to determine the number of columns that your table should be. This is written in XSLT 1.1 so it shoud work with an export from InDesign. If you have problems with using it on export of XML, try using it on the XML afetr it has been exported, in Oxygen or other XSLT processor. Best to save acopy of your files before using the XSLT with them.&#160; Copy all of the plain text and past into a new file, save with your own filename, ending with .xsl file extension. Then when exporting XML from InDesign CS3-5, browse to your new .xsl file and select it. PLEASE read about XSLT files at w3c.schools or other resource if you want to understand what is going on with this file.</p>
+    <p>BTW &lt;!-- indicates comments in code --&gt;</p>
+    <p><img src="html_from_xml.png" width="800" height="750" alt=""/></p>
+    <hr/>
+<p><span style="font-family: courier new,courier;">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br/>
+</span></p>
+    <p><span style="font-family: courier new,courier;">&lt;!-- NO WARRANTY that this example code will work as written for your XML file in InDesign. You can add more templates to the output to map your heading styles to h1, h2, etc. --&gt;<br/>
+    </span></p>
+    <p><span style="font-family: courier new,courier;"><span>&lt;xsl:stylesheet xmlns:xsl=&quot;</span><a class="jive-link-external-small" href="http://www.w3.org/1999/XSL/Transform">http://www.w3.org/1999/XSL/Transform</a><span>&quot; version=&quot;1.1&quot;</span><br/>
+      <span>&#160;&#160;&#160; xmlns:aid=&quot;</span><a class="jive-link-external-small" href="http://ns.adobe.com/AdobeInDesign/4.0/">http://ns.adobe.com/AdobeInDesign/4.0/</a><span>&quot;</span><br/>
+      <span>&#160;&#160;&#160; xmlns:aid5=&quot;</span><a class="jive-link-external-small" href="http://ns.adobe.com/AdobeInDesign/5.0/">http://ns.adobe.com/AdobeInDesign/5.0/</a><span>&quot; exclude-result-prefixes=&quot;xsl aid aid5&quot;&gt;</span><br/>
+      &#160;&#160;&#160; &lt;xsl:output method=&quot;html&quot; indent=&quot;yes&quot; encoding=&quot;UTF-8&quot;<br/>
+      <span>&#160;&#160;&#160;&#160;&#160;&#160;&#160; doctype-public=&quot;</span><a class="jive-link-external-small" href="http://www.w3.org/TR/xhtml/DTD/xhtml-transitional.dtd">http://www.w3.org/TR/xhtml/DTD/xhtml-transitional.dtd</a><span>&quot;/&gt;</span></span></p>
+    <p><span style="font-family: courier new,courier;">&lt;!-- parameter to use the name of element with attribute aid:theader as the th output --&gt;<br/>
+      &#160;&#160;&#160; &lt;xsl:param name=&quot;tableElem&quot;&gt;//*[local-name()][@aid:table='table']&lt;/xsl:param&gt;<br/>
+      &#160;&#160;&#160; &lt;xsl:param name=&quot;colheadStyle&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:value-of select=&quot;//*[local-name()][@aid:theader][1]&quot;/&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;!-- i.e. colHead--&gt;<br/>
+      &#160;&#160;&#160; &lt;/xsl:param&gt;</span></p>
+    <p><span style="font-family: courier new,courier;">&lt;!-- </span><span style="font-family: courier new,courier;">parameter to </span><span style="font-family: courier new,courier;">use the name of element with attribute aid:cell but not aid:theader as the td&#160; output --&gt;</span></p>
+    <p><span style="font-family: courier new,courier;">&lt;!--i.e. tabletext or whatever the name of your Cell level&#160; element is in InDesign --&gt;<br/>
+      &#160;&#160;&#160; &lt;xsl:param name=&quot;cellStyle&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:value-of select=&quot;//*[local-name()][@aid:table='cell' and not(@aid:theader)][1]&quot;/&gt;</span></p>
+    <p><span style="font-family: courier new,courier;">&#160;&#160;&#160; &lt;/xsl:param&gt;<br/>
+      &#160;&#160;&#160; &lt;!-- handles a Story element marked up with HTML-type elements, but uses the &lt;Table&gt; element of IDD&#160; --&gt;<br/>
+      &#160;&#160;&#160; &lt;!-- if a true HTML table is in the content, it will be passed through --&gt;<br/>
+      &#160;&#160;&#160; &lt;xsl:template match=&quot;Story&quot;&gt;&lt;!-- make a basic HTML file from a Story --&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;html&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;head&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;title&gt;Sample Table&lt;/title&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/head&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;body&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:apply-templates&gt;</span><span style="font-family: courier new,courier;">&lt;!-- will handle direct text of the&#160; &lt;Story&gt;, and &lt;Table&gt; --&gt;</span><br/>
+      <span style="font-family: courier new,courier;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:with-param name=&quot;colheadStyle&quot; select=&quot;$colheadStyle&quot;/&gt;<br/>
+        &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:with-param name=&quot;cellStyle&quot; select=&quot;$cellStyle&quot;/&gt;<br/>
+        &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:apply-templates&gt;&#160;&#160; <br/>
+        &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/body&gt;<br/>
+        &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/html&gt;<br/>
+        &#160;&#160;&#160; &lt;/xsl:template&gt;</span></p>
+    <p><span style="font-family: courier new,courier;"><br/>
+    </span></p>
+    <p><span style="font-family: courier new,courier;">&#160;&#160; &lt;!-- use the styles to find the elements of IDD &lt;Table&gt; element --&gt;<br/>
+      &#160;&#160;&#160; &lt;xsl:template match=&quot;Table&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:param name=&quot;colheadStyle&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:value-of select=&quot;$colheadStyle&quot;/&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:param&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:param name=&quot;cellStyle&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:value-of select=&quot;$cellStyle&quot;/&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:param&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:variable name=&quot;cellsPerRow&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:value-of select=&quot;@aid:tcols&quot;/&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:variable&gt;<br/>
+      <br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;table&gt;&lt;!-- start the table --&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;!-- xhtml requires lower-case name for table element--&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;tr&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:apply-templates select=&quot;*[@aid:theader='']&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:with-param name=&quot;colheadStyle&quot; select=&quot;$colheadStyle&quot;/&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:with-param name=&quot;cellStyle&quot; select=&quot;$cellStyle&quot;/&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:apply-templates&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/tr&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;!--&#160; and @aid:style=$cellStyle --&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:for-each<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; select=&quot;*[@aid:table='cell'][not(@aid:theader='')][position() mod $cellsPerRow = 1]&quot;&gt;<br/>
+      </span><span style="font-family: courier new,courier;"><span>&lt;!-- some code adapted with&#160; permission, from </span><a class="jive-link-external-small" href="http://www.computorcompanion.com/LPMArticle.asp?ID=202">http://www.computorcompanion.com/LPMArticle.asp?ID=202</a><span> </span><br/>
+        Building HTML Tables with XSL by James Byrd; please include this acknowledgement in all files that use his code --&gt;</span></p>
+    <p><span style="font-family: courier new,courier;">&lt;!-- this is the tricky bit of the code that James Byrd set up<br/>
+      p-class-tabletext-[position() mod $cellsPerRow = 1 continues looping until the position of the active element divided by $cellperRow (@aid:tcols value) tried with [@aid:style=$cellStyle] has a remainder of 1 --&gt;</span></p>
+    <p><span style="font-family: courier new,courier;">&lt;!--&#160; .|following-sibling::p-class-tabletext-[position() &amp;lt;&#160; $cellsPerRow] applies first to the currently selects cell with &quot;.&quot; then continues with the following-siblings whose position is less than&#160; the value of cells per row (@aid:tcols value) --&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;tr&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:apply-templates<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; select=&quot;.|following-sibling::*[@aid:table='cell'][not(@aid:theader='' )][position() &amp;lt; $cellsPerRow]&quot;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; /&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/tr&gt;</span></p>
+    <p><span style="font-family: courier new,courier;">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:for-each&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/table&gt;<br/>
+      &#160;&#160;&#160; &lt;/xsl:template&gt;</span></p>
+    <p><span style="font-family: courier new,courier;"><br/>
+    </span></p>
+    <p><span style="font-family: courier new,courier;">&#160;&#160;&#160; <br/>
+      &#160;&#160;&#160; &lt;xsl:template match=&quot;*&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:param name=&quot;colheadStyle&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:value-of select=&quot;$colheadStyle&quot;/&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:param&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:param name=&quot;cellStyle&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:value-of select=&quot;$cellStyle&quot;/&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:param&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:variable name=&quot;cellsPerRow&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:value-of select=&quot;parent::Table/@aid:tcols&quot;/&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:variable&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:choose&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;!-- colHead aid:table=&quot;cell&quot; aid:theader=&quot;&quot;--&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:when test=&quot;parent::Table and @aid:theader&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;th&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:apply-templates&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:with-param name=&quot;colheadStyle&quot; select=&quot;$colheadStyle&quot;/&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:with-param name=&quot;cellStyle&quot; select=&quot;$cellStyle&quot;/&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:apply-templates&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/th&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:if test=&quot;(position() = last()) and (position() &amp;lt; $cellsPerRow)&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:call-template name=&quot;FillerCells&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:with-param name=&quot;cellCount&quot; select=&quot;$cellsPerRow - position()&quot;/&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:call-template&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:if&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:when&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:when test=&quot;parent::Table and @aid:table='cell' and not(@aid:theader)&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;td&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:apply-templates&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:with-param name=&quot;colheadStyle&quot; select=&quot;$colheadStyle&quot;/&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:with-param name=&quot;cellStyle&quot; select=&quot;$cellStyle&quot;/&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:apply-templates&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/td&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:if test=&quot;(position() = last()) and (position() &amp;lt; $cellsPerRow)&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:call-template name=&quot;FillerCells&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:with-param name=&quot;cellCount&quot; select=&quot;$cellsPerRow - position()&quot;/&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:call-template&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:if&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:when&gt;</span></p>
+    <p><span style="font-family: courier new,courier;">&lt;!-- </span><span style="font-family: courier new,courier;">for non-table elements this </span><span style="font-family: courier new,courier;">generic element handler will&#160; pick up an aid:pstyle (if present) and create a class attribute from it. Works for any element that has the same name as HTML element such as &lt;p&gt; but it doesn't add wrapper elements like &lt;ul&gt; or &lt;ol&gt; for lists. --&gt;</span><span style="font-family: courier new,courier;"><br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:otherwise&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:element name=&quot;{name()}&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:if test=&quot;@aid:pstyle&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:attribute name=&quot;class&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:value-of select=&quot;@aid:ptyle&quot;/&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:attribute&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:if&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:apply-templates&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:with-param name=&quot;colheadStyle&quot; select=&quot;$colheadStyle&quot;/&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:with-param name=&quot;cellStyle&quot; select=&quot;$cellStyle&quot;/&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:apply-templates&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:element&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:otherwise&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:choose&gt;<br/>
+      &#160;&#160;&#160; &lt;/xsl:template&gt;</span></p>
+    <p><span style="font-family: courier new,courier;"><br/>
+    </span></p>
+    <p><span style="font-family: courier new,courier;">&#160;&#160;&#160; &lt;!-- take care of text that is a direct child of the &lt;Story&gt; by wrapping it in a &lt;p&gt; to make valid HTML --&gt;<br/>
+      &#160;&#160;&#160; &lt;xsl:template match=&quot;text()&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:variable name=&quot;myString&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:value-of select=&quot;string-length(normalize-space(.))&quot;/&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:variable&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:choose&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:when test=&quot;parent::Story&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:if test=&quot;$myString &gt; 0&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:element name=&quot;p&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:attribute name=&quot;class&quot;&gt;text&lt;/xsl:attribute&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:value-of select=&quot;normalize-space(.)&quot;/&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:element&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:if&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:when&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:otherwise&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:value-of select=&quot;normalize-space(.)&quot;/&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:otherwise&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:choose&gt;<br/>
+      &#160;&#160;&#160; &lt;/xsl:template&gt;<br/>
+    </span></p>
+    <p><span style="font-family: courier new,courier;"><br/>
+    </span></p>
+    <p><span style="font-family: courier new,courier;">&#160;&#160; &lt;!-- make br element conform to good HTML markup --&gt;<br/>
+      &#160;&#160;&#160; &lt;xsl:template match=&quot;br&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;br /&gt;<br/>
+      &#160;&#160;&#160; &lt;/xsl:template&gt;</span></p>
+    <p><span style="font-family: courier new,courier;"><br/>
+    </span></p>
+    <p><span style="font-family: courier new,courier;">&#160;&#160;&#160; &lt;!-- this recursive template calls itself until its test condition is satified --&gt;<br/>
+      &#160;&#160;&#160; &lt;!-- it outputs a cell whose only content is a non-breaking space --&gt;<br/>
+      &#160;&#160;&#160; &lt;!-- do not use&#160;&#160; in place of Unicode &amp;#160; for the non-breaking space --&gt;<br/>
+      &#160;&#160;&#160; &lt;!-- the value of $cellCount is set in the main XSL template --&gt;<br/>
+      &#160;&#160;&#160; &lt;xsl:template name=&quot;FillerCells&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:param name=&quot;cellCount&quot;/&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;td&gt;&amp;#160;&lt;/td&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:if test=&quot;$cellCount &gt; 1&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:call-template name=&quot;FillerCells&quot;&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;xsl:with-param name=&quot;cellCount&quot; select=&quot;$cellCount - 1&quot;/&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:call-template&gt;<br/>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160; &lt;/xsl:if&gt;<br/>
+      &#160;&#160;&#160; &lt;/xsl:template&gt;<br/>
+      &lt;/xsl:stylesheet&gt;</span></p>
+    <hr/>
+
+<code>
+      
+      
+      </code>
+
+
+
+
+    <p><a href="html_from_xml.zip">Click here</a> to download the example files. </p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

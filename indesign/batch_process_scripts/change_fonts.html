@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Change fonts</title>
+<!-- #EndEditable -->
+<script src="../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../index.html">Home</a></li>
+<li><a href="../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../tips/all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../tips/all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../tips/all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../tips/all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../tips/all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../tips/indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../tips/all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../snippets/array.html">Array</a></li>
+          <li><a href="../../snippets/number.html">Number</a></li>
+          <li><a href="../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../../tips/indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>Change fonts script for batch processor</h1>
+    <p><a href="../font/change_fonts_csv/change_fonts_csv.html">Version with find-change list taken directly from the CSV file</a></p>
+    <hr/>
+    <h2>Version with find-change list taken directly from the Excel (XLSX-file)</h2>
+<p>This script is <strong>for Windows only</strong>: the  code is partially written in VBScript. <br />
+  <a href="../../downloads/scripts_for_indesign/batch_process_scripts/change_fonts_excel.zip">Here</a> is the latest version of the script and <a href="../../downloads/scripts_for_indesign/batch_process_scripts/change_fonts_samples.zip">here</a> are the sample files used in the example below.</p>
+<hr/>
+<!--<p>The script is written for the<a href="batch_process_scripts.html"> Batch  processor</a> so it has no interaction with the user: no fool proofing, alerts, prompts, etc. If an error occurs, it&rsquo;s silently sent to the log via the global <strong>gErrorLog</strong> variable.  Also, some information is sent via another global variable <strong>gErrorLog</strong>: e.g. how many styles have been changed, etc. If you&rsquo;re going to use it as a standalone script, make sure to comment it  out these variables like so:</p>
+    <p><img src="../../images/indesign/batch_process_scripts/change_fonts/change_fonts_4.png" width="797" height="88" alt=""/></p>-->
+    <h2>Change fonts script with find-change list hardcoded into the script</h2>
+    <p><a href="../../downloads/scripts_for_indesign/batch_process_scripts/change_fonts.zip">Here</a> is the script together with <em>'before and after'</em> sample files (ver. CC 2017). </p>
+    <p>At the very beginning you'll see the first variable which is the array of  arrays containing the names of the fonts in the format:<br />
+<strong>[</strong> &quot;Find this&quot;, &quot;Change to this&quot; <strong>],</strong></p>
+    <p>Here I used the fonts installed with InDesign to make sure that everybody  have them and can test the script using my sample.</p>
+    <p><img src="../../images/indesign/batch_process_scripts/change_fonts/change_fonts_1.png" width="365" height="197" alt=""/></p>
+    <ul>
+      <li>The left element is <em>'Find this</em>', the right one is '<em>Change to</em>'.</li>
+      <li>The <strong>family name</strong> and <strong>font style</strong> should be separated by a tab:  either <strong>\t</strong> or by actual tab (by hitting tab on the keyboard)</li>
+      <li>The find-change pairs (the elements of array) are separated by commas so  make sure that you won't leave a comma after the last element (see the  screenshot above).</li>
+    </ul>
+    <p>Then you can select the script in the <a href="batch_process_scripts.html">Batch processor</a> like so:</p>
+    <p><img src="../../images/indesign/batch_process_scripts/change_fonts/change_fonts_11.png" width="650" height="539" alt=""/><br />
+    </p>
+    <p><strong>Important note</strong><br />
+      In my practice, I encountered a problem when replacing fonts with a script in old (converted) documents: the fonts failed to change for some reason. The solution was simple: export files to IDML and back to INDD format. That&rsquo;s why I added support for IDML files in my Batch processor script's new version &mdash; 5.</p>
+    <hr />
+    <p>If you have any feedback &#8212; complaints, comments, or suggestions &#8212; feel free to send me an e-mail putting Change fonts script into the subject line. (Warning: unfortunately, I  can&acute;t reply to all the e-mails I get because of lack of time. Sorry in advance!)</p>
+    <p><span>If you found these scripts useful and want me to develop them further</span>, consider supporting me by donating via <em>PayPal</em> directly to my e-mail: <strong>askoldich</strong> [at] <strong>yahoo</strong> [dot] <strong>com</strong>. (Due to PayPal&acute;s restrictions for Ukraine, I can&acute;t have a <em>Donate</em> button on my site.)</p>
+    <hr />
+<p>See also:</p>
+    <ul>
+      <li><a href="../font/change_fonts_csv/change_fonts_csv.html">Change fonts CSV</a> &#8212; a script that can be used as a regular script against the current document, or you can run it  from the batch processor.</li>
+      <li><a href="https://indisnip.wordpress.com/2010/08/24/findchange-missing-font-with-scripting/">Find/change missing font with scripting</a> by     <em>Marijan Tompa (tomaxxi)</em></li>
+      <li><a href="http://forums.adobe.com/message/2250103#2250103">Script for changing missing fonts inside styles</a> by <em>Marc Autret</em></li>
+    </ul>
+    <hr/>
+<p>Back to the main <a href="batch_process_scripts.html">Batch processor</a> page or <a href="scripts_for_batch_processor.html">Scripts for batch processor</a></p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Change fonts CSV</title>
+<!-- #EndEditable -->
+<script src="../../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../../index.html">Home</a></li>
+<li><a href="../../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../../tips/all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../../tips/all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../../tips/all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../../tips/all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../../tips/all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../../tips/indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../../tips/all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../../snippets/array.html">Array</a></li>
+          <li><a href="../../../snippets/number.html">Number</a></li>
+          <li><a href="../../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../../../tips/indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../../scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../../all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../../custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../../enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../../scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>Change fonts CSV</h1>
+    <p>A  script for InDesign. Written and tested in InDesign 2022. It can be used as a  regular script against the current document, or  you can run it  from the <a href="../../batch_process_scripts/batch_process_scripts.html">batch processor</a> to replace  fonts in all files, say, in a selected folder.
+      <a href="change_fonts_csv.zip">Here</a> is the latest version of the script and <a href="../../../downloads/scripts_for_indesign/batch_process_scripts/change_fonts_samples.zip">here</a> are the sample files used in the example below.    </p>
+    <p>There are two scripts in the package and a sample CSV file that you can use as a starting point for making your list of fonts for replacement:</p>
+    <ul>
+      <li>Change fonts CSV.jsx</li>
+      <li>Set parameters.jsx</li>
+      <li>Change fonts list.csv</li>
+    </ul>
+    <p>With  InDesign version 2023 inevitably approaching &#8212; in which Type 1 fonts won&rsquo;t be supported  anymore &#8212; this script may come in handy by replacing all fonts according to the  list in a CSV file.<br />
+      You  can prepare a list of the fonts to be changed in <em>Excel</em> or <em>Numbers</em>, and  save it as a CSV file which will be used by the script. The left column is 'Find this', the right one is 'Change to'.</p>
+    <p><img src="../../../images/indesign/batch_process_scripts/change_fonts/change_fonts_5.png" width="504" height="177" alt=""/></p>
+    <p>If  you use it as a <strong>regular script</strong> or <strong>run it from the batch processor without  an arguments file</strong>, you should save it as a CSV file using the <strong>Change  fonts list.csv</strong> name <strong>in the same folder where the script is located</strong>.  If you use it as an <strong>arguments file</strong>, the file name and location don&rsquo;t  matter.</p>
+    <p><img src="../../../images/indesign/batch_process_scripts/change_fonts/change_fonts_6.png" width="742" height="354" alt=""/></p>
+    <p>Of  course, you can do without Excel and edit the CSV file in a plain text editor  like Notepad (PC) or  TextEdit (Mac).  In this case the left and right elements &#8212; find this &#8212; change to that &#8212; should  be delimited by semicolons.</p>
+    <p><img src="../../../images/indesign/batch_process_scripts/change_fonts/change_fonts_7.png" width="335" height="167" alt=""/></p>
+    <p>The <strong>family name</strong> and <strong>font style</strong> should be separated by <strong>\t</strong> (which means a tab).    </p>
+    <p>If you have more than one version of the same font (family name), &mdash; for example, <em>True Type</em> and <em>Open Type</em> &mdash; you can indicate the required version like so:</p>
+    <p><img src="change_fonts_csv-7.png" width="273" height="84" alt=""/></p>
+    <p>Unfortunately,  as you probably know, there&rsquo;s no way to change fonts by a script as you can do  manually in InDesign via the <strong>Type &gt; Find/Replace Font</strong> dialog box  since this feature is unavailable to scripting so I had to find a workaround for replacing  fonts in four steps:</p>
+    <ul>
+      <li>change the fonts defined in all the <strong>paragraph  styles</strong></li>
+      <li>change the fonts defined in all the <strong>character  styles</strong></li>
+      <li>change the fonts applied as local formatting in  the same way as the 'find this font and change to that font' feature works in  the <strong>Find-Change Text</strong> dialog box (Warning! This feature is <a href="../../../tips/indesign_usage/bugs/find_change_bug/find_change_bug.html">buggy</a> in InDesign)</li>
+      <li>change fonts by <strong>text style ranges</strong> (a  scripting term meaning a piece of text where different formatting is applied)</li>
+    </ul>
+    <p>Changing  fonts applied in local formatting is achieved via the <strong>Find-Change</strong> and/or <strong>Text style ranges</strong> options. However, as I already mentioned, the Find-Change  feature is <a href="../../../tips/indesign_usage/bugs/find_change_bug/find_change_bug.html">buggy</a>  and may lead to unexpected results so I&rsquo;d rather  keep it off, turning on text style ranges like on the screenshot below. Note  that the Find-Change option may change the font to a non-existent style if it  is missing in the family thus resulting in a missing font. Anyway, feel free to  experiment with both settings turning them on separately or together to find  out what works better for you.</p>
+    <p>For  example, changing a font via the <strong>Text style ranges</strong> option works as  expected:</p>
+    <p><img src="change_fonts_csv-5.png" width="447" height="220" alt=""/></p>
+    <p>But  via <strong>Find &#8212; change</strong> results in missing fonts, though they are installed  and available in InDesign as you can see in the previous screenshot.</p>
+    <p><img src="change_fonts_csv-6.png" width="462" height="218" alt=""/></p>
+<p><strong>Set  parameters.jsx</strong> &#8212; as the name suggests &#8212; is for setting parameters. When you run it, nothing  happens to the documents opened in InDesign (if any), but a dialog box appears &#8212;  reflecting the abovementioned four-step approach &#8212; where you can choose where  and how to change fonts. When you hit OK, the settings are saved within  InDesign and used by the main script. Also, this dialog box  has the <strong>Only missing fonts</strong> check box. When it&rsquo;s on, only missing fonts  will be replaced.</p>
+<p><img src="change_fonts_csv-1.png" width="202" height="275" alt=""/></p>
+<p>When  you run the script from the <a href="../../batch_process_scripts/batch_process_scripts.html">batch processor</a>, you can choose a <strong>CSV file</strong> in the arguments  file section. You  can select a CSV file as an arguments file in the batch processor version 4.8  or above: make sure to update it. If no arguments file is used, the script  looks for the <strong>Change fonts list.csv</strong> file <strong>in the same folder where the  script is located</strong>.</p>
+<p><img src="change_fonts_csv.png" width="650" height="539" alt=""/></p>
+<p>In my example the script changes&nbsp;<strong><em>Minion Pro</em></strong><em> - Bold, Italic </em>and<em> Bold Italic to&nbsp;<strong>Myriad Pro </strong></em>(<em>Letter Gothic Std</em>   is left unchanged).</p>
+<p><strong>Before</strong></p>
+<p> <img src="../../../images/indesign/batch_process_scripts/change_fonts/change_fonts_3.png" width="488" height="367" alt=""/></p>
+<p> <strong>After</strong></p>
+<p> <img src="../../../images/indesign/batch_process_scripts/change_fonts/change_fonts_2.png" width="488" height="367" alt=""/></p>
+<p>If  the <strong>Create log file on the desktop</strong> check box is on, the script logs  information about the number of styles and instances of local formatting where  the fonts were changed in each document.</p>
+<p><img src="change_fonts_csv-2.png" width="523" height="450" alt=""/></p>
+<p>There is a variable in the script<strong> </strong>called<strong> debugMode </strong>which is set to <strong>false</strong> by default. </p>
+<p><img src="change_fonts_csv-3.png" width="447" height="155" alt=""/></p>
+<p>If you set it to <strong>true</strong>, the script will apply the following colors  to changed fonts which helps me a lot for debugging purposes:</p>
+<p><strong>Green</strong> &#8212; successfully  replaced via <strong>Text style ranges</strong><br />
+  <strong>Blue</strong> &#8212; successfully  replaced via <strong>Find &#8212;  change</strong><br />
+  <strong>Red</strong> &#8212;  an <strong>error</strong> occurred  via <strong>Text style  ranges</strong> (never happened to me so far).</p>
+<p>This  may be useful if you want to make the changed fonts visually stand out. Later you can delete  the temporary colors replacing them with Black.</p>
+<p><img src="change_fonts_csv-4.png" width="827" height="303" alt=""/></p>
+<p><strong>Important note</strong><br />
+In my practice, I encountered a problem when replacing fonts with a script in old (converted) documents: the fonts failed to change for some reason. The solution was simple: export files to IDML and back to INDD format. That&rsquo;s why I added support for IDML files in my Batch processor script's new version &mdash; 5.</p>
+<hr />
+<p><span id="docs-internal-guid-f91a61a9-7fff-c95d-5e3e-12d1c2c1fd29">If you found my scripts useful and want me to develop more free scripts</span>, consider supporting me by donating via <em>PayPal</em> directly to my e-mail: <strong>askoldich</strong> [at] <strong>yahoo</strong> [dot] <strong>com</strong>. (Due to PayPal&acute;s restrictions for Ukraine, I can&acute;t have a <em>Donate</em> button on my site.)</p>
+<hr />
+<p><a href="change_fonts_csv.zip">Click here</a> to download the script. </p>
+    <p>&nbsp;</p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Export paragraph style description settings</title>
+<!-- #EndEditable -->
+<script src="../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../index.html">Home</a></li>
+<li><a href="../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../tips/all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../tips/all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../tips/all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../tips/all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../tips/all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../tips/indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../tips/all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../snippets/array.html">Array</a></li>
+          <li><a href="../../snippets/number.html">Number</a></li>
+          <li><a href="../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../../tips/indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>Export paragraph style description settings</h1>
+    <p>Script for InDesign CS3&#8211;CC 2014. Version 4.0</p>
+    <p><img src="../../images/all/export_styles_description_settings_to_csv_3.jpg" width="388" height="414" /></p>
+    <p>The script exports most of the document&acute;s paragraph style description settings to CSV or TXT file which can be opened in Excel. I recommend you to set Excel as the default application for opening csv-files and record a macro for fast formatting the spreadsheet: auto adjust column widths, apply color to the text and background for the first two (header) rows.<br />
+You can use Excel&acute;s or Access&acute;s sorting, filtering, etc. features to compare the slightest differences between the same styles in different documents.</p>
+    <p><img src="../../images/all/export_styles_description_settings_to_csv_1.jpg" width="712" height="364" /></p>
+    <p>If you choose to process anything but the active document, document&acute;s name will be added in the first column. You can sort the <em>Style name</em> column from A to Z and  in Excel to compare styles with identical names in different documents.</p>
+    <p><img src="../../images/all/export_styles_description_settings_to_csv_2.jpg" width="842" height="359" /></p>
+    <p>The <strong>Group</strong> column displays all nested groups like so:</p>
+    <p><img src="../../images/all/export_styles_description_settings_to_csv_4.jpg" width="310" height="160" /></p>
+    <p><strong>Tabs, Grep styles</strong>, <strong>Nested  styles</strong> and <strong>Nested line styles</strong> are listed separated by &#8220;|&#8221; (pile) character:</p>
+    <p><img src="../../images/all/export_styles_description_settings_to_csv_5.jpg" width="257" height="43" /></p>
+    <p> It&acute;s not the final version yet. So far I didn&acute;t include all the properties available to scripting. Some of them I  didn&acute;t find yet. I&acute;ll continue working on it when time permits. I am going to write a similar script for character styles, and maybe for object styles.</p>
+    <p>I am interested to know what you think about it and open to your suggestions so if you have ideas, or found a bug, feel free to <a href="mailto:askoldich@yahoo.com">write me</a>. I can&acute;t promise I would answer to all your e-mails, but the more you&acute;re interested in the script, the more time I will spend on it.</p>
+    <p>There is a common problem which occurs on non-English systems: dates appear instead of floating numbers. </p>
+    <p><img src="../../images/all/export_styles_description_settings_to_csv_6.jpg" width="112" height="129" /></p>
+    <p>This has nothing to do to Excel, InDesign or the script. There are a few ways to solve the issue.</p>
+    <p>You can change <strong>comma</strong> to <strong>dot</strong> in the &#8220;decimal separator&#8221; field in you system preferences. For example, on Windows, it should be changed here:</p>
+    <p><img src="../../images/all/export_styles_description_settings_to_csv_7.jpg" width="477" height="583" /></p>
+    <p>You can also do the following:</p>
+    <ol>
+      <li>select and copy all the text from the text file</li>
+      <li>in Excel select all cells and choose &ldquo;Text&rdquo; in &ldquo;Format Cells&rdquo; &gt; &ldquo;Number&rdquo; </li>
+      <li>After that paste the text.</li>
+    </ol>
+    <p>Yet another way is to choose &ldquo;File&rdquo; &gt; &ldquo;Open&rdquo; in Excel, select the TXT/CSV file and in the &#8220;wizard&rdquo; that appears  select &ldquo;dot&rdquo; for decimal delimiters in the &ldquo;Advanced&rdquo; section.</p>
+    <p><img src="../../images/all/export_styles_description_settings_to_csv_8.jpg" width="529" height="478" /></p>
+    <p>Click <a href="../../downloads/all/export_styles_description_settings.zip">here</a> to download the latest version of the script; the previous version &#8212; 3.5 &#8212; is <a href="../../downloads/all/export_styles_description_settings_3.5.zip">here</a>.</p>
+    <p>Note: the &#8220;Export Tagging&#8221; feature is buggy in scripting: it doesn&acute;t work the way it should. I attempted to find a workaround and it seems to work for me in the following versions of InDesign: CC 2014 (10.2.0.69 x32 Build), CS6, CS5.5 on Windows and CC (9.0), CS6 on Mac. I&acute;d like to get feedback if it works correctly in other versions: especially in the October release of CC 2014.<br />
+      In 
+    version 4 I added <strong>PDF tag</strong> and if EBUP and PDF tags are not changed by the user, they are set to <strong>[Automatic]</strong> as in InDesign.</p>
+</div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

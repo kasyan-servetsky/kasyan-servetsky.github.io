@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>How to get rid of the pesky 'undefined' message in ESTK’s console</title>
+<!-- #EndEditable -->
+<script src="../../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../../index.html">Home</a></li>
+<li><a href="../../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../../snippets/array.html">Array</a></li>
+          <li><a href="../../../snippets/number.html">Number</a></li>
+          <li><a href="../../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../../indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../../../indesign/scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../../../indesign/all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../../../indesign/custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../../../indesign/enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../../../indesign/scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>How to get rid of the pesky &lsquo;undefined&rsquo; message in ESTK&rsquo;s console</h1>
+    <p>By default, every time you run a script in ESTK, the &lsquo;undefined&rsquo; message is written in the console which means the result of the script&rsquo;s execution.</p>
+    <p><img src="Image1861.png" alt="" /></p>
+    <p>I don&rsquo;t see any use of it: in my opinion, it just clutters up the console. However, there&rsquo;s an easy way to get rid of it by editing the preferences template file <strong>defs.xml</strong>. The file is located here: </p>
+    <p><em><strong>In Windows</strong></em>: <strong>[Program Files (x86)]\Adobe\Adobe ExtendScript Toolkit CC\Required\defs.xml</strong></p>
+    <p><em><strong>In Mac OS</strong></em>: In <strong>/Applications/Utilities/Adobe ExtendScript Toolkit CC.app</strong>, control-click the application icon and select &ldquo;<em>Show Package Contents</em>&rdquo; to open the package. The file is located here:<br /><strong>Contents/SharedSupport/Required/defs.xml</strong></p>
+    <p><img src="Image1870.png" alt="" /></p>
+    <p>Before editing, copy it, say, to your desktop, and edit the copy. Otherwise, the system won't allow you to save it in the original location giving an error message like so:</p>
+    <p><img src="Image1894.png" width="469" height="187" alt=""/></p>
+    <p> Also, you may want to make a backup of this file just in case.</p>
+    <p>Now open the file in a <strong>plain text editor</strong> (e.g. <em>Notepad</em> or <em>TextEdit</em>) and find the <strong>&lt;printResult&gt;</strong> tag</p>
+    <p><img src="Image1878.png" alt="" /></p>
+    <p>Change the value from true to <strong>false</strong></p>
+    <p><img src="Image1886.png" alt="" /></p>
+    <p>Finally, save and move it back to the original location replacing the original.</p>
+    <p>After editing the file, start the ESTK while holding the <em>Shift</em> key down. This reverts to the default preferences by loading this file. Note that this also removes any keyboard shortcuts, favorites, and so on, that you have set.</p>
+    <p>By the way, you can still see the result in the left bottom corner:</p>
+    <p><img src="Image1893.png" alt="" /></p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

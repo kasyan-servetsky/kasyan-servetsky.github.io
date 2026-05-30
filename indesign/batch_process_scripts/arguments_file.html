@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Arguments file</title>
+<!-- #EndEditable -->
+<script src="../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../index.html">Home</a></li>
+<li><a href="../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../tips/all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../tips/all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../tips/all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../tips/all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../tips/all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../tips/indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../tips/all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../snippets/array.html">Array</a></li>
+          <li><a href="../../snippets/number.html">Number</a></li>
+          <li><a href="../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../../tips/indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+<div class="main">
+    
+<h1>Arguments file</h1>
+<p>Arguments files can be used with either <strong>txt</strong> or <strong>csv</strong> extension.</p>
+<p><a href="../2020/check_pageitems_for_shift/check_pageitems_for_shift.html">Here&rsquo;s</a> an example of the simplest arguments file which sends only one boolean parameter &ndash; <strong>true</strong> or <strong>false</strong> &ndash; to the script. It&rsquo;s a <strong>string</strong> because we can send only the array of strings via <strong>doScript()</strong> method, but later the script converts it to the necessary data type.</p>
+<p><img src="../../images/indesign/batch_process_scripts/arguments-1.png" width="775" height="452" alt=""/></p>
+<p>In this particular script, this parameter sets the <strong>readMode</strong> variable either to <em>true</em> or <em>false</em> so the script knows whether it  should read or write locations of the objects.</p>
+<hr>
+<p><a href="../2020/check_pageitems_for_shift/check_pageitems_for_shift.html">Here&rsquo;s</a> a little  more complex example.</p>
+<p>At first look, it may seem intimidating, but in truth, it is  almost as simple as the previous one.</p>
+<p>Each method (command) may have one or more parameters that  are usually referenced by the order number: first, second, third and so on.</p>
+    <p><img src="../../images/indesign/batch_process_scripts/package_for_print_bp-3.png" width="927" height="613" alt=""/></p>
+<p> Use the same approach in the arguments file.</p>
+    <p><img src="../../images/indesign/batch_process_scripts/package_for_print_bp-2.png" width="908" height="484" alt=""/></p>
+<p>Parameters can be <strong>required</strong> or <strong>optional</strong>.  <br />
+  Obviously, you have to set all required parameters: for example, in the  screenshot above, the first parameter &#8212; <strong><em>to</em></strong> &#8212; points the script to the folder  where to package the files. <br />
+  Without it, the script makes no sense. You can skip <strong>optional</strong> parameters. <br />
+  However, if you want to skip an optional parameter before  a parameter that you want to set, you have to use <strong>undefined</strong> instead of it.</p>
+<p>If you use many arguments, it is a good idea to make comments  on them to avoid confusion. In this case, ake sure to turn on the <strong>Ignore  comments</strong> checkbox.</p>
+<p><img src="../../images/indesign/batch_process_scripts/arguments-2.png" width="330" height="210" alt=""/></p>
+<p>Alternatively, instead of using return or line feed to  separate arguments, you can use another character:</p>
+<ul>
+  <li><strong>\\n</strong> (Line feed)</li>
+  <li><strong>,</strong> (Comma)</li>
+  <li><strong>;</strong> (Semicolon)</li>
+  <li><strong>|</strong> (Pile)</li>
+  <li>A <strong>custom</strong> character</li>
+</ul>
+<h4>Example of arguments separated by commas</h4>
+<p><img src="../../images/indesign/batch_process_scripts/arguments-3.png" width="341" height="134" alt=""/></p>
+<h4>Example of using comments</h4>
+<p><img src="../../images/indesign/batch_process_scripts/arguments-4.png" width="647" height="400" alt=""/></p>
+<hr>
+<p>Developing scripts for the batch processor, I concluded it would be much better to make <strong>&lsquo;universal&rsquo; </strong>scripts that work both:</p>
+<ul>
+<li>as regular standalone scripts</li>
+<li>and as the ones used with the batch processor</li>
+</ul>
+<p>In such scripts, arguments can be <u>optionally</u> sent from the batch processor. To skip specific arguments, you can one of the following, in this context, totally interchangeable values:</p>
+<ul>
+<li>undefined</li>
+<li>null</li>
+<li>empty string</li>
+</ul>
+<p>If one of the above-mentioned value is used for a parameter or the argument file isn&rsquo;t supplied or the script is triggered from InDesign or ESTK (not from the batch processor) the default values hard-coded in the script will be used.</p>
+<h3>Examples</h3>
+<h4>undefined</h4>
+<h4><img src="../../images/indesign/batch_process_scripts/arguments-6.png" width="327" height="130" alt=""/></h4>
+<h4>null</h4>
+<p><img src="../../images/indesign/batch_process_scripts/arguments-5.png" width="327" height="130" alt=""/></p>
+<h4>empty string</h4>
+<p><img src="../../images/indesign/batch_process_scripts/arguments-7.png" width="327" height="130" alt=""/></p>
+<h4>Handling passed arguments in the secondary script</h4>
+<p><img src="../../images/indesign/batch_process_scripts/arguments-8.png" width="422" height="397" alt=""/></p>
+<hr>
+<p>Besides JavaScript, arguments can also be passed to other scripting languages: <strong>Visual  Basic Script</strong> and <strong>AppleScript</strong>.<br />
+  Here&rsquo;s an example of passing an argument in <strong>Visual  Basic Script</strong>:</p>
+<p><img src="../../images/indesign/batch_process_scripts/arguments-9.png" width="676" height="433" alt=""/></p>
+<p><img src="../../images/indesign/batch_process_scripts/arguments-10.png" width="197" height="166" alt=""/></p>
+<p>And here&rsquo;s an example of passing an argument in <strong>AppleScript</strong>:</p>
+<p><img src="../../images/indesign/batch_process_scripts/arguments-11.png" width="672" height="532" alt=""/></p>
+<p><img src="../../images/indesign/batch_process_scripts/arguments-12.png" width="625" height="602" alt=""/></p>
+<p>Note: while testing it, the AppleScript should not be open in Script Debugger. Otherwise, the dialog may fail to pop up.</p>
+<p>Make sure the expected number of arguments is sent, or check it in AppleScript:</p>
+<p><img src="../../images/indesign/batch_process_scripts/arguments-13.png" width="413" height="253" alt=""/></p>
+<p>Otherwise, the batch processor would stuck like so:</p>
+<p><img src="../../images/indesign/batch_process_scripts/arguments-14.png" width="547" height="140" alt=""/></p>
+<p><img src="../../images/indesign/batch_process_scripts/arguments-15.png" width="509" height="294" alt=""/></p>
+<p>Since JavaScript can't handle an error generated in AppleScript</p>
+<hr>
+<p>Back to the main <a href="batch_process_scripts.html">Batch processor</a> page</p>
+</div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

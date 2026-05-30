@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Reflect page number of printed book to eBook</title>
+<!-- #EndEditable -->
+<script src="../../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../../index.html">Home</a></li>
+<li><a href="../../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../../tips/all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../../tips/all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../../tips/all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../../tips/all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../../tips/all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../../tips/indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../../tips/all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../../snippets/array.html">Array</a></li>
+          <li><a href="../../../snippets/number.html">Number</a></li>
+          <li><a href="../../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../../../tips/indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../../scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../../all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../../custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../../enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../../scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>Reflect page number of printed book to eBook</h1>
+	<p>Recently I received an e-mail with a request for a script.</p>
+	<blockquote>
+		  <p>I need to produce an eBook from an Indesign File.<br />I found, that this works best for me, exporting to html an then working with the html-files.<br />I once had the problem, to reflect the page number of a printed book to the ebook, with works with the &lt;pageList&gt; in the toc.ncx-file.<br />To get that right, a &ldquo;marker&rdquo; was needed within the main text at every start of a the main textframe of a page &lt;!--page[page#]--&gt;.<br />To be able to do that, I searched the net and found a script from you. I think I loaded it from your page.<br />The name is &ldquo;Label main text frames - 1.0&rdquo; or &ldquo;Add Bookmarks 2.1&rdquo;.<br />It ran in my CS6 (or was it CS3) - I can&rsquo;t remember.<br />I now need a script, that does the same, but not only at the start of every main text frame -- it should put a marker into the main text at every start of the 2 columns of the main text frame. For example &lt;!--page[page#]c1--&gt; at the start of the first column and &lt;!--page[page#]c2--&gt; at the beginning of the 2. column. The best is, when the marker is not visible inside Indesign. But it should of course appear in the exported html-code.</p>
+    </blockquote>
+	<p>I found it interesting so decided to play with it. My main idea was to create a hidden text with a marker (tag) to indicate the page and column number at the top of each column. </p>
+		<p>Here&rsquo;s the starting point: three pages filled with text and two more empty pages in case the text reflows. The text is in a chain of linked two-column text frames. I want to control whether text reflows or not. That&rsquo;s why I marked the beginning of each column in red and the end in green. Note some words split between columns (half red, half green).</p>
+		<p><img src="Image1840.png" alt="" /></p>
+		<p>Since a page may have more than one text frame &ndash; e.g. page number &ndash; I have to indicate the main text flow with my <a href="../../scripts_for_hyperlinks/label_main_text_frames.html">Label main text frames</a> script (<strong>I used version 1.0</strong> for this task).</p>
+		<p>After that, each text frame is labeled like so:</p>
+		<p><img src="Image1849.png" alt="" /></p>
+	<p>Now I run the <strong>Reflect the page number of a printed book to the eBook</strong> script and visually nothing changes: the text remains in place. That&rsquo;s exactly what I wanted: the printed version shouldn&rsquo;t change. <br />
+	  But let&rsquo;s select some text at the beginning of a column and call <em>story editor</em> (Ctrl/Cmd + Y).</p>
+		<p><img src="Image1857.png" alt="" /></p>
+		<p>You see a tag in the following form <strong>&lt;!--page[#]c#--&gt;</strong> where # is a page/column number.</p>
+		<p>The <strong>Hidden text</strong> character style is applied to the tag (created automatically by the script) which applies the <strong>Paper</strong> color and the minimum possible font size &ndash; <strong>0.1 pt </strong>&ndash; so the tags are simply invisible and don&rsquo;t cause the text to reflow.</p>
+		<p><img src="Image1865.png" alt="" /></p>
+		<p>Finally, after I exported the document to HTML, the tags appeared exactly in between the columns:</p>
+	<p><img src="Image1872.png" alt="" /></p>
+		<p>To conclude, I&rsquo;d like to say it was a quick &amp; dirty script: it wasn&rsquo;t implemented as a real solution. It&rsquo;s more an idea, an approach that can be used in different situations. <br />
+		  For example, when making a catalog, we can import data from Excel adding a unique key to each product (say part number) as hidden text. Later, we can update the data (say prices) referencing the products by the hidden text. <br />
+	    Of course, it&rsquo;s not necessary to use two separate scripts here: I just used what I already had.</p>
+		<p><a href="reflect_page_number_of_printed_book_to_ebook.zip">Here</a> I posted the scripts and files (step-by-step) used in this experiment.</p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

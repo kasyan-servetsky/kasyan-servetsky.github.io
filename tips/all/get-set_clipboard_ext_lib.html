@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Get or set clipboard -  external library</title>
+<!-- #EndEditable -->
+<script src="../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../index.html">Home</a></li>
+<li><a href="../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="scripting_resources.html">Scripting resources</a></li>
+          <li><a href="info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../snippets/array.html">Array</a></li>
+          <li><a href="../../snippets/number.html">Number</a></li>
+          <li><a href="../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../../indesign/scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../../indesign/all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../../indesign/custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../../indesign/enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../../indesign/scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>Get or set clipboard &#8212; external library</h1>
+	  
+ <p>Here are the links for  downloading compiled dll files:  <a href="../../downloads/snippets/libraries/get-set_clipboard_ext_lib/BasicExternalObject 64 bit.zip">64-bit version</a> and <a href="../../downloads/snippets/libraries/get-set_clipboard_ext_lib/BasicExternalObject 32 bit.zip">32-bit version</a>.</p>
+ <h4>Example of using the library in InDesign (tested in CC 2018)</h4>
+ <pre>var libPath = "/E/Archive/_JavaScript/Photoshop/Libraries/BasicExternalObject/BasicExternalObject.dll";
+var psEX = new ExternalObject("lib:" + libPath);
+
+main();
+
+function main() {
+	$.writeln(psEX.getClipboard());
+	$.writeln("-----------------------------");
+	//Put data on clipboard
+	psEX.setClipboard("This is put on the clipboard!");
+	//Get data from clipboard
+	$.writeln(psEX.getClipboard());
+	//Clear clipboard
+	psEX.clearClipboard();
+}</pre>
+ <h4>Example of using it in Photoshop (I haven't tested it yet)</h4>
+ <pre>var libPath =SCRIPTS_FOLDER + "/BasicExternalObject.dll";
+var  psEX = new ExternalObject("lib:" + libPath);
+$.writeln(psEX.getClipboard());
+$.writeln("-----------------------------");
+//Put data on clipboard
+psEX.setClipboard("This is put on the clipboard!");
+//Get data from clipboard
+$.writeln(psEX.getClipboard());
+//Clear clipboard
+psEX.clearClipboard();</pre>
+    <p>Just another option <strong>for Windows users</strong> for get/set clipboard and a new   version of system that returns the results is modified External Lib example in the bridge SDK <a href="http://www.adobe.com/devnet/bridge.html">Bridge Developer Center | Adobe Developer Connection</a> &#8212; <em>BasicExternalObject</em>. (The code shown is a replacement for the &quot;BasicExternalObject&quot; example in the SDK.)</p>
+    <p>This modified code was written by<em> Paul Riggott</em>, shame to lose it:</p>
+	  
+    <pre>#include "BasicExternalObject.h"  
+    #include "SoSharedLibDefs.h"  
+    #include <string>  
+    #include <windows.h>  
+    #include <stdio.h>  
+    #include <iostream>  
+      
+    #if defined (_WINDOWS)  
+        #pragma warning(disable : 4996) // Turn off warning about deprecated strcpy on Win  
+    #endif  
+      
+    /** 
+    * \brief To allow string manipulation 
+    */  
+    using namespace std;  
+      
+    /** 
+    * \brief Utility function to handle strings and memory clean up 
+    * 
+    * \param s - The referenced string 
+    */  
+    static char* getNewBuffer(string& s)  
+    {  
+        // Dynamically allocate memory buffer to hold the string   
+        // to pass back to JavaScript  
+        char* buff = new char[1+s.length()];  
+          
+        memset(buff, 0, s.length()+1);  
+        strcpy(buff, s.c_str());  
+      
+        return buff;  
+    }  
+      
+      
+    extern "C" BASICEXTERNALOBJECT_API long systemCmd(TaggedData* argv, long argc, TaggedData* retval)  
+    {  
+        // The returned value type  
+        retval->type = kTypeString;      
+        // Accept 1 and only 1 argument  
+        if(argc != 1)  
+        {  
+            return kESErrBadArgumentList;  
+        }  
+      
+        // The argument must be a string  
+        if(argv[0].type != kTypeString)  
+        {  
+            return kESErrBadArgumentList;  
+        }  
+      
+    char*  cmd = (argv[0].data.string);   
+        FILE* pipe = _popen(cmd, "r");  
+        if (!pipe) retval->data.string = "";  
+        char buffer[128];  
+        std::string result = "";  
+        while(!feof(pipe)) {  
+            if(fgets(buffer, 128, pipe) != NULL)  
+                result += buffer;  
+        }  
+        _pclose(pipe);  
+        retval->data.string = getNewBuffer(result);  
+        return kESErrOK;  
+    }  
+    extern "C" BASICEXTERNALOBJECT_API long getClipboard(TaggedData* argv, long argc, TaggedData* retval)  
+    {  
+        // The returned value type  
+        retval->type = kTypeString;      
+        HANDLE h;     
+      if (!OpenClipboard(NULL)) return kESErrBadArgumentList;    
+      h = GetClipboardData(CF_TEXT);  
+      CloseClipboard();  
+      if(h){  
+      string text;  
+        text = (char*)h;  
+        if(text.length() < 1) return kESErrBadArgumentList;  
+        retval->data.string = getNewBuffer(text);  
+      }else{  
+    retval->data.string = "";  
+      }  
+        return kESErrOK;  
+    }  
+    extern "C" BASICEXTERNALOBJECT_API long clearClipboard(TaggedData* argv, long argc, TaggedData* retval)  
+    {  
+        if (OpenClipboard(NULL)){  
+            EmptyClipboard();  
+            CloseClipboard();  
+        }  
+        return kESErrOK;  
+    }  
+    extern "C" BASICEXTERNALOBJECT_API long setClipboard(TaggedData* argv, long argc, TaggedData * retval)  
+    {      
+        // Accept 1 and only 1 argument  
+        if(argc != 1)  
+        {  
+            return kESErrBadArgumentList;  
+        }  
+      
+        // The argument must be a string  
+        if(argv[0].type != kTypeString)  
+        {  
+            return kESErrBadArgumentList;  
+        }  
+      
+    string source = (argv[0].data.string);   
+    int len = source.length() +1;  
+    source = source.c_str();  
+    if(OpenClipboard(NULL))  
+    {  
+        HGLOBAL clipbuffer;  
+        char * buffer;  
+        EmptyClipboard();  
+        clipbuffer = GlobalAlloc(GMEM_DDESHARE, len);  
+        buffer = (char*)GlobalLock(clipbuffer);  
+
+        strcpy(buffer, LPCSTR(source.c_str()));  
+        GlobalUnlock(clipbuffer);  
+        SetClipboardData(CF_TEXT,clipbuffer);  
+        CloseClipboard();  
+    }  
+      
+        return kESErrOK;  
+    }  
+    /** 
+    * \brief Free any string memory which has been returned as function result. 
+    * 
+    * \param *p Pointer to the string 
+    */  
+    BASICEXTERNALOBJECT_API void ESFreeMem (void* p)  
+    {   
+        delete(char*)(p);  
+    }  
+      
+    /** 
+    * \brief Returns the version number of the library 
+    * 
+    * ExtendScript publishes this number as the version property of the object  
+    * created by new ExternalObject. 
+    */  
+    BASICEXTERNALOBJECT_API long ESGetVersion()  
+    {  
+        return 0x1;  
+    }  
+      
+    /** 
+    * \brief Initialize the library and return function signatures. 
+    * 
+    * These signatures have no effect on the arguments that can be passed to the functions. 
+    * They are used by JavaScript to cast the arguments, and to populate the 
+    * reflection interface. 
+    */  
+    BASICEXTERNALOBJECT_API char* ESInitialize (const TaggedData ** argv, long argc)   
+    {   
+        return "makeArray,getAverage,appendString_s,myScript_a,acceptBoolean_b";  
+    }  
+      
+    /** 
+    * \brief Terminate the library. 
+    * 
+    * Does any necessary clean up that is needed. 
+    */  
+    BASICEXTERNALOBJECT_API void ESTerminate()  
+    {  
+          
+    }  </pre>
+	
+    <p>The source is <a href="https://forums.adobe.com/message/9234256#9234256">here</a>. Thanks <a href="https://forums.adobe.com/people/SuperMerlin">SuperMerlin</a> for posting it.</p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

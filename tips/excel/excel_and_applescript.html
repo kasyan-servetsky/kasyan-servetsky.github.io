@@ -1,0 +1,392 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Excel and AppleScript</title>
+<!-- #EndEditable -->
+<script src="../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../index.html">Home</a></li>
+<li><a href="../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../snippets/array.html">Array</a></li>
+          <li><a href="../../snippets/number.html">Number</a></li>
+          <li><a href="../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../../indesign/scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../../indesign/all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../../indesign/custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../../indesign/enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../../indesign/scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+
+    		<h1>Excel and AppleScript</h1>
+    		<p><em>I found this article somewhere on the internet: it was a  Word document. The author is unknown. I made some corrections and posted it  here.</em></p>
+  <p>These lines are based upon different Microsoft documentuments, among other stuff. These documentuments provide some indications about the use of Excel and AppleScript and how to have them working together.</p>
+  <p><strong>Important :</strong> with Excel:2001, it is possible to memorize actions through the AppleScript Editor!!! And remember to try Satimage&rsquo;s &ldquo;SMILE&rdquo;, a better AppleScript Editor.</p>
+  <p>This documentument was originally written in French and intended to help French speaking users, using a French version of Excel. A good part of that document would be of no interest to English Excel users, so I made it somewhat shorter. I&rsquo;m now attempting a translation back to English, so I hope there aren&rsquo;t too many mistakes, and it&rsquo;s not too far from the original texts I started from&#8230; and it still is worth a read.</p>
+  <h3>1 &#8212; How to set Excel to work from an AppleScript</h3>
+  <p>You can easily handle Excel from AppleScript... with  some caretaking. You&rsquo;ll have to put quotes around cells or range names (with  &quot;A1&quot; style as well as &quot;R1C1&quot;). I know it&rsquo;s basic, but it&rsquo;s  always worth a tell...</p>
+  <p>Here&rsquo;s a first usable script:</p>
+
+<pre>tell application "Microsoft Excel"
+    activate
+    select sheet "Sheet1"
+    select range "A1"
+    set value of active cell to 1
+    select range "A2"
+    set formula of active cell to 2
+    select range "A1:A2"
+    autofill selection destination range "A1:A10"
+end tell</pre>
+
+  <p>It could be simpler, but it&rsquo;s just to show how  different ways to obtain the same result.</p>
+  <h3>2 &#8212; Setting AppleScript to work through an  Excel VBA macro</h3>
+  <p>And now, how to use AppleScript from Excel&rsquo;s VBA. A  simple example:</p>
+<pre>Sub RunScript()
+    Dim str As String, temp As String, CR As String
+    CR = Chr$(13)
+    str = "tell application ""Finder"""
+    str = str & CR & "set DiskName to name of startup disk"
+    str = str & CR & "end tell"
+    temp = MacScript(str)
+    MsgBox "Startup disk = " & temp
+End Sub
+</pre>
+
+    <p>The principle is to send to the Finder a string  that&rsquo;ll be executed as a Script. The instruction &quot;MacScript&quot; allows  this. To obtain the different lines in the script, &quot;carriage returns&quot;  (&quot;Chr$(13)&quot;) are inserted at the right places in the string. <br />
+    <strong>NOTE:</strong> To send a quote to AppleScript, you have to type two quotes in the VBA macro.</p>
+    <p>The instruction (here &quot;str&quot;) has to be put  between parentheses in order to obtain an answer from the script, be it a  previously recorded script or just some instruction as above. The trick about  the parentheses is that the result can be assigned   to a variable (here  &quot;temp&quot;), even if it&rsquo;s not intended to be used further. It just keeps  Excel waiting for the result before running the procedure any further. If no  parentheses are placed, VBA just launches the script and moves on to the next  instruction, not waiting till the script instructions have been executed (or  not&#8230;)</p>
+    <p>Now, an Excel macro prompting to choose a text file  and modify it&rsquo;s &quot;file type&quot; and &quot;creator type&quot; to set them  to those of an Excel created text document (but this is just an example, of  course, it could be any other). The visible consequence of this is that the document  will have an icon similar to those of the text files created by Excel... This  is how to mix variables and AppleScript instructions. <br />
+    <strong>NOTE:</strong> how the quotes around the &quot;ThePath&quot; variable are sent to the Finder.</p>
+
+<pre>Sub ChangeTypes()
+    Dim DocumentChoice As Variant
+    Dim str As String, temp As String
+    Dim ThePath As String, CR As String
+
+    DocumentChoice = Application.GetOpenFilename(FileFilter:="TEXT", _
+        ButtonText:="Choose")
+    If DocumentChoice = False Then
+        MsgBox "Impossible choice, operation canceled."
+        Exit sub
+    Else
+        ThePath = CStr(DocumentChoice)
+        CR = Chr$(13)
+        str = "tell application ""Finder"""
+        str = str & CR & "set file type of file """ & ThePath & """ to ""TEXT"""
+        str = str & CR & "set creator type of file """ & ThePath & """ to ""XCEL"""
+        str = str & CR & "end tell"
+        temp = MacScript(str)
+    End If
+End Sub</pre>
+
+    <h3>3 &#8212; AppleScript and Excel&rsquo;s VBA working  together</h3>
+    <p>To launch an Excel macro from AppleScript and exchange  data, here&rsquo;s a somewhat more complex example. The result given by the VBA macro  is sent back into Excel through the AppleScript. I know it&rsquo;s not very  interesting a deed, but it&rsquo;s just to show how to get a result, and have the  script waiting before executing the next instruction:</p>
+<p>In Excel VBA, paste:</p>
+
+<pre>Function Multiplic(MyValue As Integer)
+    [A1] = MyValue 
+    MyValue = MyValue * 2
+    Multiplic = MyValue 
+End Function</pre>
+
+<p>In AppleScript editor, run : </p>
+
+<pre>tell application "Microsoft Excel"
+    set intAValue to 4
+    set MacroMulti to "MyWorkbook!Multiplic(" & intAValue & ")"
+    set intMulti to evaluate (MacroMulti)
+    set Value of Cell "A2" to intMulti
+end tell</pre>
+
+    <p><strong>Note:</strong> It needs a &quot;Function Xx()&quot; to obtain  a result. Using a &quot;Sub Xx()&quot; procedure, it&rsquo;ll be launched, but gives  only &quot;True&quot; or &quot;False&quot; as a result, depending on the   execution of the procedure. The name of the workbook must be included in  the macro name, even if it&rsquo;s the active workbook.</p>
+    <p>According to Excel&rsquo;s AppleScript dictionary, many  things can be done in Excel through AppleScript. Mainly operations dealing with  worksheets and graphics. As to the macros, it&rsquo;s obviously preferable to  &quot;satisfy&quot; with launching macros previously recorded in a VBA module,  which is not that bad!!!</p>
+    <p>To be more efficient, it&rsquo;s better to jump from one  application to the other only when needed.</p>
+    <h3>Hereunder, a part of the  Microsoft document VBA &amp; AppleScript. It concerns only the launching of VBA  macros from AppleScript, but shows some use of the error codes I find  interesting.</h3>
+    <h3>Crating a Macro</h3>
+<ol start="4">
+  <li> Start Microsoft Excel. </li>
+  <li>Start the Visual Basic editor (OPTION+F11),  and click <strong>Module</strong> in the <strong>Insert </strong>menu.</li>
+  <li>In  the module, type: 
+<pre>Sub Test_Recording()
+    MsgBox "This is an Excel macro."
+End Sub</pre>
+    </li>
+  <li>In the <strong>File</strong> menu, click <strong>Close and return to  Microsoft Excel</strong>. </li>
+  <li>In the <strong>File</strong> menu, click <strong>Save</strong>. </li>
+  <li>Save the workbook as &quot;Workbook1&quot;. </li>
+  <li>Click <strong>Hide  Microsoft Excel</strong> in the Application menu. </li>
+</ol>
+<h3>Recording the Script</h3>
+<p>To  record the script: </p>
+<ol>
+  <li> Start the Script Editor. </li>
+  <li>In the <strong>Controls</strong> menu, click <strong>Memorize</strong>. </li>
+  <li>In the <strong>Application</strong> menu, click <strong>Microsoft Excel</strong>. </li>
+  <li>Select <strong>Macro</strong> in the <strong>Tools</strong> menu and click <strong>Macros...</strong></li>
+  <li>In the list of macros, click <strong>Test_Recording</strong>, then <strong>Run</strong>.<br />
+    A dialog now displays the message:  &quot;This is an Excel macro.&quot; </li>
+  <li>Click <strong>OK</strong>. </li>
+  <li>In the <strong>Application</strong> menu, click <strong>Script Editor</strong>. </li>
+  <li>  In the <strong>Controls</strong> menu, click <strong>Stop</strong>.
+    <br />
+    The  script reads:<br />
+<pre>tell application "Microsoft Excel"
+	activate
+	evaluate "Workbook1!Test_Recording()"
+end tell</pre>
+    <strong>NOTE:</strong> To start Visual  Basic procedures (including macros) from an AppleScript, the procedure name has  to be followed by parentheses.</li>
+  <li>In the <strong>File </strong>menu, click <strong>Save</strong>.</li>
+   <li>Choose a name and a location for your script in the dialog box and click <strong>Save</strong>.</li>
+</ol>
+<h3>Runing the saved Script</h3>
+<p>To  run the script: </p>
+<ol>
+  <li>The above saved script opened in the Script  Editor, click <strong>Execute</strong> in the <strong>Controls</strong> menu.<br />
+    The Test_Recording runs, the message &quot;This is an Excel macro.&quot; pops  up. </li>
+  <li>Click <strong>OK</strong>. </li>
+  <li>In the <strong>Application</strong> menu, click <strong>Script Editor</strong>. </li>
+</ol>
+<h2>Passing arguments to and from a Visual  Basic procedure</h2>
+<p>The following examples pass arguments from an  AppleScript to a VBA <strong>Sub</strong> or <strong>Function</strong> procedure. </p>
+<p>As indicated, the procedure&rsquo;s name must include the  workbook&rsquo;s name and be followed parentheses to function from an AppleScript. To  pass arguments to a procedure, place them between the parentheses. </p>
+<h3>Passing a single value to a Sub procedure</h3>
+<p>To  pass a value: </p>
+<ol>
+  <li> Open the previously created &ldquo;Workbook1&rdquo;  workbook (Sheet1) then start the Visual Basic Editor (OPTION+F11). </li>
+  <li> Type:
+<pre>Sub Pas_1_Argument(x As Variant)
+    Worksheets("Sheet").Cells(1,1).Value = x
+End Sub</pre>
+  </li>
+  <li> In the <strong>File</strong> menu, click <strong>Close and return to  Microsoft Excel</strong>. </li>
+  <li> In the <strong>File </strong>menu, click <strong>Save</strong>. </li>
+  <li> In the <strong>Applications </strong>menu, click <strong>Hide Microsoft Excel</strong>. </li>
+  <li> Start the Script Editor and type (in a new  window):
+<pre>tell application "Microsoft Excel"
+    set MyValue to 10
+    activate
+    evaluate "Workbook1!Pass_1_Argument(" & MyValue & ")"
+end tell</pre>
+    <strong>NOTE: </strong>To pass a variable to a  Visual Basic procedure, the variable has to be concatenated inside the <em>evaluate</em> instruction. To pass a constant to the procedure, placing the value between  parentheses is sufficient. In this case, the line becomes: <br />
+    <pre>evaluate &quot;Workbook1!Pass_1_Argument(10)&quot;&nbsp;</pre></li>
+  <li> In the <strong>File </strong>menu, click <strong>Save</strong>. </li>
+  <li> Choose a name and a location for your script in the dialog box and click <strong>Save</strong>.</li>
+  <li> In the <strong>Controls </strong>menu, click <strong>Execute</strong>. <br />
+    The script activates Microsoft Excel and places the value 10 in cell A1 of  Sheet1. </li>
+</ol>
+
+<h3>Returning a value from a VBA Sub procedure</h3>
+<p>A Visual Basic <strong>Sub</strong> procedure returns the value 0 when it executes normally from a script. </p>
+<p>If you call a <strong>Function </strong>procedure, you can return any numerical, boolean or string value to the  AppleScript. Whether you are calling a <strong>Sub</strong> or a <strong>Function </strong>procedure<strong>,</strong> the value is returned to a predefined  AppleScript variable named &quot;result&quot;.</p>
+<h3>Returning a Value from a Function  procedure</h3>
+<p>To  return a value: </p>
+<ol>
+  <li>In Microsoft Excel open the previously created  &ldquo;Workbook1&rdquo; workbook.</li>
+  <li> Start the Visual Basic Editor (OPTION+F11) and  type in the module: <br />
+    <pre>Function Return_Value(x As Integer) As Integer
+    Return_Value = x * 2
+End Function </pre></li>
+
+  <li> In the <strong>Applications </strong>menu, click <strong>Hide Microsoft Excel</strong>.
+    </li>
+
+  <li> Start the Script Editor and type (in a new  window):<br />
+<pre>tell application "Microsoft Excel"
+    evaluate "Workbook1!Return_Value(10)"
+    set MyValue to result + 1
+    display dialog MyValue
+end tell</pre></li>
+  <li> In the <strong>File </strong>menu, click <strong>Save</strong>. </li>
+  <li> Choose a name and a location for your script  in the dialog box and click <strong>Save</strong>.</li>
+  <li> In the <strong>Controls </strong>menu, click <strong>Run</strong>. <br />
+    An AppleScript dialog box displays the value 21. </li>
+  <li> Click <strong>OK</strong>. </li>
+</ol>
+
+<h3>Returning a value from a Sub procedure</h3>
+<p>To  return a value from a <strong>Sub</strong> procedure:</p>
+<ol>
+  <li>In Microsoft Excel open the previously created  &ldquo;Workbook1&rdquo; workbook. </li>
+  <li>Start the Visual Basic Editor (OPTION+F11) and  type in the module: <br />
+<pre>Sub Return_Sub_Value()
+    Sheets("Sheet1").Cells(1, 1).Value = 1
+End Sub </pre>
+    </li>
+  <li> In the <strong>Application </strong>menu, click <strong>Hide Microsoft Excel</strong>. </li>
+  <li> Start the Script editor and type (in a new  window):<br />
+<pre>
+tell application "Microsoft Excel"
+    evaluate "Workbook1!Return_Sub_Value()"
+    display dialog result as integer
+end tell</pre>
+</li>
+  <li> In the <strong>File </strong>menu, click <strong>Save</strong>. </li>
+  <li> Choose a name and a location for your script  in the dialog box and click <strong>Save</strong>.</li>
+  <li> In the <strong>Controls </strong>menu, click <strong>Run</strong>. <br />
+    An AppleScript dialog box displays the value 0. </li>
+  <li>Click <strong>OK</strong>. </li>
+</ol>
+
+<h3>Error Trapping Values Returned from a  Procedure </h3>
+<p>There are situations in which your <strong>Sub</strong> or <strong>Function</strong> procedure fails because  of user intervention or a run-time error. This section discusses ways to  communicate to the AppleScript script that an error has occurred in the Visual  Basic procedure. </p>
+<h4>Error Trapping for a Sub  Procedure</h4>
+<p> A Visual Basic Sub procedure cannot explicitly pass a value back to its  AppleScript caller. However, a <strong>Sub</strong> procedure can store a value in a worksheet cell, or it can store a defined name  in the workbook. Then, your AppleScript script can check the current value of  the cell or the defined name to see if an error has occurred. The following  example uses a defined name to hold the status of any error in the <strong>Sub</strong> procedure: </p>
+<ol>
+  <li>Start Microsoft Excel and open the workbook  &ldquo;Workbook1&rdquo; created earlier. </li>
+  <li>In the <strong>Insert</strong> menu, point to <strong>Name</strong>, and then click <strong>Define</strong>. </li>
+  <li>Type <strong>MyErr</strong> in the <strong>Names in workbook</strong> box. </li>
+  <li>Delete any text in the <strong>Refers To</strong> box, and then type =<strong>&quot;ok&quot;</strong> in the <strong>Refers To</strong> box. Click <strong>OK</strong>.
+    </li>
+  <li>Start Visual Basic Editor and type the following code  in the module: 
+    
+<pre>Sub Return_Sub_Error()
+    Dim x as Integer
+    ThisWorkbook.Names("MyErr").RefersTo = "ok"
+
+On Error GoTo handle:
+
+    x = MsgBox(Prompt:="Click Yes for an error, otherwise" &  _
+        "Click no", Buttons:=vbYesNo)
+    If x = vbYes Then
+        Error 1004 'Generates a run-time error.
+    End If
+
+Exit Sub
+
+handle:
+    ThisWorkbook.Names("MyErr").RefersTo = Err
+
+End Sub</pre>
+    </li>
+  <li>On the Application menu, click <strong>Hide Microsoft Excel</strong>.
+    </li>
+  <li>Start Script Editor and type (in a new script window):
+<pre>tell application "Microsoft Excel"
+    activate
+    evaluate "Workbook1!Return_Sub_Error()"
+    if not(evaluate "Workbook1!MyErr") = "ok" then
+        set MyErr to evaluate ("Workbook1!MyErr")
+        set MyErr to MyErr as integer
+        display dialog "An error occurred in the macro: " & MyErr
+    else
+        display dialog "No error."
+    end if
+end tell</pre></li>
+  <li>On the <strong>File</strong> menu, click <strong>Save</strong>. 
+    </li>
+  <li>Select a destination folder, type a name for your  script in the <strong>Save Script As</strong> box,  and then click <strong>Save</strong>.</li>
+  <li>On the <strong>Controls</strong> menu, click <strong>Run</strong>. <br />
+The script activates Microsoft Excel and displays a message box.</li>
+  <li>Click <strong>Yes</strong>. <br />
+    This creates an error condition in the <strong>Sub</strong> procedure and changes the value of the defined name &quot;MyErr.&quot; Then, an  AppleScript dialog box displays the following message:<br />
+    &quot;An error occurred in the macro: 1004.&quot; </li>
+  <li>Click <strong>OK</strong>. </li>
+</ol>
+<p><strong>NOTE</strong>: If you  click No in step 10, the script displays a dialog box with the message &quot;No  error.&quot; </p>
+<h4>Error Trapping from a  Function</h4>
+<p> Because a function can return a value to its caller, passing this  information back to a script is much easier for a function than it is for a <strong>Sub</strong> procedure.</p>
+<p> To  trap errors for a function: </p>
+<ol>
+  <li>Switch to Microsoft Excel and open the workbook  &ldquo;Workbook1&rdquo; created earlier. <br />
+  </li>
+  <li>Start Visual Basic Editor and type: <br />
+<pre>Function Return_Function_Error () As Integer
+Dim x As Integer
+
+On Error GoTo handle:
+
+	x = MsgBox(Prompt:="Click Yes for an error, otherwise" & _
+					"click No", Buttons:=vbYesNo)
+    If x = vbYes Then
+        Error 1004 ' Generates a run-time error.
+	Else
+		Return_Function_Error = 0
+	End If
+Exit Function
+
+handle:
+	Return_Function_Error = Err
+
+End Function</pre></li>
+  <li>On the Application menu, click <strong>Hide Microsoft Excel</strong>. <br />
+  </li>
+  <li>Start Script Editor and type (in a new script window):<br />
+<pre>tell application "Microsoft Excel"
+    activate
+    evaluate "Workbook1!Return_Function_Error()"
+    if not (result = 0) then
+        set MyErr to result as integer
+        display dialog "An error occurred in the macro: " &  MyErr
+    else
+        display dialog "No error"
+    end if
+end tell</pre></li>
+  <li>On the <strong>File</strong> menu, click <strong>Save</strong>. <br />
+  </li>
+  <li>Select a destination folder, type a name for your  script in the <strong>Save Script As</strong> box, and  then click <strong>Save</strong>. <br />
+  </li>
+  <li>On the <strong>Controls</strong> menu, click <strong>Run</strong>. <br />
+    The  script activates Microsoft Excel and displays a message box. <br />
+  </li>
+  <li>Click <strong>Yes</strong>. <br />
+    This creates an error condition in the function, and the function value is set  to the value of the error. Then, an AppleScript dialog box displays the  following message: <br />
+    &quot;An error occurred in the macro:  1004.&quot; </li>
+  <li>Click <strong>OK</strong>. </li>
+</ol>
+<p><strong>NOTE</strong>: If you click <strong>No</strong> in step 7, the script displays a dialog box with the message &quot;No  error.&quot;</p>
+
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

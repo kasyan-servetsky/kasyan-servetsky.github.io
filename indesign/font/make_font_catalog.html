@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Make font catalog</title>
+<!-- #EndEditable -->
+<script src="../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../index.html">Home</a></li>
+<li><a href="../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../tips/all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../tips/all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../tips/all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../tips/all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../tips/all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../tips/indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../tips/all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../snippets/array.html">Array</a></li>
+          <li><a href="../../snippets/number.html">Number</a></li>
+          <li><a href="../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../../tips/indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>Make font catalog</h1>
+    <p>Script for InDesign. Written by <em>Kasyan</em>. The idea was inspired by this <a href="../../downloads/scripts_for_indesign/font/make_catalog_of_all_fonts_john_p_morrissey.zip">script</a> written by <em>John P. Morrissey</em>. However, mine is a  totally new script.</p>
+<p>The script makes a catalog of all the fonts available to  InDesign creating 7 lines of sample text in different sizes.</p>
+    <p><img src="../../images/indesign/font/make_font_catalog/make_font_catalog_001.png" width="800" height="537" alt=""/></p>
+    <p>At the top, above the horizontal line, it displays the  following information:</p>
+    <ul>
+      <li>Font name (font family &#8212; font style).</li>
+      <li>Sample font sizes: 6, 8, 10, 14, 18, 24, 42. For  each size, a paragraph of sample text is created.*</li>
+      <li>Font version</li>
+      <li>Font type</li>
+      <li>Any font licensing restrictions if present</li>
+      <li>Font location</li>
+    </ul>
+    <p>* These values are hardcoded in the script, but you can  change them in line #25 (the definition of <em>pointSize</em> array) to whatever you want. Note: the first value in the array &#8212; 14 &#8212; is  used for the above-mentioned info.</p>
+    <p><img src="../../images/indesign/font/make_font_catalog/make_font_catalog_002.png" width="650" height="161" alt=""/></p>
+    <h3>The dialog box</h3>
+    <p><img src="../../images/indesign/font/make_font_catalog/make_font_catalog_003.png" width="443" height="776" alt=""/></p>
+    <p>From the <strong>drop-down  list</strong> at the top, you can select either <em>All  fonts</em>, or only one font.</p>
+    <p>In the <strong>Sample text</strong> field, you can edit the sample text.</p>
+    <p>Note: to add a <strong>soft return</strong> (line feed) in InDesign, enter <strong>\n</strong> in the field.</p>
+    <p><img src="../../images/indesign/font/make_font_catalog/make_font_catalog_004.png" width="800" height="234" alt=""/></p>
+    <p>You can add as much text as you want &#8212; within a reasonable  degree, of course &#8212; the page will grow  vertically to fit the sample text. (This feature is available in versions  starting from CS5 and above. In CS4 and below, the page won&rsquo;t grow resulting in the text frame  with overset text.)</p>
+    <p>For example, since I work for a magazine published in  Ukrainian, I am interested only in Cyrillic fonts so I would add a short phrase  in Ukrainian. Also, I&rsquo;d add a  few Ukrainian characters because not all Cyrillic fonts contain them.</p>
+    <p><img src="../../images/indesign/font/make_font_catalog/make_font_catalog_005.png" width="397" height="111" alt=""/></p>
+    <p>In the <strong>Exclude fonts</strong> area you can enter font names separated by commas that you want to be skipped  by the script. A good idea is to exclude symbol fonts. I added a list of such  fonts to the default settings, but you&rsquo;re free  to edit it on your own discretion. You can enter only a part of the name  starting from beginning: for instance, &ldquo;Wingdings&rdquo; will also have effect on &ldquo;Wingdings 2&rdquo; and &ldquo;Wingdings  3&rdquo; fonts. The spaces before and after  font names in the list are ignored by the script </p>
+    <p>To reference the exact name, use the following form:<br />
+      Font family + [a space] + hyphen + [a space] + Font style<br />
+      For example, <em>Arial - Bold Italic</em></p>
+    <p>In this section you can also choose to skip fonts that have  licensing restrictions:</p>
+    <ul>
+      <li>can't be embedded</li>
+      <li>can't be converted to outlines</li>
+      <li>can't be embedded in a PDF document</li>
+      <li>can't be printed</li>
+      <li>allows only restricted printing</li>
+    </ul>
+    <p>This feature may come in handy to you if you are going to  export the font catalog to PDF or print it; otherwise, only one restricted font  will prevent you from exporting/printing the whole catalog resulting in an  error message like so:</p>
+    <p><img src="../../images/indesign/font/make_font_catalog/make_font_catalog_006.png" width="535" height="302" alt=""/></p>
+    <p>You can limit the script to process only the fonts located  in the selected folder and its subfolders.</p>
+    <p><strong>Tip:</strong> the folder with  fonts can be located anywhere on a hard drive. You can install the fonts in  InDesign by creating a shortcut (alias) to it in the InDesign&rsquo;s <em>Fonts</em> folder, like so:</p>
+    <p><img src="../../images/indesign/font/make_font_catalog/make_font_catalog_007.png" width="724" height="440" alt=""/></p>
+    <p>In the bottom-most field, the user enters the beginning  for the font names to be included. For example, I want to make samples for all &lsquo;<em>Franklin</em>&rsquo;  fonts. I have ten such fonts installed: eight  of them are located in four different families containing two styles, and a  couple of standalone fonts. (For InDesign, fonts in different families has nothing  in common). By entering &lsquo;<em>Franklin</em>&rsquo; into the field, I can get them all in one go. 
+In the same way, if I type in, say, &lsquo;<em>F</em>&rsquo;, I&rsquo;ll  get only the fonts whose names begin with &lsquo;<em>F</em>&rsquo;.</p>
+    <p><img src="../../images/indesign/font/make_font_catalog/make_font_catalog_008.png" width="468" height="587" alt=""/></p>
+    <p>The script creates <strong>bookmarks</strong> so it is a good idea to export the catalog to PDF format. If a font has more  than one style, two levels of nested bookmarks are created one (parent) for  the <strong>font family</strong>, another for <strong>font styles</strong>.</p>
+    <p><img src="../../images/indesign/font/make_font_catalog/make_font_catalog_009.png" width="256" height="326" alt=""/></p>
+    <p><strong>Important note:</strong> presumably  beginning from the version CS4, a scripting bug has been introduced which lies  in unreliable naming (renaming) bookmarks by script with the <em>Bookmarks</em> panel open. To work around the  problem, if the panel is open, the script &#8212; in CS4  and above &#8212; temporarily closes it at  start and then reopens it at the end.</p>
+    <p>Processing a large number of fonts may take long time. For  that reason, the script displays the <strong>progress  bar</strong> with the current font name below:</p>
+    <p><img src="../../images/indesign/font/make_font_catalog/make_font_catalog_010.png" width="532" height="110" alt=""/></p>
+    <p>At the end, the <strong>final  report</strong> is displayed showing how many font samples were created and how much  time elapsed.</p>
+    <p><img src="../../images/indesign/font/make_font_catalog/make_font_catalog_011.png" width="304" height="152" alt=""/></p>
+    <p>If you select one font, the catalog is created ignoring the  include/exclude settings  chosen: they become disabled (grayed out) in the  dialog box.</p>
+    <p><a href="../../downloads/scripts_for_indesign/font/make_font_catalog.zip">Click here</a> to download the script.</p>
+    <hr />
+    <p><span id="docs-internal-guid-f91a61a9-7fff-c95d-5e3e-12d1c2c1fd29">If you found this script useful and want me to develop it further</span>, consider supporting me by donating via <em>PayPal</em> directly to my e-mail: <strong>askoldich</strong> [at] <strong>yahoo</strong> [dot] <strong>com</strong>. (Due to PayPal&acute;s restrictions for Ukraine, I can&acute;t have a <em>Donate</em> button on my site.)</p>
+    <hr />
+<p>&nbsp;</p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

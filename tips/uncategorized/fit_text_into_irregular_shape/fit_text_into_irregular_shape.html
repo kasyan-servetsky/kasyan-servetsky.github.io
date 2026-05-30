@@ -1,0 +1,392 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Algorithm for fitting text into an irregular shape</title>
+<!-- #EndEditable -->
+<script src="../../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../../index.html">Home</a></li>
+<li><a href="../../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../../snippets/array.html">Array</a></li>
+          <li><a href="../../../snippets/number.html">Number</a></li>
+          <li><a href="../../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../../indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../../../indesign/scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../../../indesign/all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../../../indesign/custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../../../indesign/enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../../../indesign/scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>Algorithm for fitting text into an irregular shape</h1>
+<p><a href="https://community.adobe.com/t5/indesign-discussions/algorithm-for-fitting-text-into-an-irregular-shape/m-p/13537440#M513202">Continued from the post on the Adobe InDesign forum.</a></p>
+<p>Currently, my idea is to measure the length of each name, the available space in the shape (measuring each line), and finally, insert names one by one fitting them into lines. An alternative approach could be to place all names first and then shuffle them using the above-mentioned measurements: e.g. longer names into longer lines.</p>
+<h2>Step 1 &mdash; measure names</h2>
+<p>At first, I was going to <a href="../../js/sorting_two_arrays_according_to_one/sorting_two_arrays_according_to_one.html">measure them by counting the characters</a>: the more characters, the longer name. But then I decided to make more precise &lsquo;linear&rsquo; measurements using the <strong>horizontalOffset</strong> property. I wrote this code to get a list (array) of names sorted by width. Each element here is an object containing a <strong>name</strong> and its <strong>width</strong>. I assume that the list of names has been already  placed into a temporary text frame on the pasteboard. </p>
+<p><img src="fit_text_into_irregular_shape-1.png" width="598" height="653" alt=""/></p>
+<pre>var scriptName = "Sort Names",
+doc = app.activeDocument;
+
+SortNames();
+
+function SortNames() {
+	var n, j, nameWidth, sortedNames,
+	textFrame = doc.textFrames.itemByID(624),
+	names = textFrame.lines.everyItem().getElements(),
+	unsortedNames = [];
+	
+	$.writeln("--------------- Unsorted ---------------");
+	
+	for (n = 0; n < names.length; n++) {
+		name = names[n];
+		nameWidth = GetLTextWidth(name);
+		$.writeln(ZeroPad((n + 1), 2) + " - " + name.contents.replace(/\r$/, "") + " | " + nameWidth);
+		
+		unsortedNames.push({
+			name: name.contents.replace(/\r$/, ""),
+			nameWidth: nameWidth
+		});
+	}
+
+	sortedNames = unsortedNames.sort(function(a, b) {return b.nameWidth - a.nameWidth;});
+	
+	$.writeln("--------------- Sorted ---------------");
+	
+	for (j = 0; j < sortedNames.length; j++) {
+		item = sortedNames[j];
+		$.writeln(ZeroPad((j + 1), 2) + " - " + item.name.replace(/\r$/, "") + " | " + item.nameWidth);
+	}
+
+	Stringify(sortedNames);
+}
+
+function Stringify(arr) {
+	var item, str;
+	
+	for (var i = 0; i < arr.length; i++) {
+		item = arr[i];
+		str = item.toSource() + ((i < (arr.length - 1)) ? "|" : "");
+		WriteToFile(str);
+	}
+}
+
+function WriteToFile(text) {
+	file = new File("~/Desktop/" + scriptName + ".txt");
+	file.encoding = "UTF-8";
+	if (file.exists) {
+		file.open("e");
+		file.seek(0, 2);
+	}
+	else {
+		file.open("w");
+	}
+	file.write(text); 
+	file.close();
+}
+
+function GetLTextWidth(txt) {
+	try {
+		var l = txt.characters[0].horizontalOffset;
+		var r = (txt.characters[-1].contents == "\r") ? txt.characters[-2].horizontalOffset : txt.characters[-1].horizontalOffset;
+		var w = r - l;
+		w = RoundString(w, 1);
+		
+		return w;
+	}
+	catch(err) {
+		$.writeln(err.message + ", line: " + err.line);
+	}
+}
+
+function RoundString(numVal, decimals) {
+    var retVal = Math.round(numVal * Math.pow(10,decimals)) + "";
+    retVal = retVal.substring(0, retVal.length - decimals) + "." + retVal.substring(retVal.length - decimals);
+    return retVal;
+}
+
+function ZeroPad(num, digit) {
+	var tmp = num.toString();
+	while (tmp.length < digit) {
+		tmp = "0" + tmp;
+	}
+	return tmp;
+}</pre>
+
+<h2>Step 2 &mdash; measure lines</h2>
+<p>This step uses the same approach as step 1. Here I temporarily filled the shape with text to measure lines. I get two arrays: <strong>unsorted</strong> and <strong>sorted</strong>. Each element contains a line <strong>index</strong> (position) and <strong>length</strong>. I&rsquo;m not sure how would I use it in the next step. This step takes quite a long time (a few seconds), so I am planning to do it only once &mdash; for each combination of font family, style, and size &mdash; and store it in a sort of database: as a text file or using the <em>insertLabel</em>.</p>
+<p><img src="fit_text_into_irregular_shape-2.png" width="800" height="551" alt=""/></p>
+<pre>var scriptName = "Sorted Lines",
+debug = true,
+doc = app.activeDocument;
+
+app.doScript(SortLines, ScriptLanguage.JAVASCRIPT, undefined, ((File.fs == "Macintosh") ? UndoModes.ENTIRE_SCRIPT : UndoModes.FAST_ENTIRE_SCRIPT), "\"" + scriptName + "\" Script");
+
+function SortLines() {
+	var textFrame = doc.textFrames.itemByID(372);
+	var lines = textFrame.lines.everyItem().getElements();
+	var line, lineLength;
+	var n, i, l;
+	var unsortedLines = [];
+	var sortedLines = [];
+	
+	$.writeln("--------------- Unsorted ---------------");
+	
+	for (var n = 0; n < lines.length; n++) {
+		line = lines[n];
+		lineLength = GetLTextWidth(line);
+		$.writeln(ZeroPad((n + 1), 2) + " - " + lineLength);
+		
+		unsortedLines.push({
+			idx: n,
+			lineLength: lineLength
+		});
+	}
+
+	sortedLines = unsortedLines.sort(function(a, b) { return b.lineLength - a.lineLength;});
+	
+	$.writeln("--------------- Sorted ---------------");
+	
+	for (var j = 0; j < sortedLines.length; j++) {
+		$.writeln(ZeroPad(sortedLines[j].idx +1, 2) + " - " + sortedLines[j].lineLength);
+	}
+
+	Stringify(sortedLines);
+}
+
+function Stringify(arr) {
+	var item, str;
+	
+	for (var i = 0; i < arr.length; i++) {
+		item = arr[i];
+		str = item.toSource() + ((i < (arr.length - 1)) ? "|" : "");
+		WriteToFile(str);
+	}
+}
+
+function WriteToFile(text) {
+	file = new File("~/Desktop/" + scriptName + ".txt");
+	file.encoding = "UTF-8";
+	if (file.exists) {
+		file.open("e");
+		file.seek(0, 2);
+	}
+	else {
+		file.open("w");
+	}
+	file.write(text); 
+	file.close();
+}
+
+function GetLTextWidth(txt) {
+	try {
+		var l = txt.characters[0].horizontalOffset;
+		var r = txt.characters[-1].horizontalOffset;
+		var w = r - l;
+		w = RoundString(w, 1);
+		
+		return w;
+	}
+	catch(err) {
+		$.writeln(err.message + ", line: " + err.line);
+	}
+}
+
+function RoundString(numVal, decimals) {
+    var retVal = Math.round(numVal * Math.pow(10,decimals)) + "";
+    retVal = retVal.substring(0, retVal.length - decimals) + "." + retVal.substring(retVal.length - decimals);
+    return retVal;
+}
+
+function ZeroPad(num, digit) {
+	var tmp = num.toString();
+	while (tmp.length < digit) {
+		tmp = "0" + tmp;
+	}
+	return tmp;
+}</pre>
+
+
+<h2>Step 3 &mdash; fill in the shape with names</h2>
+<p><u>The following code is just for illustration: a possible approach to use.</u> I start from the 1<sup>st</sup> line using the <em>unsorted</em> list and for each line, I&rsquo;m trying to find the name that fits the line best: has the closest width to the line&rsquo;s length (the <em>FindClosest</em> function).</p>
+<p>For example, for the 1<sup>st</sup> line (length = 54.3 mm) it finds the name <em>Abigail Mcallister</em> (width = 49.8, the 2<sup>nd</sup> in the array of sorted names) which is inserted into the shape and removed from the array. Then repeat it to the next line, and so on.</p>
+<p><img src="fit_text_into_irregular_shape-3.png" width="595" height="201" alt=""/></p>
+<pre>var scriptName = "Fill Shape",
+debug = true,
+doc = app.activeDocument,
+gStrNames, gUnsortedLines;
+
+app.doScript(Main, ScriptLanguage.JAVASCRIPT, undefined, ((File.fs == "Macintosh") ? UndoModes.ENTIRE_SCRIPT : UndoModes.FAST_ENTIRE_SCRIPT), "\"" + scriptName + "\" Script");
+
+function Main() {
+	var textFrame = doc.textFrames.itemByID(372),
+	story = textFrame.parentStory,
+	lines = textFrame.lines.everyItem().getElements(),
+	line, lineLength, closest;
+	
+	if (debug) $.writeln("--------------- closest ---------------");
+	
+	InitVars();
+	var unsortedLines = RestoreData(gUnsortedLines);	
+	var sortedNames = RestoreData(gStrNames);
+
+	for (var i = 0; i < unsortedLines.length; i++) {
+		line = unsortedLines[i];
+		lineLength = line.lineLength;
+
+		if (debug) $.writeln("Before: " + sortedNames.length);		
+		closest = FindClosest(sortedNames, lineLength, "nameWidth");
+		
+		if (closest == null) {
+			if (debug) $.writeln("!!! closest == null, i = " + i);
+			continue;
+		}
+	
+		// name | width | index
+		if (debug) $.writeln(ZeroPad((i + 1), 2) + " - " + closest[0] + " | " + closest[1] + " | " + closest[2]);	
+		sortedNames.splice(closest[2], 1);
+		if (debug) $.writeln("After: " + sortedNames.length);
+		
+		story.insertionPoints[-1].contents = closest[0] + " ";
+	}
+}
+
+function FindClosest(array, elem, prop) {
+	var item, delta,
+	result = null,
+	minDelta = null,
+	minIndex = null;
+
+	for (var i = 0 ; i < array.length; i++) {
+		item = eval("array[i]." + prop);
+		delta = Math.abs(item - elem);
+		
+		if (minDelta == null || delta < minDelta) {
+			minDelta = delta;
+			minIndex = i;
+		}
+		else if (delta == minDelta) {
+			result = [eval("array[i - 1].name"), item, i - 1];
+			break;
+		}
+		else { // delta > minDelta
+			result = [eval("array[i - 1].name"), eval("array[i - 1]." + prop), i - 1];
+			break;
+		}
+	} // end for
+
+	return result;
+}
+
+function RestoreData(input) { // File / String
+	var str,
+	restoredArr = [];
+	
+	if (input.constructor.name == "File") {
+		str = ReadTxtFile(input);
+	}
+	else if (input.constructor.name == "String") {
+		str = input;
+	}
+
+	var arr = str.split("|");
+	
+	for (var i = 0; i < arr.length; i++) {
+		restoredArr.push(eval(arr[i]));
+	}
+
+	return restoredArr;
+}
+
+function GetLTextWidth(txt) {
+	try {
+		var l = txt.characters[0].horizontalOffset;
+		var r = txt.characters[-1].horizontalOffset;
+		var w = r - l;
+		w = RoundString(w, 1);
+		
+		return w;
+	}
+	catch(err) {
+		$.writeln(err.message + ", line: " + err.line);
+	}
+}
+
+function RoundString(numVal, decimals) {
+    var retVal = Math.round(numVal * Math.pow(10,decimals)) + "";
+    retVal = retVal.substring(0, retVal.length - decimals) + "." + retVal.substring(retVal.length - decimals);
+    return retVal;
+}
+
+function ReadTxtFile(file) {
+	file.open("r"); 
+	var txt = file.read();
+	file.close();
+	return txt;
+}
+
+function ZeroPad(num, digit) {
+	var tmp = num.toString();
+	while (tmp.length < digit) {
+		tmp = "0" + tmp;
+	}
+	return tmp;
+}
+
+ // See the InitVars() function in the zip archive at the bottom of the page.
+</pre>
+<p>I realize that a much more complex algorithm is necessary: maybe find a combination of two-three names that fit the line best. But at the moment I got stuck: don&rsquo;t know where to move next.  So, any guidance is welcome.</p>
+<p><a href="snippets_and_test_files.zip">Here are the code snippets and test files</a> mentioned on this page.</p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

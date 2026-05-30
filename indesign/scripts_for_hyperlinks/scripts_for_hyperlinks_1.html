@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Scripts for making hyperlinks</title>
+<!-- #EndEditable -->
+<script src="../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../index.html">Home</a></li>
+<li><a href="../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../tips/all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../tips/all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../tips/all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../tips/all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../tips/all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../tips/indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../tips/all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../snippets/array.html">Array</a></li>
+          <li><a href="../../snippets/number.html">Number</a></li>
+          <li><a href="../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../../tips/indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+
+<p>First of all let&acute;s download my <a href="../../downloads/scripts_for_indesign/scripts_for_hyperlinks/create_hyperlinks_sample_1.zip"><span>Create hyperlinks - index to names</span></a> script and <a href="../../downloads/scripts_for_indesign/scripts_for_hyperlinks/sample-1.zip"><span>Sample-1.indd</span></a> document that we will use for testing. This is the most complex script I made for this task.</p>
+<p>Open the document, go to the <em>Index</em> section &#8212; page <strong>Index-1</strong>. </p>
+<p><img src="../../images/all/scripts_for_hyperlinks/scripts_for_hyperlinks_1.jpg" alt="" /></p>
+<p>The first word in a paragraph is the last name of a person mentioned in the book followed by his/her first name, patronymic, initials and brief information. After this follow page numbers where the person is mentioned. The page numbers are grouped into four sections marked with roman numbers: <strong>I</strong>,<strong> II</strong>, <strong>III</strong> and <strong>IV</strong>. Originally these were four separate printed books (volumes). Now they are combined into a single document in InDesign so that to be exported to ePub. If all the links are within a single file, they work without problems after exporting.</p>
+<p>Now select some text in the index &#8211; a page or two &#8211; and run the script. At the beginning a progress bar appears: the script gathers the information from the selected text about the hyperlinks to be created.</p>
+<p><img src="../../images/all/scripts_for_hyperlinks/scripts_for_hyperlinks_2.jpg" alt="" /></p>
+<p>Then a dialog box appears which tells you how many hyperlinks already exist in the document and how many are going to be created.</p>
+<p><img src="../../images/all/scripts_for_hyperlinks/scripts_for_hyperlinks_3.jpg" alt="" /></p>
+<p>Here you can type in a prefix that will be added to the name of a hyperlink (which is a consecutive number). You can also turn on logging feature so that a text file will be created on the desktop into which every step will be logged.</p>
+<p>After clicking OK, another progress bar appears. Now it gives you information about the current hyperlink being created: its number, person&acute;s name, page, speed of creation and estimated time for completing the script.</p>
+<p><img src="../../images/all/scripts_for_hyperlinks/scripts_for_hyperlinks_4.jpg" alt="" /></p>
+<p>At the end the script the final report pops up.</p>
+<p><img src="../../images/all/scripts_for_hyperlinks/scripts_for_hyperlinks_5.jpg" alt="" /></p>
+<p>In the hyperlinks panel you can see newly created hyperlinks.</p>
+<p><img src="../../images/all/scripts_for_hyperlinks/scripts_for_hyperlinks_6.jpg" alt="" /></p>
+<p>And in the selected text page numbers were marked with colors. Each color has a special meaning: for example, green means that the hyperlink was successfully created, red that the name wasn&acute;t found on the page, blue that the name has duplicates on the page (was found more than once), purple that the page is missing.</p>
+<p><img src="../../images/all/scripts_for_hyperlinks/scripts_for_hyperlinks_7.jpg" alt="" /></p>
+<p>If we go to the destination of a link, we will see that the found text is marked with a color as well. For instance, on the screen capture below the word <em>Andreeva</em> is in blue because it appears more than once on the page. The script creates the link to the first instance and gives us a visual aid so that we could move (in story editor) the anchor to the second instance if necessary.</p>
+<p><img src="../../images/all/scripts_for_hyperlinks/scripts_for_hyperlinks_12.jpg" alt="" /></p>
+<p>The script adds these temporary colors automatically to the document. When the work is done, you can simply delete the swatches replacing them with black.</p>
+<p><img src="../../images/all/scripts_for_hyperlinks/scripts_for_hyperlinks_8.jpg" alt="" /></p>
+<p>Now double click the log file on the desktop &#8212; <strong>Create hyperlinks &#8211; index to names - 1.0.txt </strong>&#8212; it provides info about each step taken by the script: if a hyperlink wasn&acute;t created or a problem occured, it explains why.</p>
+<p><img src="../../images/all/scripts_for_hyperlinks/scripts_for_hyperlinks_9.jpg" alt="" /></p>
+<p>The script is developed in such a way so it could work on a large file. At the beginning creating a hyperlink takes about 0.1 second, but if the document already contains, say, 20,000+ hyperlinks, it may take about 1,5&#8212;2 minutes to make only one hyperlink (no difference whether you create it by script or manually in InDesign). You can select some text and process it bit by bit; or you can select a text frame or place the cursor into text and process the whole story (you may start the script on Friday night so that it would work during weekend and come back to work on Monday morning to see the work completed).</p>
+<p>The script can be rerun many times over the same text. The page numbers marked with a color won&acute;t be process again. Let&acute;s illustrate this with example: the script processed the paragraph leaving page 290 black because of a typo &#8211; letter &#8220;O&#8221; instead of zero.</p>
+<p><img src="../../images/all/scripts_for_hyperlinks/scripts_for_hyperlinks_10.jpg" alt="" /></p>
+<p>You can correct the typo, select the paragraph and run the script again: only black page numbers will be processed.</p>
+<p><img src="../../images/all/scripts_for_hyperlinks/scripts_for_hyperlinks_11.jpg" alt="" /></p>
+<p>Before running the script that makes hyperlinks, I do some preparatory work. First I run <a href="http://kasyan.ho.com.ua/downloads/scripts_for_hyperlinks/label_main_text_frames.zip"><span>Label main text frames scripts</span></a> to indicate the main text flow. A page in most cases contains many text frames. To make things easier, the script sets label &#8220;main&#8221; to each frame in the chain. It also creates and applies object style called &#8220;main&#8221; which applies a yellowy tint to the frames. It&acute;s done only to visualize the labeled frames so I could easily see where I didn&acute;t apply the labels. The style can be safely deleted at any moment, or its fill color can be set to [Paper]/[None]/White.</p>
+<p>Then I usually run <a href="../../downloads/scripts_for_indesign/scripts_for_hyperlinks/expand_main_text_frames_to_the_bottom_of_page.zip"><span>Expand main text frames to the bottom of page</span></a> script which sets a page break at the end of each &#8220;main&#8221; frame and expands it to the bottom of page. I have to do this at times because adding an invisible anchor (hyperlink destination) sometimes makes the text to reflow and the text from the current page goes to the next one. Later, after creating hyperlinks, I can restore the frames back to their original position with <a href="../../downloads/scripts_for_indesign/scripts_for_hyperlinks/unexpand_main_text_frames_at_the_bottom_of_page.zip"><span>Unexpand main text frames at the bottom of page</span></a> script and replace page breaks with paragraph returns.</p>
+
+<p><a href="scripts_for_hyperlinks.html">Back to the main  &#8220;Scripts for making hyperlinks&#8221; page</a></p>
+
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

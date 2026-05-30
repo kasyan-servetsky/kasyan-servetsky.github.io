@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Batch processor</title>
+<!-- #EndEditable -->
+<script src="../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../index.html">Home</a></li>
+<li><a href="../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../tips/all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../tips/all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../tips/all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../tips/all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../tips/all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../tips/indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../tips/all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../snippets/array.html">Array</a></li>
+          <li><a href="../../snippets/number.html">Number</a></li>
+          <li><a href="../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../../tips/indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>Batch processor</h1>
+    <p>The script was written  and tested in InDesign 2024 on Windows 10 and on Mac. <br />
+    <a href="../../downloads/scripts_for_indesign/batch_process_scripts/batch_processor.zip">Click here</a> to download the latest<strong> version 5.4</strong> which besides <strong>JavaScript</strong> (<em>jsx / js / jsxbin</em>), also supports <strong>AppleScript </strong>(<em>scpt</em>), <strong>Visual Basic Script</strong> (<em>vbs</em>) and <strong>UXP Script</strong> (<em>idjs</em>)<strong>.</strong></p>
+    <p><img src="../../images/indesign/batch_process_scripts/batch_process_scripts_1.png" width="650" height="539" alt=""/></p>
+    <p>Originally this script was written to extend further the functionality of Rorohiko&acute;s <a href="http://www.rorohiko.com/wordpress/action-recorder/">Action Recorder</a>: you can record an action, export it to jsx-file and run it against a number of InDesign documents.  Unfortunately, it hasn&rsquo;t been developed any  further beyond the beta version and became a dismissed case. At some point, I realized that this can be in  some respect an analogous to Photoshop&rsquo;s Batch and Action recorder features.  But what we can do now is to use a similar approach. In fact, an action  in Photoshop is a series of simple pre-recorded commands. With the batch processor,  we can execute a sequence of simple scripts.</p>
+    <p>Now you must be asking me, &ldquo;Well, how can I  get these &lsquo;simple&rsquo; scripts?&rdquo; Here are some ideas:</p>
+    <ul>
+      <li>        Look for the script you need on the adobe  scripting forum. Most probably somebody has already written it and you can even  choose among a few versions. If it&rsquo;s not found, or what you found isn&rsquo;t exactly  what you want, you may post a request on the forum and there&rsquo;s a good chance  that someone would write (or adjust) the script for you because simple scripts  are easy -- and naturally doesn&rsquo;t take long  to write.</li>
+      <li>You can find a lot of scripts on the web.  <a href="../scripts_written_by_other_people.html">Here</a> are some links.</li>
+      <li>        You can start learning scripting. <a href="../../tips/all/info_for_beginners.html">Here</a> are  some resources for beginners.</li>
+      <li>        I&rsquo;m planning to make a section on my site with<a href="scripts_for_batch_processor.html"> scripts that can be used with batch processor</a>. I&rsquo;m going to provide detailed  comments and explanation so even non-scripters could adjust them to their needs.</li>
+    </ul>
+   <hr>
+    <h2>Here is the description of the way it works:</h2>
+    <p>The settings you select in the dialog box  will be saved after you click the OK button so don&rsquo;t have to select them again  next time you run the script.</p>
+    <p>The progress bar displays the name of the file being processed.</p>
+    <p><img src="../../images/indesign/batch_process_scripts/batch_process_scripts_4.png" width="399" height="127" alt=""/></p>
+    <h3>Process</h3>
+    <p>You can run the script on one of the following:</p>
+    <ul>
+      <li>the active document</li>
+      <li>all open documents</li>
+      <li>the active book</li>
+      <li>the documents in the selected folder</li>
+      <li>the documents in the selected folder and its  subfolders</li>
+    </ul>
+    <p><img src="../../images/indesign/batch_process_scripts/batch_process_scripts_9.png" width="347" height="168" alt=""/></p>
+    <p>From the drop-down list, you can choose what kind of documents  to process:</p>
+    <ul>
+      <li>Documents only (indd-files)</li>
+      <li>Templates only (indt-files)</li>
+      <li>Documents &amp; Templates (indd &amp; indt  files)</li>
+    </ul>
+    <p><img src="../../images/indesign/batch_process_scripts/batch_process_scripts_10.png" width="358" height="123" alt=""/></p>
+    <hr>
+    <h3>What to run</h3>
+    <p>You can select and run either a single script.</p>
+    <p><img src="../../images/indesign/batch_process_scripts/batch_process_scripts_2.png" width="361" height="188" alt=""/></p>
+    <p>Or a set of scripts located in the same folder. In this case, I recommend you to add numbers  at the beginning of their names to control the order of execution. Like so: <em>01_SomeName.jsx, 02_SomeName.jsx, 03_SomeName.jsx</em> and so on</p>
+    <p><img src="../../images/indesign/batch_process_scripts/batch_process_scripts_3.png" width="361" height="187" alt=""/></p>
+    <p><img src="../../images/indesign/batch_process_scripts/batch_process_scripts_8.png" width="255" height="160" alt=""/></p>
+    <p>Starting from version 4, the batch processor can run not  only scripts written in <strong>JavaScript</strong>, but also in <strong>AppleScript</strong> (Mac)  and <strong>Visual Basic Script</strong> (Windows). This gives us huge opportunities: for  example, even though JavaScript is the most popular scripting language used for  automating InDesign, you may be more familiar with alternative ones. 
+    Also,  using these languages you can make InDesign interact with other scriptable apps  &#8212; like<em> Microsoft Excel, Word, Access, Outlook</em>, etc. &#8212; for instance, export each document  as a minimum-size-pdf file, attaching it to e-mail and sending via <em>Mail</em> or <em>Outlook</em>,  or   process all the documents in the selected folder and optionally it&acute;s subfolders getting the information about the links &#8212; name, path, modification date, size, etc.  &#8212; and putting them directly into Access database or Excel spreadsheet. Possibilities  seem to be limited only by your imagination!<br />
+    Starting from version 5, you can also run modern <strong>UXP Scripts</strong> (idjs files) and process <strong>InDesign Markup</strong> (idml) files.</p>
+    <h4>Windows &#8212; vbs, jsx, js,  jsxbin and idjs files are available</h4>
+    <p><img src="../../images/indesign/batch_process_scripts/batch_process_scripts_12.png" width="498" height="132" alt=""/></p>
+    <h4>Macintosh &#8212; scpt, jsx, js, jsxbin and idjs files are available</h4>
+    <p><img src="../../images/indesign/batch_process_scripts/batch_process_scripts_13.png" width="361" height="160" alt=""/></p>
+<hr>
+    <h3>Documents folder</h3>
+    <p>The <strong>Documents folder</strong> panel is activated only when you  choose the <strong>documents in the selected folder (and its subfolders)</strong> option  so that you can choose the folder to process. </p>
+     <hr>
+    <h3>Settings</h3>
+<p>If <strong>Create log file on the desktop</strong> checkbox is on, a text file will be created on the desktop listing every document processed and the scripts executed.</p>
+<p>If errors occur during the execution of the  batch processor, they appear at the end of the log. For example, on the screenshot  below, you can see an error message for an invalid file which can&rsquo;t be opened by  InDesign. </p>
+<p><img src="../../images/indesign/batch_process_scripts/batch_process_scripts_5.png" width="487" height="335" alt=""/></p>
+<p>if <strong>Backup original InDesign documents</strong> checkbox is  on, the original copy of each indd-file is kept: its name begins with  &quot;<em>Backup_</em>&quot;.</p>
+<p>Note that backups are never overwritten: an incremental number is added after the &quot;<em>Backup</em>&quot; prefix. Also, the files whose names begin with &quot;<em>Backup</em>&quot; are skipped.</p>
+    <p><img src="../../images/indesign/batch_process_scripts/batch_process_scripts_6.png" width="434" height="253" alt=""/></p>
+    <p>Backups created by the script loose their creation &amp; modification dates due  to JavaScript limitations.</p>
+<p>If <strong>Save documents on closing</strong> is on, the documents will be saved before closing.</p>
+    <p><em><strong>Important note</strong></em>: the documents that have already been opened before running the script will be saved and remain open. (This feature works in all versions starting from CS5: in earlier versions, all  documents will be closed.)</p>
+<p>With <strong>Open in invisible mode</strong> checkbox on, open documents  are not displayed on the screen which may decrease execution time.</p>
+    <hr>
+    <h3>Arguments file (optonal)</h3>
+    <p><a href="arguments_file.html">Arguments file</a> is a handy way to send some parameters  (arguments) to the script.</p>
+<p><strong>Use arguments</strong> &mdash; tells the <em>batch processor</em> to use an argument file which is a plain text file created or edited in an application like <em>Notepad</em>, <em>TextEdit</em>. (Don&rsquo;t use <em>Word</em>). When this checkbox is on, you obviously should select a file:  either <strong>txt</strong> or <strong>csv</strong>.</p>
+<p>The file contains a list (array) of parameters which can be delimited by return, line feed, comma, semicolon, pile, etc. Each element is a plain string, but it can be easily converted by a script to the necessary data type.</p>
+<p>To put it simply, the argument file is a sort of preset file. For example, you may use one to create pdf-files for a printing office and another for &lsquo;minimum size&rsquo; pdf-files to be sent by e-mail.</p>
+<p>When the <strong>Ignore comments</strong> checkbox is on, the script ignores comments in the arguments file which are regular comments used in <em>ESTK:</em></p>
+      
+<pre>// your comment
+/* your comment */</pre>
+      
+<p>With a lot of parameters, it is useful to comment each of them to avoid confusion.</p>
+<p><strong>Separator</strong> &mdash; here you can choose one of the following pre-built characters to separate (delimit) arguments:</p>
+<ul>
+  <li><strong>\\n</strong> (Line feed)</li>
+<li><strong>,</strong> (Comma)</li>
+<li><strong>;</strong> (Semicolon)</li>
+<li><strong>|</strong> (Pile)</li>
+</ul>
+<p>Also, you can type in whatever you want as a separator: <strong>custom</strong>.</p>
+<p><img src="../../images/indesign/batch_process_scripts/batch_process_scripts_11.png" width="293" height="136" alt=""/></p>
+<p>Arguments are passed via global <strong>g.arguments</strong> variable.  For example, you can read the first argument like so:</p>
+<pre>var myFirstParameter = g.arguments[0];</pre>
+<p><a href="arguments_file.html">Here</a> is a more detailed information and are examples of using  this feature.</p>
+<p><strong><em>Important notes</em></strong>:</p>
+<ul>
+  <li>Don&rsquo;t use <strong>\\r</strong> as a separator &mdash; use <strong>\\n</strong> instead</li>
+  <li> In InDesign<strong> CS3 and below</strong> the arguments feature is unavailable</li>
+</ul>
+<hr>
+    <p>Don&rsquo;t use a global variable called '<strong>g</strong><em>'</em> in your scripts (written in <em>JavaScript</em> only) to be run from the batch processor because it&rsquo;s used for data exchange between the primary and secondary scripts.</p>
+    <p><img src="../../images/indesign/batch_process_scripts/batch_process_scripts_14.png" width="241" height="177" alt=""/></p>
+    <p>Use <strong>g.doc</strong> variable to send the current  document from the batch processor to a secondary script. You should use it with  the <strong>all open documents</strong> option selected, otherwise, it will not work correctly.  With all other options, you can alternatively use <em>app.activeDocument </em>or <em>app.documents[0]</em>.</p>
+    <p>You can get feedback from your script using global <strong>g.WriteToFile()</strong> function. It has only one argument: the string that will be written  onto the log file on the desktop. <a href="logging_example.html">Here is an example</a> of how to use it.</p>
+<p>When the files are batch processed, all warnings (e.g. missing fonts, links, etc.) are turned off.</p>
+    <p>At the end the final report pops-up telling  you the total number of documents processed, the time it took and, if errors  occur, their number.</p>
+    <p><img src="../../images/indesign/batch_process_scripts/batch_process_scripts_7.png" width="296" height="152" alt=""/></p>
+	<hr>
+    <p>Developing scripts for the batch processor, I concluded it would be much better to make <strong>&lsquo;universal&rsquo; </strong>scripts that work both:</p>
+<ul>
+<li>as regular standalone scripts that are run against the active document  in InDesign or ESTK (it&rsquo;s much easier for debugging)</li>
+<li>and as the scripts used with the batch processor</li>
+</ul>
+<p>For this purpose, I developed a <strong>template</strong> that can be used as  a starting point for a new script. <a href="template_for_batch_processor.html">Click here</a> for more details and the download  link.</p>
+<hr>
+<p><strong><em>Yet another important note:</em></strong> for very old versions only (e.g. CS3):<br />
+With InDesign version CS3 I had a problem: sometimes a  script triggered <em>ESTK</em> and started loading data (object model for CS3) which  would take till the end of the universe to complete.<br />
+To solve such a problem:</p>
+    <ul>
+      <li>Start ESTK</li>
+      <li>Select InDesign as the target in the top left  corner</li>
+    </ul>
+    <p><a href="../../downloads/scripts_for_indesign/batch_process_scripts/batch_processor.zip">Click here</a> to download the <strong>latest version</strong> of the script.</p>
+    <p>From time to time, I find bugs and fix them. There&rsquo;s a small possibility that fixing a bug would break something else. For example, in corona times, I can&rsquo;t get to my office to test it on Mac. If this happens, you can download<strong> previous versions</strong> <a href="../../downloads/scripts_for_indesign/batch_process_scripts/batch_processor_version_history.zip">from here</a>.</p>
+<p>And finally <strong><em>one more  note</em></strong>: <a href="../../tips/indesign_script/all/not_authorized_to_send_apple_events_error.html">why with some older InDesign versions AppleScript doesn&rsquo;t work anymore when run from the batch processor?</a> (In latest versions it works as expected).</p>
+<hr/>
+<p>See also <em>Peter Kahrel's</em> <a href="https://creativepro.com/files/kahrel/indesign/batch_convert.html">Batch-process (convert/export/import) documents</a> script.</p>
+<hr>
+<p><span id="docs-internal-guid-f91a61a9-7fff-c95d-5e3e-12d1c2c1fd29">If you found this script useful and want me to develop it further</span>, consider supporting me by donating via <em>PayPal</em> directly to my e-mail: <strong>askoldich</strong> [at] <strong>yahoo</strong> [dot] <strong>com</strong>. (Due to PayPal&rsquo;s restrictions for Ukraine, I can&rsquo;t have a <em>Donate</em> button on my site.)</p>
+    <hr>
+    <h3>Summary of the related pages:</h3>
+    <ul>
+      <li><a href="scripts_for_batch_processor.html">Scripts for the batch processor</a></li>
+      <li><a href="template_for_batch_processor.html">Template</a></li>
+      <li><a href="arguments_file.html">Arguments file</a></li>
+      <li><a href="logging_example.html">Logging example</a></li>
+      <li><a href="example_using_different_languages.html">Example of achieving the same task using different scripting languages</a></li>
+      <li><a href="count_links/count_links.html">A simple example of adding data from InDesign to Excel on Mac</a></li>
+      <li><a href="list_links/list_links.html">List links from InDesign to Excel</a></li>
+      <li><a href="../../tips/indesign_script/all/not_authorized_to_send_apple_events_error.html">Why AppleScript doesn&rsquo;t work anymore when run from the batch processor?</a></li>
+    </ul>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>World Map</title>
+<!-- #EndEditable -->
+<script src="../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../index.html">Home</a></li>
+<li><a href="../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../tips/all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../tips/all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../tips/all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../tips/all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../tips/all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../tips/indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../tips/all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../snippets/array.html">Array</a></li>
+          <li><a href="../../snippets/number.html">Number</a></li>
+          <li><a href="../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../../tips/indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>World Map</h1>
+    <p>Script for InDesign CS3 and 4 by <em>Jongware</em>.</p>
+		<p><strong>Note</strong>: the following text was written by the author of the script.</p>
+		<p>A fun little script, could be useful if you are in dire need of some  clip art &#8212; or just want to see something else than text, text, text: <a href="http://www.jongware.com/binaries/worldmap.js.zip"><strong>worldmap.js</strong></a></p>
+		<p>This  is a Javascript implementation of a program I had on the hard disc of  several consecutive computers, going back to the late '80s. This  version was an implementation in C, which in turn was based upon a  Pascal program: CARTOG.PAS, accompanying &quot;Mapping the World in Pascal&quot;  by Robert Miller and Francis Reddy, BYTE, December 1987, page 329</p>
+		<p>What does it do? It draws a world map. That's all  </p>
+		<p>Written for CS4 (it just <em>might</em> work on CS3, but not on older versions). Simply double-click to run &#8212;  it ought to do the rest automatically. If you want to see your location  from outer space, go to <strong><a href="http://pagesperso-orange.fr/pgj/latlong.htm">LATITUDE</a></strong><strong><a href="http://pagesperso-orange.fr/pgj/latlong.htm"> et LONGITUDE de quelques Villes</a></strong> (which was the first comprehensive listing I found; there are lots of  others) and see if your hamlet is listed. You can enter coordinates  either as positive/negative values, or succeed them with &quot;E&quot; or &quot;W&quot; and  &quot;N&quot; or &quot;S&quot;. Only decimal notation is supported &#8212; sorry, minutes &amp;  seconds was too much work. </p>
+		<p>What does it look like? Well, here's where I live:</p>
+		<p><img src="../../images/all/world_map1.png" width="443" height="267" /></p>
+		<p class="subHead">TECHNICAL INFO</p>
+		<p>The  original C (slash Pascal) file came with a coordinate file, but that  was extremely rough. I thought it would look nicer with a few more  decimals of accuracy, so I visited the <a href="http://www.naturalearthdata.com/downloads/110m-physical-vectors/110m-coastline/">Natural Earth website</a> and downloaded their coastal outlines set. Being unnaturally cautious,  I downloaded their smallest file &#8212; it's still more than 5,000  coordinates. I don't think it's worth to throw in more vectors at this  scale (no, I'm not going to write a full browse-zoom-and-draw-map  applet). The outline files are binary encoded, so it took some  sleuthing to write out the info I needed in ASCII form. No problem at  all! (And I suspect the file format is somewhere on that site, but I  didn't even bother to check <img src="http://wwwimages.adobe.com/www.adobe.com/adobeforums/images/emoticons/wink.gif" alt="" width="16px" height="16px" /> ). Then I had to manually close all  open paths, so ID could fill the objects for me.</p>
+		<p>Then  it came down to getting the vectors on screen, first in a Mercator  (plain) projection &#8212; that code is still in the script somewhere &#8212;,  then in orthogonal projection. The original program only could handle  lines, so I had to find a way to draw the solid objects going over the  edge (and that's where the large-land-mass bug slipped in). For the  rest, it's all maths, maths, maths, with some JS cleverness to make it  run at a fair speed. &#8212; a small improvement in case anyone wants to give the world some color: in the new version (still called <strong><a href="http://www.jongware.com/binaries/worldmap.js.zip">worldmap.js</a></strong>,  though), you can ungroup once and you get three separate parts: the  globe, the land masses (a group in itself), and the meridians (also a  group of its own).</p>
+		<p>InDesign  even allows the hundreds of little land masses to be combined into a  single Compound path, so you can give them a shared gradient:<br />
+<img src="../../images/all/world_map2.png" width="268" height="253" /></p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

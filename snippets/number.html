@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Number</title>
+<!-- #EndEditable -->
+<script src="../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../index.html">Home</a></li>
+<li><a href="../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../personal/about_me.html">A little about me</a></li>
+    <li><a href="../personal/my_resume.html">My resume</a></li>
+    <li><a href="../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../tips/all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../tips/all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../tips/all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../tips/all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../tips/all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../tips/indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../tips/all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="snippets.html">Useful snippets</a></li>
+          <li><a href="indesign.html">InDesign</a></li>
+          <li><a href="photoshop.html"> Photoshop</a></li>
+          <li><a href="array.html">Array</a></li>
+          <li><a href="number.html">Number</a></li>
+          <li><a href="date_time.html">Date</a></li>
+          <li><a href="file_folder.html">File and Folder</a></li>
+          <li><a href="../tips/indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../indesign/scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../indesign/all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../indesign/custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../indesign/enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../indesign/scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>Functions for Number</h1>
+    <h3 class="subHeader">Add leading zeroes before number</h3>
+    <pre>function pad000(myNumber) {<br />    return ('000'+myNumber).match (/...$/)[0];<br />}
+
+alert(ZeroPad(123, 10));
+
+function ZeroPad(num, digit) {
+	var tmp = num.toString();
+	while (tmp.length &lt; digit) {
+		tmp = &quot;0&quot; + tmp;
+	}
+	return tmp;
+}</pre>
+
+    <h3>Another 'leading zeroes' function:</h3>
+<pre>function lz (number, len) {
+	if (String (number).length >= len)
+		return number;
+	var leading_zeroes = '';
+	for (var i = 0; i < len - String (number).length; i++)
+		leading_zeroes += '0';
+	return leading_zeroes + number;
+}
+
+$.writeln(lz (123, 5));</pre>
+
+    <h3>Pad a number with leading zeros</h3>
+    <pre>function pad(number, length, fill) {
+    if (fill == undefined) fill = "0";
+    var str = '' + number;
+    while (str.length < length) {
+        str = fill + str;
+    }
+    return str;
+}</pre>
+    
+    <h3>Round number by <em>Marc Autret</em></h3>
+    <pre>var number = 12.248481545454;
+alert(roundToDP (number ,2))
+ 
+function roundToDP (val,dig)
+{
+     // Including all its zeros, lopping off beyond:
+     val = Math.round(val*Math.pow(10,dig));
+     // Force in decimal point at the right place:
+     val = String(val);
+   //  return val.slice(0,val.length-dig)+&quot;.&quot;+val.slice(dig);
+     return val.slice(0,val.length-dig)+&quot;.&quot;+val.slice(val.length-dig);
+}
+
+
+var number = Math.round(12.248481545454*100)/100;
+
+var number = RoundWithDecimal(12.248481545454,2);
+ 
+function RoundWithDecimal(number,decimals){
+    var multiplier = Math.pow(10,decimals);
+    return Math.round(number*multiplier)/multiplier;
+}</pre>
+    <h3>Round string</h3>
+    <pre>function RoundString(numVal, decimals) {
+    var retVal = Math.round(numVal * Math.pow(10,decimals)) + "";
+    retVal = retVal.substring(0,retVal.length-decimals) + "." + retVal.substring(retVal.length-decimals);
+    return retVal;
+}</pre>
+    <h3><a href="romanize-deromanize_functions.html">Romanize-deromanize functions </a></h3>
+    <h3>Is a number even? </h3>
+    <pre>function IsEven(number) {
+	return (number % 2 == 0) ? true : false;
+}</pre>
+    <p>See also <a href="unit_value.html">UnitValue</a></p>
+    <h3>Convert Fahrenheit  to Celsius and vice versa</h3>
+<pre>main();
+
+function main() {
+	alert(fToC(45), "Fahrenheit to Celsius");
+	alert(cToF(60), "Celsius to Fahrenheit");
+}
+
+function cToF(celsius) {
+	var cTemp = celsius;
+	var cToFahr = cTemp * 9 / 5 + 32;
+	var result = cTemp+'\xB0C is ' + cToFahr + ' \xB0F.';
+	return result;
+}
+
+function fToC(fahrenheit) {
+	var fTemp = fahrenheit;
+	var fToCel = (fTemp - 32) * 5 / 9;
+	var result = fTemp+'\xB0F is ' + fToCel + '\xB0C.';
+	return result;
+}</pre>
+    <h3>Approximately equals</h3>
+    <pre>main();
+
+function main() {
+	var value1 = 30;
+	var value2 = 32.0;
+	var acceptableDifference = 3;
+	var approximatelyEquals = ApproximatelyEquals(value1, value2, acceptableDifference);
+}
+
+function ApproximatelyEquals(value1, value2, acceptableDifference) {
+	return Math.abs(value1 - value2) <= acceptableDifference; 
+}
+</pre>
+    <h3>Random number function</h3>
+    <pre>alert(randomNumber(1000));
+
+function randomNumber(limit) {
+	return Math.floor(Math.random()*limit);
+}</pre>
+    <hr/>
+<h2>Tips</h2>
+    <p>Here + is just a fancy way of casting str to number</p>
+    
+<pre>var str = &quot;123&quot;;
+var num = +str;</pre>
+     
+    <p>&nbsp;</p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

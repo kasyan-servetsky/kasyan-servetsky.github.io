@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Leavers hoodie script</title>
+<!-- #EndEditable -->
+<script src="../../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../../index.html">Home</a></li>
+<li><a href="../../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../../tips/all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../../tips/all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../../tips/all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../../tips/all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../../tips/all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../../tips/indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../../tips/all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../../snippets/array.html">Array</a></li>
+          <li><a href="../../../snippets/number.html">Number</a></li>
+          <li><a href="../../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../../../tips/indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../../scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../../all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../../custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../../enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../../scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>Leavers hoodie script</h1>
+    <h4>Version 1.1</h4>
+    <p>This custom script for  InDesign was developed at a company&rsquo;s request that prints hoodies for school  leavers. Manually, they just paste the list of names into the number box and  then adjust the text manually moving things around, adjusting font size, line  spacing, kerning, and adding in spaces or line breaks until it looks ok, but it  is quite difficult and time-consuming, and annoying!<br />
+      The requirements are just to  fit the children&rsquo;s names in the outline of the &ldquo;23&rdquo; (for this year) and look  neat and correct. All names need to be the same size as each other (no names  bigger than others). Initial/surname would need to not be split from the first  name by a line break. The shape should be filled with 1 or 2 times the name of  each child (1 or 2 times depending on if we need to fill up more space when  there aren&rsquo;t many children, for instance).<br />
+      The text frame is converted  from text with the &lsquo;create outlines&rsquo; command and adjusted manually. Now they  want &ldquo;23&rdquo;, &ldquo;24&rdquo;, but in the future, they might need any word, like &ldquo;Ski Trip&rdquo;  or &ldquo;PE&rdquo;.<br />
+      My customers have looked on  InDesign forums and other design forums and googled everything but they couldn&rsquo;t  find any software that will do this automatically for them with good results,  or a way to easily do this in InDesign.<br />
+      They could find wordcloud  type software but often that makes lots of repetition and also makes some words  bigger than others, which they don&rsquo;t want as they don&rsquo;t want one child to  appear more &lsquo;important&rsquo; than others, they all need to be the same size.</p>
+    <p>To speed up the process, I split it into two steps (scripts): the first script prepares the template creating text boxes, and the second fills in the boxes with names.<br />
+    Probably, someday I will combine both scripts into one making,  say, a dialog box with two tabs.</p>
+    <h2>Step 1 &mdash; Prepare template</h2>
+<p><a href="https://youtu.be/0rJxKsxkr5w">Watch here</a> a short video of how it works.</p>
+<p>The user selects a shape &mdash; a text frame created manually, in this case with the create outlines command &mdash; and runs the <strong>Prepare template</strong> script. </p>
+<p><img src="2023-07-03_16-03-36.png" width="506" height="436" alt=""/></p>
+<p>The script fills the shape with temporary placeholder text which contains only &lsquo;I&rsquo; (Unicode: 0x49) characters repeated many times. It is used only for measuring lines&rsquo; widths. The narrowest character allows for the precisest measurements. The overset text is removed. Then the script loops through each line making text boxes for every line. Note that a line can be split, in this case, two or more <u>separate</u> boxes will be created for each part (text range). To measure the precise size and position of a box, the script temporarily creates an outline from the line and adds some space using the parameters defined in the variables at the top. These parameters can be changed by the user:</p>
+<ul>
+<li><strong>extraSpaceWidth</strong> &mdash; add extra space to the width of the box.</li>
+<li><strong>extraSpaceTop</strong> &mdash; add extra space at the top of the box.</li>
+<li><strong>verticalShift</strong> &mdash; shifts the box vertically.</li>
+<li><strong>extraSpaceBottom</strong> &mdash; add extra space at the bottom of the box.</li>
+<li><strong>charDistanceLimit</strong> &mdash; the maximum distance between two adjacent characters.</li>
+</ul>
+<p>In a future version, I&rsquo;m planning to make a dialog box for these settings. <br />
+  Finally, the script creates text boxes on the <em>Boxes</em> layer like so:</p>
+<p><img src="2023-07-03_16-04-48.png" width="501" height="432" alt=""/></p>
+<h2>Step 2 &mdash; Fill in boxes</h2>
+<p><a href="https://youtu.be/qV8n2O4CJv8">Here's</a> a video of how it works.</p>
+<p>The script fills in text boxes created in step one <strong>on the current  page</strong>. <br />
+  The user runs the script and selects a text file (txt, rtf, docx, doc) with names. </p>
+<p><img src="2023-07-03_16-08-29.png" width="623" height="311" alt=""/></p>
+<p>At the moment, such a file can be in three variants:</p>
+<ul>
+<li>First name only</li>
+<li>First name and initial</li>
+<li>First name and surname</li>
+</ul>
+<p>Each name should be in a separate paragraph. The script places the file in a temporary text frame whose label is <strong>temp</strong>. If it doesn&rsquo;t exist, it will be created automatically to the right of the first page. If a name has (regular) spaces, they are replaced with nonbreaking spaces. From this text, the script creates a list of names sorted by width.</p>
+<p>Then it loops through every box trying to fill in names &mdash; as many as possible &mdash; into available space <u>starting from the longest names</u>. If a box gets overflown, the script tries to fix it, increasing the width (by the increment set in the <strong>increment</strong> variable) up to the limit set in the <strong>increaseLimit</strong> variable. Also, an extra space is added (the <strong>extraSpaceWidth</strong> variable). Probably, in the future, I add these parameters to the dialog box so the user could easily change them.</p>
+<p>If all the names were used but empty boxes remain, the script begins another cycle until no empty boxes are left.</p>
+<p><img src="2023-07-03_16-07-37.png" width="500" height="430" alt=""/></p>
+<p>At the top, there&rsquo;s the <strong>debug</strong> variable. If you set it to <strong>true</strong>, the script applies a different color to every cycle making them more visually perceptible, and creates a detailed log file on the desktop &mdash; the <strong>log</strong> variable should be set to <strong>true</strong> as well &mdash; that gives the idea of how it works.</p>
+<p><img src="2023-07-03_16-21-58.png" width="500" height="433" alt=""/></p>
+<p>If the script fails to fill in all boxes, for example, in case the boxes are too small for the names, it reverts the document and gives a warning.<br />
+  In the <em>debug mode</em>, it also selects and displays the box on which the script stumbled.</p>
+<p><img src="2023-07-03_16-27-42.png" width="497" height="645" alt=""/></p>
+<p>To solve this issue you can experiment with paragraph style options.  For example, I made the text narrower by setting the horizontal scale to 78%  for the <strong>Names</strong> style used in boxes. </p>
+<p><img src="2023-07-11_08-53-05.png" width="494" height="279" alt=""/></p>
+<p> After this modification, the script successfully  processed the <em>full names.txt</em> file.</p>
+<p><img src="2023-07-11_08-49-16.png" width="500" height="437" alt=""/></p>
+<h2>Making a shape</h2>
+<p>Before using the script, you have to manually make a shape: a text  frame of any form with one or more columns. In my test file (see the link at  the bottom), I prepared templates for two years: <em>23</em> and <em>24</em>. Originally  it was a text converted to outlines. I added 2 pt inset and added one more  column. Then moved the left edge of the right number to hide the gutter between  the columns.</p>
+<p> The file has a few styles that define formatting. Paragraph style <strong>Names</strong> formats placed names. In my opinion, lines should be aligned horizontally and vertical  distances in the shape should be made multiple of a number of lines. For this  reason, I set the <em>baseline grid &gt; increment every</em> to 22 pt and the <em>align  to grid &gt; all lines</em> in the paragraph style. The <strong>verticalShift</strong> variable  at the top of <em>Prepare template</em> script is set to -3.115 (the value was  found experimentally) which moves boxes upwards a little making the text align the  baseline grid. (Otherwise, it gets overset in small boxes). To make a proper  shape, I run both scripts a few times, making adjustments to the shape here and  there until I got the desired result.</p>
+<p><img src="2023-07-16_09-24-35.png" width="500" height="424" alt=""/></p>
+<h4>Ideas for further improvement:</h4>
+<ul>
+  <li>Combine both scripts into one making, say, a  dialog box with two tabs.</li>
+  <li>Make it work with templates instead of the  current document</li>
+  <li>Finetune the fitting algorithm, and make options  in the dialog box instead of hardcoded.</li>
+</ul>
+<p>Finally, I want to mention that this is the very first version so,  please, be lenient with me. </p>
+<p><a href="hoodies_script.zip">Click here</a> to download the current versions of the scripts and  test files you  see in the screenshots and video above.</p>
+<hr/>
+    <h4>Related pages:</h4>
+    <p> Here is my first attempt: <a href="../../../tips/uncategorized/fit_text_into_irregular_shape/fit_text_into_irregular_shape.html">Algorithm for fitting text into an irregular shape</a>.<br />
+      <a href="https://community.adobe.com/t5/indesign-discussions/algorithm-for-fitting-text-into-an-irregular-shape/m-p/13566179#M514850">Here</a> is my post on the Adobe InDesign forum.</p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

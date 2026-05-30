@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Cutoff rule</title>
+<!-- #EndEditable -->
+<script src="../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../index.html">Home</a></li>
+<li><a href="../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../tips/all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../tips/all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../tips/all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../tips/all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../tips/all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../tips/indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../tips/all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../snippets/array.html">Array</a></li>
+          <li><a href="../../snippets/number.html">Number</a></li>
+          <li><a href="../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../../tips/indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>Cutoff rule</h1>
+    <h2>The original scenario (suggested by the client):</h2>
+    <h3>Cutoff rule horizontal</h3>
+    <p>The goal is automatically place a Cutoff Rule horizontally to separate different items.</p>
+    <p>With one frame selected, script sets L of line = to the width of the frame script sets X of line = to X of the frame script sets Y of line = to Y of the frame plus 10 pts script applies 'cutoff rule' object style to the line.</p>
+    <p>With two frames selected, script inserts line script sets L of line = to the left edge of the frame furthest to the left and to the right edge of the frame furthest to the right script sets X of line = to the left edge of the frame furthest to the left script sets Y of line = 10 pts above the top of the frame that is highest of the two frames script applies 'cutoff rule' object style to the line.</p>
+    <h3>Cutoff rule vertical</h3>
+    <p>The goal is automatically place a Cutoff Rule vertically to separate different items.</p>
+    <p>With one or more frames selected, script sets L of line = to the height of the frame script sets Y of line = to Y of the frame</p>
+    <p>setting X coordinate (see InDesign document for examples):</p>
+    <p>a) If frame is on left hand page, and if frame is closer to the outside of the page than to the spine of the page, then script sets X of line = to right side of the frame and plus 0.0783 inches to the right</p>
+    <p>b) If frame is on left hand page, and if frame is closer to the spine of the page than the outside of the page, then script sets X of line = to left side of the frame and minus 0.0783 inches to the left</p>
+    <p>c) If frame is on right hand page, and if frame is closer to the spine of the page than the outside of the page, then script sets X of line = to right side of the frame and plus 0.0783 in to the right</p>
+    <p>d) If frame is on right hand page, and if frame is closer to the outside of the page than to the spine of the page, then script sets X of line = to left side of the frame and minus 0.0783 inches to the left</p>
+    <p>script applies 'cutoff rule' object style to the line.</p>
+    <p>With two frames selected, script inserts line script sets L of line = to the top of the highest frame to the bottom of the lowest frame script sets Y of line = to the top of the frame that is highest of the two frames script sets X of line = to between the two frames script applies 'cutoff rule' object style to the line. </p>
+    <p>With one or more frames and a line selected, script sets L of line = to the top of the highest frame to the bottom of the lowest frame script sets Y of line = to the top of the frame that is highest of the two frames script applies 'cutoff rule' object style to the line.</p>
+    <h2>The final implementation:</h2>
+    <p>All the job is done by the main script &#8212; <strong>Cutoff rule.jsx</strong> &#8212;  which is triggered by two other small scripts using the <strong>doScript()</strong> command  which sends the only argument: <strong>verticalRule</strong>. In <strong>Vertical.jsx</strong> script it is set to <strong>true</strong>,  and<strong> Horizontal.jsx</strong> to <strong>false</strong>. That&rsquo;s the one and only difference between them. All  three scripts should be located in the same folder.<br />
+    In this way, I don&rsquo;t have to write and maintain two or more almost identical  scripts. I just can run it from a number of small scripts sending the necessary  parameter. Quite an elegant solution in my opinion!</p>
+    <h3><strong>Before</strong></h3>
+    <p><img src="../../images/indesign/eric/cutoff_rule-1.png" width="747" height="691" alt=""/></p>
+    <h3><strong>After</strong></h3>
+<p><img src="../../images/indesign/eric/cutoff_rule-2.png" width="716" height="585" alt=""/></p>
+<p><a href="../../downloads/scripts_for_indesign/scripts_for_eric/small_scripts/cutoff_rule.zip">Click here</a> to download the script. </p>
+<p><a href="eric.html">Go back to the main <em>Scripts for L'Express de Toronto Inc.</em> page</a></p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

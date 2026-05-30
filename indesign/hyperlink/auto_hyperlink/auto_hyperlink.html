@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Auto hyperlink</title>
+<!-- #EndEditable -->
+<script src="../../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../../index.html">Home</a></li>
+<li><a href="../../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../../tips/all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../../tips/all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../../tips/all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../../tips/all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../../tips/all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../../tips/indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../../tips/all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../../snippets/array.html">Array</a></li>
+          <li><a href="../../../snippets/number.html">Number</a></li>
+          <li><a href="../../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../../../tips/indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../../scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../../all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../../custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../../enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../../scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>Auto hyperlink</h1>
+    <p>Script for InDesign: can be used both  as a regular script or run from the <a href="../../batch_process_scripts/batch_process_scripts.html">batch processor</a>.<br />
+    Written by <em>Kasyan</em> in InDesign 2022 for Windows. Though the original idea belongs to <em>Nobrainer</em>,  it's a brand   new script.<br />
+    This script reads data from a (plain)  text file and creates hyperlinks.</p>
+    <p>If used as a <strong>regular script</strong>, download the <a href="auto_hyperlink.zip">package</a>, unzip and install it into the <em>Scripts Panel</em> folder &#8212; both files: <em>AutoHyperlink.jsx</em> and <em>NamesAndURLs.txt</em> should be located in the same folder. If the <em>NamesAndURLs.txt</em> file is  missing, the script opens a dialog box asking to select a file with <em>names</em> and  <em>URLs</em>.</p>
+    <h2>Batch processing</h2>
+    <p>If used <strong>from the batch processor</strong>,  the script can be located anywhere, and the file listing names and URLs should  be selected in the <em>Arguments</em> section. Make sure to <strong>turn off the <em>Ignore  comments</em> check box</strong>, because URLs as JavaScript comments contain double forward  slashes. If you turn it on, the script will ignore the slashes and the text  that follows  so  hyperlinks will not be produced properly. The  txt-file can also be located anywhere, and have any name. Also, don&rsquo;t forget to turn on the <strong>Save  document on closing</strong> check box. (I  forget to do this from time to time).</p>
+<p><img src="autohyperlink.png" width="676" height="539" alt=""/></p>
+		<p>Edit <em>NamesAndURLs.txt</em> file in a plain text editor (that doesn't format text), e.g. Notepad. The included sample file contains five  lines, replace them with your stuff. Each line consists of two columns separated by a tab. The first line is a text that will be used for text search and if found, converted to a hyperlink, the second is the URL address for this link.</p>
+		<p>Example:<br />
+	Type &quot;Adobe&quot;, press the <strong>Tab</strong> key, type &quot;http://www.adobe.com/&quot;, press<strong> Enter/Return</strong> key to go to the next line, and so on. <em>Tabs</em> divide columns and <em>Returns</em> separate  records.</p>
+		<p><img src="autohyperlink-1.png" width="706" height="163" alt=""/></p>
+		<p>Alternatively, you can prepare the list  in Excel and save it as a tab-delimited text file.</p>
+		<p><img src="autohyperlink-4.png" width="687" height="121" alt=""/></p>
+		<p>The script searches for every text entrance you defined in the first column, converting it to a hyperlink with a destination taken from the second column, and applies the&quot;Hyperlink&quot; character style to it.</p>
+		<h3>Before</h3>
+	<p><img src="autohyperlink-2.png" width="800" height="810" alt=""/></p>
+		<h3>After</h3>
+		<p><img src="autohyperlink-3.png" width="800" height="810" alt=""/></p>
+		<p>The script applies to the hyperlinks the <em>Hyperlink  character style</em> which in turn applies the <em>swatch</em> of the same name and  <em>underline</em>. If the style and swatch don&rsquo;t exist in the document, they will be  created automatically. (The user can disable applying the style by setting the <em>hyperlinkCharStyleName</em> variable to <em>null</em>).</p>
+		<p>If you turn on <strong>logging</strong>, the script writes information about  processed documents, the number of hyperlinks created, and the time it took.</p>
+<p><img src="autohyperlink-8.png" width="425" height="307" alt=""/></p>
+    <hr/>
+    <h2>Variables</h2>
+<p>When writing this script, I strived to  provide the user with maximum flexibility. On the top of the script, I made a  section with parameters that can be safely changed to fine-tune the script. It  has two sub-sections: one relates to the <strong>hyperlink settings</strong> and another  to the <strong>find-change text options</strong>. . Each  variable has a comment explaining how to use it or offering possible options.</p>
+<p><img src="autohyperlink-5.png" width="800" height="424" alt=""/></p>
+<p>In the <strong>hyperlink settings,</strong> I  used InDesign&rsquo;s default settings.</p>
+<p>Below are illustrations explaining the relationship between  the abovementioned variables and settings in InDesign.</p>
+<h4>Hyperlink</h4>
+<p><img src="autohyperlink-6.png" width="569" height="453" alt=""/></p>
+<p><strong>hyperlinkVisible</strong> &#8212;  If true, the Hyperlink is visible<br />
+  <strong>hyperlinkBorderColor</strong> &#8212; The hyperlink border color. Array of 3 Reals (0 - 255) or <a href="https://www.indesignjs.de/extendscriptAPI/indesign-latest/#UIColors.html">UIColors</a> enumerator. For example: for red you can use either <em>UIColors.RED</em> or<em> [255, 0, 0]</em><br />
+  <strong>hyperlinkBorderStyle</strong> &#8212; HyperlinkAppearanceStyle.SOLID | HyperlinkAppearanceStyle.DASHED<br />
+  <strong>hyperlinkHighlight</strong> &#8212; HyperlinkAppearanceHighlight.INSET | HyperlinkAppearanceHighlight.INVERT | HyperlinkAppearanceHighlight.NONE | HyperlinkAppearanceHighlight.OUTLINE<br />
+  <strong>hyperlinkWidth</strong> &#8212; HyperlinkAppearanceWidth.MEDIUM | HyperlinkAppearanceWidth.THICK | HyperlinkAppearanceWidth.THIN<br />
+  <strong>sharedHyperlinkOf</strong> &#8212; set it to true to turn <em>'shared hyperlink'</em> off<br />
+  <strong>hyperlinkCharStyleName</strong> &#8212; the character style name for hyperlinks  &#8212; set to <strong>null</strong> to skip applying it<br />
+  <strong>hyperlinkSwatchName</strong> &#8212; the swatch name for hyperlinks<br />
+  <strong>hyperlinkSwatchColorSpace</strong> &#8212; One of the following: CMYK | RGB | HSB | LAB | MIXEDINK | RGB. Make sure to read the next comment if you're going to change it.<br />
+  <strong>hyperlinkSwatchColorValue</strong> &#8212; The ink values that create the color, specified as a percentage for each ink. Note: The number of values required and the range depends on the color space. For RGB, specify three values, with each value in the range 0 to 255; for CMYK, specify four values representing C, M, Y, and K, with each value in the range 0 to 100; for LAB, specify three values representing L (Range: 0 to 100), A (Range: -128 to 127), and B (Range: -128 to 127); for mixed ink, specify values for each ink in the ink list, with each value in the range 0 to 100.  For example: for red in RGB space you should use three elements<em> [255, 0, 0</em>], and for red in CMYK four &#8212; <em>[0, 100, 100, 0]</em></p>
+<hr/>
+<h4>Find/Change text options</h4>
+<p><img src="autohyperlink-7.png" width="478" height="505" alt=""/></p>
+<p>  <strong>caseSensitive</strong> &#8212; If true, finds strings whose use of case matches the find text string. If false, finds strings that match the find text string regardless of case.<br />
+  <strong>wholeWord</strong> &#8212; If true, finds only the complete find text string. If false, also finds strings that contain the find text string.<br />
+  <strong>includeHiddenLayers</strong> &#8212; If true, includes hidden layers in the find/change query.<br />
+  <strong>includeLockedLayersForFind</strong> &#8212; If true, includes locked layers in the find query.<br />
+  <strong>includeLockedStoriesForFind</strong> &#8212; If true, includes locked stories in the find query.<br />
+  <strong>includeMasterPages</strong> &#8212; If true, includes master (parent) pages in the find/change query.<br />
+  <strong>includeFootnotes</strong> &#8212; If true, includes footnotes in the find/change query.</p>
+<hr/>
+<p>Click <a href="auto_hyperlink.zip">here</a> to download the  current version of the  script and here are the <a href="auto_hyperlink_sample_docs.zip">test files</a> from the screenshots above. (The  previous &#8212; outdated &#8212; version is <a href="auto_hyperlink_cs3.html">here</a> just in case).</p>
+<p>This is an ongoing and <a href="../../../personal/crowd-funding_projects_idea.html">crowd-funding project</a>. Any feedback is welcome! I am open to your bug reports and suggestions.<br />
+  If you found this script useful and want me to develop it further, consider supporting me by donating via <em>PayPal</em> directly to my e-mail: <strong>askoldich</strong> [at] <strong>yahoo</strong> [dot] <strong>com</strong>. (Due to PayPal&rsquo;s restrictions for Ukraine, I can&rsquo;t have a <em>Donate</em> button on my site.)</p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

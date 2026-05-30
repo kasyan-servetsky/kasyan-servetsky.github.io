@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Hyphen</title>
+<!-- #EndEditable -->
+<script src="../../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../../index.html">Home</a></li>
+<li><a href="../../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../../snippets/array.html">Array</a></li>
+          <li><a href="../../../snippets/number.html">Number</a></li>
+          <li><a href="../../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../../../indesign/scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../../../indesign/all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../../../indesign/custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../../../indesign/enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../../../indesign/scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>Hyphen</h1>
+    <h3>Find hyphenated words</h3>
+    <p><em>Dave Saunders</em><br />
+    There may be some other legitimate line-ending characters   I'm overlooking that need to be added to the string. Or you might be   able to use grep to simplify that statement.    </p>
+    <pre>myStory = app.selection[0].parentStory; 
+myLines = myStory.lines.everyItem().contents; 
+for (var j = myLines.length - 1; j >= 0; j--) { 
+  if ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-/:".indexOf(myLines[j].slice(-1)) != -1) { 
+    alert("Line " + j + " of story ends in a soft hyphen.\n\n" + myLines[j]); 
+  } 
+}</pre>
+    <p><em>Dirk Becker</em></p>
+    <pre>story = app.activeDocument.stories[0]; 
+lines = story.lines; 
+
+for( i=0; i < lines.length-1; i++ ) { 
+	l = lines[i]; 
+	w = l.words[-1]; 
+	if( l.characters[-1].index==w.characters[0].index+w.characters.length ) 
+	continue; 
+	$.writeln("line "+i 
+	+" l.c.i "+l.characters[-1].index 
+	+" w.i "+w.index 
+	+" w.c.i "+w.characters[0].index 
+	+" w.c.l "+w.characters.length 
+	+" w.c.z "+(w.characters[0].index+w.characters.length) 
+	); 
+	$.writeln("line="+i+" word="+w.contents); 
+} </pre>
+    <p><em>Peter Kahrel</em><br />
+The three methods described here don't take into account hyphenated words like 'cross-eyed'. If you don't want to include these words when they break on the hyphen, you need to test whether the line ends in a hyphen. Something like</p>
+    <pre>l.words[-1].lines.length == 2 &amp;&amp; l.characters[-1].contents != '-';</pre>
+    <p>doesn't find 'cross-eyed', even when it breaks across two lines. It finds 'cross-linguistic' when 'linguistic' is broken, but not when the line breaks at 'cross-'. </p>
+    <p><em>jxswm</em><br />
+      this will get the hyphen    </p>
+    <pre>Line.prototype.getHyphen = function(){
+  try{if(this == null || this == undefined){return undefined;}}catch(e){return undefined;}
+  var nextThis = this.paragraphs[0].lines.nextItem(this);
+  if(nextThis != null){
+    if(this.words != null){
+      if(this.words.length > 0){
+        if(nextThis.words != null){
+          if(nextThis.words.length > 0){
+            var line0word_1 = this.words[-1];
+            var line1word0 = nextThis.words[0];
+            if(line0word_1.hyphenation && line1word0.hyphenation){
+              if(line0word_1 == line1word0){
+                return line0word_1;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  return undefined;
+} </pre>
+    <p><em>tobias wantzen, Shane Stanley</em></p>
+    <pre>set theList to {} 
+tell application "Adobe InDesign CS2" 
+	tell document 1 
+		set theWords to object reference of every word of every story where baseline of character 1 is not baseline of character -1 
+		repeat with aWord in theWords 
+			set firstLine to word -1 of (get line 1 of aWord)
+			set secondLine to word 1 of (get line 2 of aWord) 
+			set end of theList to firstLine & "-" & secondLine 
+		end repeat 
+	end tell 
+end tell 
+return theList</pre>
+    <p>In CS3 and later you find hyphenated words using the GREP expression<strong> &quot;\\w+-\\w+&quot;</strong><br />
+      To find out if they break across lines, check if the first and last characers are on the same line, for example by comparing their baseline values.</p>
+    <pre>if(myWord.lines.length==2){
+//it's hyphenated
+}</pre>
+    <p><a href="../../../downloads/tips/indesign_script/reportPageHyphens.zip">Report Page Hyphens</a> script</p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

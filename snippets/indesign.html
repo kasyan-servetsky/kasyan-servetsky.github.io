@@ -1,0 +1,354 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Functions for InDesign</title>
+<style type="text/css">
+.style1 {font-family: "Courier New", Courier, monospace}
+</style>
+<!-- #EndEditable -->
+<script src="../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../index.html">Home</a></li>
+<li><a href="../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../personal/about_me.html">A little about me</a></li>
+    <li><a href="../personal/my_resume.html">My resume</a></li>
+    <li><a href="../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../tips/all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../tips/all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../tips/all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../tips/all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../tips/all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../tips/indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../tips/all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="snippets.html">Useful snippets</a></li>
+          <li><a href="indesign.html">InDesign</a></li>
+          <li><a href="photoshop.html"> Photoshop</a></li>
+          <li><a href="array.html">Array</a></li>
+          <li><a href="number.html">Number</a></li>
+          <li><a href="date_time.html">Date</a></li>
+          <li><a href="file_folder.html">File and Folder</a></li>
+          <li><a href="../tips/indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../indesign/scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../indesign/all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../indesign/custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../indesign/enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../indesign/scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>Functions for InDesign</h1>
+    <p><strong>Miscellaneous useful functions and  titbits of code sorted by alphabetized categories.</strong></p>
+<h2>Cross reference</h2>
+    <p><a href="../downloads/snippets/2020/remove_x-ref_sources.zip">remove x-ref sources</a></p>
+    <h2>Backup</h2>
+    <p><a href="https://github.com/indiscripts/IdGoodies/blob/master/snip/DocBackupSave.jsx">Backup before save</a> by <em>Marc Autret </em></p>
+    <h2>Book</h2>
+    <p><a href="../downloads/snippets/functions/function_get_book.zip">Get book and pick book</a> functions by <em>Peter Kahrel</em> <br />
+There is a property <span class="style1">app.activeBook</span>, but it doesn't work very well. Use these functions for that. They display a list of books from which you pick one.</p>
+    <h2><a href="dps_article.html">DPS article</a></h2>
+    <h2>Excel</h2>
+    <p><a href="get_data_from_excel.html">&nbsp;Get data directly from Excel</a></p>
+    <h2><a href="font.html">Font</a></h2>
+    <h2>Geometry: bounds, width, height, etc.</h2>
+    <h4>Get bounds</h4>
+    <pre>function myGetBounds(myDocument, myPage){
+	var myPageWidth = myDocument.documentPreferences.pageWidth;
+	var myPageHeight = myDocument.documentPreferences.pageHeight
+	if(myPage.side == PageSideOptions.leftHand){
+		var myX2 = myPage.marginPreferences.left;
+		var myX1 = myPage.marginPreferences.right;
+	}
+	else{
+		var myX1 = myPage.marginPreferences.left;
+		var myX2 = myPage.marginPreferences.right;
+	}
+	var myY1 = myPage.marginPreferences.top;
+	var myX2 = myPageWidth - myX2;
+	var myY2 = myPageHeight - myPage.marginPreferences.bottom;
+	return [myY1, myX1, myY2, myX2];
+}</pre>
+    <h4>Get height by<em> Dave Saunders</em></h4>
+    <p>This function  returns the height if the object in question has one.</p>
+    <pre>function getHeight(theObj) { 
+  if (theObj.hasOwnProperty(&quot;geometricBounds&quot;)) { 
+    var theBounds = theObj.geometricBounds; 
+    return(theBounds[2] - theBounds[0]); 
+  } else if (theObj.hasOwnProperty(&quot;height&quot;)) { 
+    return theObj.height; 
+  } else { 
+    throw &quot;Object doesn't have a height.&quot; 
+  } 
+}</pre>
+    <h4><a href="get_width_and_height_function.html">Get width and height function</a></h4>
+    <h4>Get width and height of page item</h4>
+    <pre>function WidthAndHeight(myRectangle) {
+   var gb = myRectangle.geometricBounds;
+   var myWidth = Math.floor((gb[3]-gb[1])*100)/100;
+   var myHeight = Math.floor((gb[2]-gb[0])*100)/100;
+   return [myWidth,myHeight];
+}</pre>
+
+    <h3><a href="sort_objects_by_geometric_bounds.html">Sort objects by geometric bounds function</a></h3>
+    <h2>Glyph</h2>
+    <p><a href="https://github.com/indiscripts/IdGoodies/blob/master/snip/FontGlyphCount.jsx">FontGlyphCount</a> by <em>Marc Autret</em> &#8212; Fast Glyph Counter</p>
+    <h2>Group</h2>
+    <p><a href="https://github.com/indiscripts/IdGoodies/blob/master/snip/GroupAddItems.jsx">Group Add Items</a> by <em>Marc Autret </em> &#8212; Easily add PageItems to a Group</p>
+    <h2>Image</h2>
+    <h4>Get orientation</h4>
+    <pre>function GetOrientation(img) {
+	var result = null;
+	var gb = img.geometricBounds;
+	var width = Math.floor((gb[3]-gb[1])*100)/100;
+	var height = Math.floor((gb[2]-gb[0])*100)/100;
+
+	if (height > width) {  
+		result = "P";
+	}
+	else if (width > height) {
+		result = "L";
+	}
+	
+	return result;
+}</pre>
+    <h2><a href="increment.html">Increment</a></h2>
+    <h2><a href="label.html">Label</a></h2>
+    <h2>Layer</h2>
+    <h4>Make layer</h4>
+    <pre>var layer1 = MakeLayer(&quot;Text&quot;);
+var layer2 = MakeLayer(&quot;Graphics&quot;, [0, 0, 255]);
+var layer3 = MakeLayer(&quot;Quotes&quot;, UIColors.CUTE_TEAL);
+
+function MakeLayer(name, layerColor) {
+	var layer = doc.layers.item(name);
+	if (!layer.isValid) {
+		layer = doc.layers.add({name: name});
+		if (layerColor != undefined) layer.layerColor = layerColor;
+	}
+	return layer;
+}</pre>
+    <h2><a href="link.html">Link</a></h2>
+    <h2><a href="log.html">Log</a></h2>
+    <h2><a href="../snippets/menu_item.html">Menu item</a></h2>
+    <h2>Override</h2>
+    <p><a href="override all pageItems function.html">Override all pageItems function</a></p>
+    <h2><a href="page_functions.html">Page</a></h2>
+    <h2><a href="report.html">Report</a></h2>
+    <h2>Script</h2>
+    <h4>Get active script</h4>
+    <pre>function GetActiveScript() {<br />    try{<br />        return app.activeScript;<br />    }<br />    catch(err){<br />        return new File(err.fileName);<br />    }<br />}</pre>
+    <h2>Selection</h2>
+    <h4>Get selected story</h4>
+    <pre>function GetSelectedStory() {
+	if (app.selection.length != 1) return null;
+	var sel = app.selection[0];
+	
+	if (sel.parent instanceof Character) { // anchored box is selected -- get the main text flow
+		selectedStory = sel.parent.parentStory;
+	}
+	else if (sel.hasOwnProperty(&quot;baseline&quot;) || sel.constructor.name == &quot;TextFrame&quot;) {
+		selectedStory = sel.parentStory;
+		
+		if (sel.constructor.name != &quot;InsertionPoint&quot;) {
+			selectedText = sel;
+		}
+	}
+}</pre>
+    <h4>Get selected items that have the geometricBounds
+ property
+</h4>
+<pre>function GetSelection() {
+	var selection = app.selection,
+	selectedItems = [];
+	
+	for (var i = 0; i < selection.length; i++) {
+		if (selection[i].hasOwnProperty("geometricBounds")) {
+			selectedItems.push(selection[i]);
+		}
+	}
+
+	return selectedItems;
+}</pre>
+    <h2>Sorting</h2>
+    <p><a href="https://github.com/indiscripts/IdGoodies/blob/master/snip/TextSortParagraphs.jsx">Text Sort Paragraphs</a> by <em>Marc Autret</em> &#8212; Quick paragraph sorter</p>
+    <p><a href="../tips/js/sorting_two_arrays_according_to_one/sorting_two_arrays_according_to_one.html">Sorting two arrays according to one</a> (parallel arrays)</p>
+    <p><a href="sort_file_names_function.html">Sort file names function for Mac</a></p>
+    <p><a href="sort_objects_by_geometric_bounds.html">Sort objects by geometric bounds</a></p>
+    <h2>Special characters</h2>
+    <p><a href="visualize_special_chars/visualize_special_chars.html">Visualize special characters</a></p>
+    <h2>Style</h2>
+    <p><a href="check_required_function/check_required_function.html">Check required function</a></p>
+    <h4>Make object style</h4>
+    <pre>var sel = app.selection[0];
+
+var objStyle = MakeObjStyle(&quot;Pop-up&quot;, {
+	enableParagraphStyle: true,
+	appliedParagraphStyle: &quot;Pop-up&quot;,
+	fillColor: doc.swatches.item(&quot;Black&quot;), 
+	fillTint: 15, 
+	strokeWeight: 0, 
+	enableTextFrameGeneralOptions: true,
+	textFramePreferences: {insetSpacing: [1, 1, 1, 1]},
+	objectEffectsEnablingSettings: {enableDropShadow: true},
+	transparencySettings: {dropShadowSettings: {distance: 1.0, opacity: 70, size: 1, mode: ShadowMode.DROP}}
+	});
+
+sel.appliedObjectStyle = objStyle;
+
+
+function MakeObjStyle(name, properties) {
+	var objStyle = doc.objectStyles.item(name);
+	if (!objStyle.isValid) {
+		objStyle = doc.objectStyles.add({name: name});
+		if (typeof properties !== &quot;undefined&quot;) objStyle.properties = properties;
+	}
+	return objStyle;
+}</pre>
+    <h4>Make paragraph style</h4>
+    <pre>var doc = app.activeDocument;
+MakeParStyle(&quot;Pop-up&quot;, {appliedFont: &quot;Arial&quot;, fontStyle: &quot;Regular&quot;});
+
+function MakeParStyle(name, properties) {
+	var parStyle = doc.paragraphStyles.item(name);
+	if (!parStyle.isValid) {
+		parStyle = doc.paragraphStyles.add({name: name});
+		if (properties != undefined) parStyle.properties = properties;
+	}
+	return parStyle;
+}</pre>
+    <h4>Make character style</h4>
+    <pre>var doc = app.activeDocument;
+var style = MakeCharStyle(&quot;Pop-up&quot;, {appliedFont: &quot;Arial&quot;, fontStyle: &quot;Regular&quot;});
+
+function MakeCharStyle(name, properties) {
+	var charStyle = doc.characterStyles.item(name);
+	if (!charStyle.isValid) {
+		charStyle = doc.characterStyles.add({name: name});
+		if (properties != undefined) charStyle.properties = properties;
+	}
+	return charStyle;
+}</pre>
+    <h4>Get style by name</h4>
+    <pre>function GetStyleByName(name, namesList, styles) {
+	var result = null;
+	
+	for (var i = 0; i &lt; namesList.length; i++) {
+		if (namesList[i] == name) {
+			result = styles[i];
+		}
+	}
+
+	return result;
+}</pre>
+    <h2><a href="swatch.html">Swatch (Color)</a></h2>
+    <h2>Tables of Contents</h2>
+    <p><a href="https://github.com/indiscripts/IdGoodies/commit/c05dda6ddb91ada4d24c43173ea5bd6ca903bd6c">Batch-update Tables of Contents</a> by <em>Marc Autret</em></p>
+    <h2>Text</h2>
+    <h4>Get overset text</h4>
+    <pre>var myDoc = app.activeDocument;
+var a = myDoc.stories[0].tables[0].cells[0, 0];
+// var a = myDoc.stories[0];
+b = getOversetText(a);
+
+
+function getOversetText(textFlow) { 
+	if (!textFlow.overflows) return null;
+	var start = textFlow.characters[0];
+	if (textFlow instanceof Cell) {
+		if (textFlow.characters.length > 0) {
+			start = textFlow.texts[0].characters[textFlow.contents.length];
+		} 
+	} else {   
+		if (Number(String(app.version.split(".")[0])) > 4) {
+					var myTFs = textFlow.textContainers;   
+				} else {
+					var myTFs = textFlow.textFrames;
+				}
+			for (var j = myTFs.length - 1; j >= 0; j--) {    
+				if (myTFs[j].characters.length > 0) {       
+					start = textFlow.characters[myTFs[j].characters[-1].index + 1];
+					break;     
+				}
+			}
+		} 
+	return textFlow.texts.itemByRange(start, textFlow.texts[0].characters[-1]);
+}</pre>
+ 
+    <h4>Get Previous paragraph by <em>Harbs</em></h4>
+    <pre>function getPreviousPara(text){<br />  return text.parent.characters.item(text.paragraphs[0].index-1).paragraphs[0];<br />}<br /> <br />alert(getPreviousPara(app.selection[0]).contents);</pre>
+    <h2>Uncategorized</h2>
+    <p><a href="get_application_version_function.html"></a><a href="uncategorized.html">Uncategorized</a></p>
+    <p><a href="override all pageItems function.html">Override all pageItems function</a> </p>
+    <p><a href="../downloads/snippets/functions/redefineScalingAs100 function.zip">Redefine scaling as 100 function</a> by <em>Marc Autret</em></p>
+    
+        <p><a href="../downloads/snippets/functions/function_removeFloppySymbols.zip">Remove floppy symbols</a><br />
+    Removes floppy drive symbols from imported paragraph and character styles, keeping properties intact.</p>
+        <h2><a href="../tips/indesign_script/all/unit_value.html">Unit value        </a></h2>
+        <h2>User</h2>
+        <h3>Get user name</h3>
+        <pre>function getUserName() {
+    if (File.fs == "Windows") {
+        return $.getenv("USERNAME");
+    }
+    else {
+        return $.getenv("USER");
+    }
+}</pre>
+        <h2>Version</h2>
+        <p><a href="get_application_version_function.html">Get application version function</a></p>
+        <h2><a href="../tips/xml/xml.html">XML</a></h2>
+        <h2>Zoom</h2>
+        <pre>function ShowIt(theObj) {
+	if (arguments.length > 0) {
+		// Select object, turn to page and center it in the window
+		app.select(theObj, SelectionOptions.replaceWith);
+	}
+
+	// Note: if no object is passed and there is no selection the current page
+	// will be centered in the window at whatever zoom is being used
+	var zoom = app.activeWindow.zoomPercentage;
+	app.activeWindow.zoom(ZoomOptions.showPasteboard);
+	app.activeWindow.zoomPercentage = zoom;
+}</pre>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

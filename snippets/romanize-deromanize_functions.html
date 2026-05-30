@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Romanize-deromanize functions</title>
+<!-- #EndEditable -->
+<script src="../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../index.html">Home</a></li>
+<li><a href="../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../personal/about_me.html">A little about me</a></li>
+    <li><a href="../personal/my_resume.html">My resume</a></li>
+    <li><a href="../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../tips/all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../tips/all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../tips/all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../tips/all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../tips/all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../tips/indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../tips/all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="snippets.html">Useful snippets</a></li>
+          <li><a href="indesign.html">InDesign</a></li>
+          <li><a href="photoshop.html"> Photoshop</a></li>
+          <li><a href="array.html">Array</a></li>
+          <li><a href="number.html">Number</a></li>
+          <li><a href="date_time.html">Date</a></li>
+          <li><a href="file_folder.html">File and Folder</a></li>
+          <li><a href="../tips/indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../indesign/scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../indesign/all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../indesign/custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../indesign/enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../indesign/scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1> Romanize-deromanize functions</h1>
+   <h3><a href="http://blog.stevenlevithan.com/archives/javascript-roman-numeral-converter" rel="bookmark" title="Permanent Link to JavaScript Roman Numeral Converter">Roman Numeral Converter</a></h3>
+
+    <pre>
+function Romanize(num) {
+  var lookup = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1},
+      roman = '',
+      i;
+  for ( i in lookup ) {
+    while ( num >= lookup[i] ) {
+      roman += i;
+      num -= lookup[i];
+    }
+  }
+  return roman;
+}</pre>
+    <pre>var romanized = romanize (1862);
+var deromanized = deromanize ("MCMLXXVIII");
+
+function romanize (num) {
+	if (!+num)
+		return false;
+	var	digits = String(+num).split(""),
+		key = ["","C","CC","CCC","CD","D","DC","DCC","DCCC","CM",
+		       "","X","XX","XXX","XL","L","LX","LXX","LXXX","XC",
+		       "","I","II","III","IV","V","VI","VII","VIII","IX"],
+		roman = "",
+		i = 3;
+	while (i--)
+		roman = (key[+digits.pop() + (i * 10)] || "") + roman;
+	return Array(+digits.join("") + 1).join("M") + roman;
+}
+
+function deromanize (str) {
+	var	str = str.toUpperCase(),
+		validator = /^M*(?:D?C{0,3}|C[MD])(?:L?X{0,3}|X[CL])(?:V?I{0,3}|I[XV])$/,
+		token = /[MDLV]|C[MD]?|X[CL]?|I[XV]?/g,
+		key = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1},
+		num = 0, m;
+	if (!(str && validator.test(str)))
+		return false;
+	while (m = token.exec(str))
+		num += key[m[0]];
+	return num;
+}</pre>
+    <h3>Arabic to roman by <em>Kenshi Muto</em></h3>
+    <pre>function arabic2roman(s)
+{
+  var n = Number(s);
+  var v = "";
+  var i = ["", "i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix"];
+  var x = ["", "x", "xx", "xxx", "xl", "l", "lx", "lxx", "lxxx", "xc"];
+  var c = ["", "c", "cc", "ccc", "cd", "d", "dc", "dcc", "dccc", "cm"];
+  var m = ["", "m", "mm", "mmm", "mmmm"];
+  if (n >= 1 && n <= 4999) {
+    v += m[Math.floor(n / 1000)];
+    n %= 1000;
+    v += c[Math.floor(n / 100)];
+    n %= 100;
+    v += x[Math.floor(n / 10)];
+    n %= 10;
+    v+= i[n];
+  } 
+  return v;
+}</pre>
+    <h3>Roman to arabic by <em>Kenshi Muto</em></h3>
+    <pre>function roman2arabic(s)
+{
+  var i = 0;
+  var v = 0;
+  var n, c;
+  s = s.toLowerCase();
+  if (s.charAt(i) == "m") {
+    for (n = 0; s.charAt(i) == "m"; n++) i++;
+    if (n > 4) return 0;
+    v += n * 1000;
+  }
+  if (s.charAt(i) == "d" || s.charAt(i) == "c") {
+    if ((c = s.charAt(i)) == "d") {
+      i++;
+      v += 500;
+    }
+    if (c == "c" && s.charAt(i + 1) == "m") {
+      i += 2;
+      v += 900;
+    } else if (c == "c" && s.charAt(i + 1) == "d") {
+      i += 2;
+      v += 400;
+    } else {
+      for (n = 0; s.charAt(i) == "c"; n++) i++;
+      if (n > 4) return 0;
+      v += n * 100;
+    }
+  }
+  if (s.charAt(i) == "l" || s.charAt(i) == "x") {
+    if ((c = s.charAt(i)) == "l") {
+      i++;
+      v += 50;
+    }
+    if (c == "x" && s.charAt(i + 1) == "c") {
+      i += 2;
+      v += 90;
+    } else if (c == "x" && s.charAt(i + 1) == "l") {
+      i += 2;
+      v += 40;
+    } else {
+      for (n = 0; s.charAt(i) == "x"; n++) i++;
+      if (n > 4) return 0;
+      v += n * 10;
+    }
+  }
+  if (s.charAt(i) == "v" || s.charAt(i) == "i") {
+    if ((c = s.charAt(i)) == "v") {
+      i++;
+      v += 5;
+    }
+    if (c == "i" && s.charAt(i + 1) == "x") {
+      i += 2;
+      v += 9;
+    } else if (c == "i" && s.charAt(i + 1) == "v") {
+      i += 2;
+      v += 4;
+    } else {
+      for (n = 0; s.charAt(i) == "i"; n++) i++;
+      if (n > 4) return 0;
+      v += n;
+    }
+  }
+  return (s.charAt(i) == "" && v >= 1 && v <= 4999) ? v : 0;
+}</pre>
+    <p><br>
+    <a href="../indesign/2024/roman2arabic/roman2arabic.html">Roman to arabic</a> script based on the function above</p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

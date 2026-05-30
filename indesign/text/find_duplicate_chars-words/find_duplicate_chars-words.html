@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Find duplicate characters/words at the beginning/end of lines</title>
+<!-- #EndEditable -->
+<script src="../../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../../index.html">Home</a></li>
+<li><a href="../../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../../tips/all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../../tips/all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../../tips/all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../../tips/all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../../tips/all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../../tips/indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../../tips/all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../../snippets/array.html">Array</a></li>
+          <li><a href="../../../snippets/number.html">Number</a></li>
+          <li><a href="../../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../../../tips/indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../../scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../../all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../../custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../../enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../../scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>Find duplicate characters/words at the beginning/end of lines</h1>
+    <p><strong>This script is still  an ongoing and <a href="../../../personal/crowd-funding_projects_idea.html">crowd-funding project</a></strong><a href="../../../personal/crowd-funding_projects_idea.html"></a>: written and  tested in InDesign 2024 on Windows 10 by <em>Kasyan</em>. <strong>The  first beta version &#8212; 1.1.</strong></p>
+<p>Visually, it resembles the <a href="../find_text_in_location/find_text_in_location.html">Find Text in Location</a> script and  works similarly but it&nbsp;is a different script written almost from scratch.  It imitates InDesign&rsquo;s find-change dialog box: you start the script and using  its panel (a non-modal dialog box) you can find identical  characters or words (duplicates) at  the beginning/end of lines which is impossible to do  in InDesign.</p>
+<p><img src="find_duplicate_chars-words_db.png" width="579" height="579" alt=""/></p>
+<h2>How it works:</h2>
+<p>After running the script, the panel pops up. Select a story  or some text in the document, the necessary settings in the dialog box and click  the <strong>Find</strong> button. The script scans the lines. With a large text, it may  take a&nbsp;long so a progress bar appears to indicate advancement. For example, on my <a href="../../../personal/my_computers.html"> old home computer</a> with Windows  10 installed, it takes almost 5 minutes to scan a test document: 10 pages x 4  columns filled with 12 pt text (51,000 characters, 2,160 lines). In my opinion, performance is the major problem at the moment, but I see a way to improve it and I will get down to solving it if time permits and the project is supported financially.</p>
+<p><img src="find_duplicate_chars-words_pb.png" width="690" height="172" alt=""/></p>
+<p>Then, if duplicates are found, the script selects the first  one, and the button changes to <strong>Find Next</strong>. Note: it selects the last instance of two or  more dups in a row. The <strong>Info</strong> panel displays the&nbsp;current dupe number out  of the total number found. If you hover the cursor over the area, the <strong>list of  dupes</strong> is displayed. The script <strong>ignores spaces</strong> &#8212; there can be one or more as you  can see on the screenshot above &#8212; and <strong>paragraph/forced line breaks (hard/soft returns) at the end of  a line</strong>.</p>
+<h2>Settings</h2>
+<p>In the topmost dropdown list, you  select the <strong>location on the line</strong>:</p>
+<ul>
+  <li><strong>Beginning</strong></li>
+  <li><strong>End</strong></li>
+</ul>
+<p>In the second list, you select <strong>what to find</strong>:</p>
+<ul>
+  <li><strong>Word</strong></li>
+  <li><strong>Character</strong></li>
+</ul>
+<p>The third  list &mdash; <strong>What should be processed</strong> &mdash; defines the scope of your search:</p>
+<ul>
+  <li><strong>Selected story</strong></li>
+  <li><strong>Selected text</strong></li>
+</ul>
+<p>Before hitting the <strong>Find</strong> button you should indicate which  text/story to process by selecting some text or a text frame. For <strong>Story</strong>,  you can also place the cursor into the text. If the text frame has linked frames, all of them &mdash; the whole story &mdash; will be processed.</p>
+<p>You can set the zoom level for displaying the found  text  in the <strong>Zoom</strong> field. Left to it,  there&rsquo;s the <strong>Reset</strong> button &#8212; <img src="find_duplicate_chars-words_icon_reset.png" width="20" height="20" alt=""/> &#8212; which acts as if you close and rerun the script. Use it when you switch to, or open another document, start  searching again, and probably in some other cases: more testing is needed.</p>
+<p>The<strong> Ignore case</strong> check box<br />
+  As the name suggests, if it is on, the script makes searches ignoring the case, like so:</p>
+<p><img src="find_duplicate_chars-words_ignore_case.png" width="460" height="215" alt=""/></p>
+<p>The <strong>Ignore punctuation</strong> check box<br />
+  If it is on, the script ignores punctuation marks at the <strong>beginning</strong> and <strong>end</strong> of lines. Note, here on the screenshot, the comma, on the second line, was  ignored and the word was selected before it.</p>
+<p><img src="find_duplicate_chars-words_ignore_punct.png" width="477" height="215" alt=""/></p>
+<p>Currently, by <strong>punctuation marks</strong> I mean the following:</p>
+<p>At the <strong>beginning</strong><br /> 
+<strong>&iquest; &iexcl;</strong> (inverted question &amp; exclamation marks &mdash; maybe useful in Spanish &mdash; but I don&rsquo;t know this language)<br /> <strong>&bull;</strong> bullet<br /> <strong>(</strong> &mdash; opening parenthesis<br /> <strong>[</strong> &mdash; opening square bracket<br /> </p>
+<p>At the <strong>end</strong><br /> <strong>.</strong> &mdash; dot<br /> <strong>,</strong> &mdash; comma<br /> <strong>?</strong> &mdash; question mark<br /> <strong>!</strong> &mdash; exclamation mark<br /> <strong>:</strong> &mdash; colon<br /> <strong>;</strong> &mdash; semicolon<br /> <strong>-</strong> &mdash; dash<br /> <strong>)</strong> &mdash; closing parenthesis<br /> <strong>]</strong> &mdash; closing square bracket<br /> </p>
+<p>They are defined in the <em>gPuncMarksBegPatt</em> and <em>gPuncMarksEndPatt</em> variables (regular expressions) at the top of the script. Feel free to add more, if a need arises.</p>
+<p>The <strong>Info</strong> panel<br />
+displays current information/instructions regarding the script operation</p>
+<p><img src="find_duplicate_chars-words_info.png" width="177" height="99" alt=""/></p>
+<p>The <strong>Close</strong> button, as the name  suggests, closes the dialog box and quits the script.<br />
+The <strong>About</strong> button leads you to this  page. Make sure to hit it from time to time to check if a new version is  available.</p>
+
+<h2>Technical details</h2>
+<p>The script ignores <strong>special characters</strong> that have the following Unicode values:</p>
+<ul>
+<li>FEFF (65279) &mdash; hyperlink anchor, index marker</li>
+<li>FFFC (65532) &mdash; anchored object</li>
+</ul>
+<p><img src="find_duplicate_chars-words_spchrs.png" width="360" height="200" alt=""/></p>
+<p>I haven&rsquo;t tested it with other ones: maybe I will add some more in the future.</p>
+<p>The <strong>script displays dups even when they are split between  columns/pages</strong>. For example, here one appears at the bottom of the verso and  another on top of the recto:<br />
+  I think it makes sense because the text may reflow so they  would move somewhere to the middle of the text.</p>
+<p><img src="find_duplicate_chars-words_split.png" width="752" height="486" alt=""/></p>
+      
+<p>If the &lsquo;words at the end of the&nbsp;line&rsquo; is chosen, the script skips duplicates where the last instance is&nbsp;<strong>automatically hyphenated</strong>. For example, this is found:</p>
+<p><img src="find_duplicate_chars-words_hph-f.png" width="614" height="324" alt=""/></p>
+<p>But this isn&rsquo;t:</p>
+<p><img src="find_duplicate_chars-words_hph-nf.png" width="625" height="339" alt=""/></p>
+      
+<p>All the settings you make in the panel and its  location on the screen are stored on closing.<br />
+  You can change its size &mdash; <em>width</em> (the first value) and <em>height</em> (the second value) &mdash; by editing this line in the script:<br />
+  <code>gInfo.preferredSize = [110, 60];</code></p>
+      
+<h2>Found issues</h2>
+<p>If the &lsquo;words at the beginning of the line&rsquo; is chosen, the script selects an automatically hyphenated word since, indeed, the word appears both at the end of the previous and the beginning of the next line.</p>
+<p><img src="issue-1.png" width="613" height="176" alt=""/></p>
+<p>In a future version, it makes sense to check if such a word is hyphenated as I did at the end of the&nbsp;line, but now my time is up and I don&rsquo;t want to break accidentally what already works.</p>
+      
+<hr/>
+<p>This is the very first version and I see more space for  improvement so I left some debugging stuff in the code which should not  interfere with performance when the script is used in a regular way (as  downloaded): with <em>debug</em> and <em>log</em> variables set to <em>false</em>.</p>
+<p><span id="docs-internal-guid-f91a61a9-7fff-c95d-5e3e-12d1c2c1fd29">If you found this script useful and want me to develop it further</span>, consider supporting me by donating via <em>PayPal</em> directly to my e-mail: <strong>askoldich</strong> [at] <strong>yahoo</strong> [dot] <strong>com</strong>. (Due to PayPal's restrictions for Ukraine, I can't have a <em>Donate</em> button on my site.)</p>
+<hr />
+<p><a href="find_duplicate_chars-words.zip">Click here</a> to download the script. </p>
+<p>See also <a href="../find_text_in_location/find_text_in_location.html">Find Text in Location</a></p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

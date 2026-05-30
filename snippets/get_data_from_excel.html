@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Get data directly from Excel</title>
+<!-- #EndEditable -->
+<script src="../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../index.html">Home</a></li>
+<li><a href="../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../personal/about_me.html">A little about me</a></li>
+    <li><a href="../personal/my_resume.html">My resume</a></li>
+    <li><a href="../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../tips/all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../tips/all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../tips/all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../tips/all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../tips/all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../tips/indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../tips/all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="snippets.html">Useful snippets</a></li>
+          <li><a href="indesign.html">InDesign</a></li>
+          <li><a href="photoshop.html"> Photoshop</a></li>
+          <li><a href="array.html">Array</a></li>
+          <li><a href="number.html">Number</a></li>
+          <li><a href="date_time.html">Date</a></li>
+          <li><a href="file_folder.html">File and Folder</a></li>
+          <li><a href="../tips/indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../indesign/scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../indesign/all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../indesign/custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../indesign/enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../indesign/scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>Get data directly from Excel</h1>
+    <p>The function was  written and tested in InDesign CC 2017 and Excel 2016 (Version 16) on Windows 10. Theoretically it should work in all versions from CS (3) to CC 2017 (12).</p>
+    <h2>Function for Windows</h2>
+    <p> Quite often I have to write scripts that  use data originated from an Excel worksheet. I (and most scripters) believed  that the easiest approach was to use a CSV-file exported from Excel. However,  this takes an extra step for the user so I decided to write a function that  opens an Excel book in background, reads the data from its  spreadsheet  and returns array.</p>
+    <p>The function has three  arguments:</p>
+    <ol>
+      <li><strong>excelFilePath</strong> &#8212; The platform-specific full path name for  the xlsx-file &#8212; <strong>fsName</strong>. If you pass it as a string, make sure to double the  backslashes in the path like in the line below:<br />
+        var excelFilePath = &quot;D:\\My Test Folder\\SampleBook.xlsx&quot;;</li>
+      <li><strong>splitChar</strong> &#8212; [Optional] the character to use for splitting  the columns in the spreadsheed: e.g. semicolon (;) or tab (\t)<br />
+        If it isn't set, semicolon will be used by default.</li>
+      <li><strong>sheetNumber</strong> &#8212; [Optional]  the worksheet number: either <strong>String</strong> or  <strong>Number</strong>. If it isn't set, the first worksheet will be used by default      </li>
+    </ol>
+    <h3>The data in Excel</h3>
+    <p><img src="../images/snippets/get_data_from_excel/get_data_from_excel_1.png" width="417" height="208" alt=""/></p>
+    <h3>The same data transfered to InDesign as Array</h3>
+    <p><img src="../images/snippets/get_data_from_excel/get_data_from_excel_2.png" width="418" height="575" alt=""/></p>
+    <p>It&rsquo;s possible to reference a spreadsheet by name instead of a number by using a name enclosed with escaped double quotes (inch marks) like so:</p>
+    <p><img src="../images/snippets/get_data_from_excel/get_data_from_excel_4.png" width="784" height="60" alt=""/></p>
+    <p><a href="../downloads/snippets/functions/get_data_from_excel/get_data_from_excel_pc.zip">Click here</a> to download the function.</p>
+    <p><a href="../indesign/batch_process_scripts/change_fonts.html">Here&rsquo;s</a> a practical example: a script that  uses this function.</p>
+    <p>
+	I posted all two versions I developed so far. Recommend you to use
+	the last one: currently 2.0.
+</p>
+<p>
+	<strong>Version 2</strong>
+allows you to get the data from all	<strong>spreadsheets in a workbook</strong>.
+Also, it gets the <strong>name of the spreadsheet</strong>.</p>
+<p>
+	The VBS-code has a try-catch block so you can set a maximum number of
+	spreads to try to open, and once an error occurs (the spread with the
+	number is unavailable) the script breaks the loop. I tried to make a more
+	elegant solution, but it didn't work for some reason: it worked perfectly
+	as a stand alone visual basic script run in VBA, but failed when triggered
+	from JavaScript via <strong>doScript</strong> method. (Anyway, Adobe didn't
+	promise that such a perverted script would work.) So I've found the
+	woraround: not so elegant, but it works!</p>
+<p>
+  <a href="how_to_call_getdatafromexcelpc_function.html">Here's</a> a sample code illustrating how to use it.</p>
+<p><strong>Important note:</strong> if you get the <em><a href="../tips/all/cannot_create_activex_component.html">&quot;Cannot create ActiveX  Component</a></em><a href="../tips/all/cannot_create_activex_component.html">&quot; error message</a>, run InDesign as administrator to recreate the <em>&quot;Resources for  Visual Basic.tlb&quot;</em> file.</p>
+<p>See also <a href="get_sheets_number.html">Get sheets number function</a></p>
+<hr/>
+<h2>Function for Mac</h2>
+<p><strong>Important note:</strong> <a href="../tips/indesign_script/all/not_authorized_to_send_apple_events_error.html">why AppleScript run from JavaScript doesn't work anymore</a>?</p>
+    <p>It works in the same way as the  abovementioned counterpart for Windows and was  tested in InDesign CC 2015 and Excel 2011 (Version 11) on Mac OS X 10.10 (Yoshemite).</p>
+    <p><img src="../images/snippets/get_data_from_excel/get_data_from_excel_3.png" width="475" height="691" alt=""/></p>
+    <p>The function has four  arguments:</p>
+    <ol>
+      <li><strong>excelFilePath</strong> &#8212; The Mac-specific &#8211; colon separated &#8211; full path name for the xlsx-file  like in the line below:<br />
+        var excelFilePath = &quot;Test:My Folder:SampleBook.xlsx&quot;;</li>
+      <li><strong>splitCharRows</strong> &#8212; [Optional] the character to use for splitting the rows in the spreadsheed. If it isn't set, pipe (|) will be used by default  </li>
+      <li><strong>splitCharColumn</strong> &#8212; [Optional] the character to use for splitting the columns in the spreadsheed: e.g. semicolon (;) or tab (\t)
+        If it isn't set, semicolon will be used by default    </li>
+      <li><strong>sheetNumber</strong> &#8212; [Optional] the worksheet number: either string or number. If it isn't set, the first worksheet will be used by default
+        The function returns an array in case of success; null -- if something went wrong: e.g. called on PC, too old version of InDesign.<br />
+      </li>
+    </ol>
+    <p><a href="../downloads/snippets/functions/get_data_from_excel/get_data_from_excel_mac.zip">Here's</a> the function for Mac.</p>
+    <p>And here is another <a href="example_of_getting_a_few_spreads_on_mac.html">example of getting a few spreadsheets on Mac</a>.</p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

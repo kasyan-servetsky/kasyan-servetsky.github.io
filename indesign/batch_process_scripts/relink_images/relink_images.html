@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Relink images</title>
+<!-- #EndEditable -->
+<script src="../../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../../index.html">Home</a></li>
+<li><a href="../../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../../tips/all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../../tips/all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../../tips/all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../../tips/all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../../tips/all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../../tips/indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../../tips/all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../../snippets/array.html">Array</a></li>
+          <li><a href="../../../snippets/number.html">Number</a></li>
+          <li><a href="../../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../../../tips/indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../../scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../../all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../../custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../../enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../../scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>Relink images</h1>
+    <p>Script for the <a href="../batch_process_scripts.html">batch processor</a> <strong>version 4.4 or  later</strong>. Alternatively, you can run it directly from InDesign as a regular script.</p>
+<p><img src="relink_images-5.png" width="763" height="539" alt=""/></p>
+    <p>This script batch-relinks images according  to the list defined either in the <strong>arguments file</strong>&#8230;</p>
+    <p><img src="relink_images-3.png" width="365" height="131" alt=""/></p>
+    <p> &#8230;or in the <strong>array</strong> defined in the script  itself.</p>
+    <p><img src="relink_images-4.png" width="409" height="117" alt=""/></p>
+    <h3>Before</h3>
+<p><img src="relink_images-1.png" width="703" height="343" alt=""/></p>
+<h3>After</h3>
+<p><img src="relink_images-2.png" width="709" height="338" alt=""/></p>
+<p>With the <strong>all  open documents</strong> option selected, make sure to use <strong>g.doc</strong> variable to send the  current document from the batch processor to this script otherwise, it will not  work correctly. With all other options, you can alternatively use <em>app.activeDocument </em>or <em>app.documents[0]</em>.</p>
+<p><img src="relink_images-6.png" width="804" height="289" alt=""/></p>
+<p><strong>Code explanation:</strong> if the script is called from the batch processor and the<strong> g.doc </strong>variable is sent from it, the <strong>doc</strong> variable is set to <strong>g.doc</strong>. If something goes wrong, though it&rsquo;s hardly possible, an error message is written to the log: "<em>ERROR: 'g.doc == null' - Failed to get the document to process."</em> <br />
+  If the script is run as a regular one &mdash; from the <em>Scripts panel</em> or <em>ESTK</em> &mdash; the <strong>doc</strong> variable is set to<em> the current document</em>.<br />
+  If the <a href="../arguments_file.html">arguments file</a> isn&rsquo;t provided, or the script is run directly from InDesign, the hardcoded <strong>list</strong> array is used instead. The former is a better approach since you can edit the list in the text file and don&rsquo;t have to mess up with the script itself.</p>
+<p><a href="relink_images.zip">Click here</a> to download the script (plus the sample arguments file), and <a href="relink_images_test_files.zip">here</a> are the test files I used for debugging (see the screenshots above).</p>
+<hr/>
+<h2 id="relink_by_path">Relink images by path</h2>
+<p>Here is a minor variation of the script: <a href="relink_images_by_path.zip">Relink images by path</a>. Instead of the new image&rsquo;s name, you should indicate the exact path.<br />
+  Note: if you are using an arguments file, use the <strong>'pipe'</strong> character to separate elements in the array (aka columns) because file and  folder names may contain commas, semicolons, etc. but not pipes. Leave the  default <strong>\n</strong> (Line feed) for separating lines (aka rows). A sample arguments  file is included with the script.</p>
+<p><img src="relink_images-7.png" width="743" height="221" alt=""/></p>
+<hr/>
+<p><span id="docs-internal-guid-f91a61a9-7fff-c95d-5e3e-12d1c2c1fd29">If you found my scripts useful and want me to develop more free scripts</span>, consider supporting me by donating via <em>PayPal</em> directly to my e-mail: <strong>askoldich</strong> [at] <strong>yahoo</strong> [dot] <strong>com</strong>. (Due to PayPal&rsquo;s restrictions for Ukraine, I can&rsquo;t have a <em>Donate</em> button on my site.)</p>
+      <hr/>
+<p>Back to the main <a href="../batch_process_scripts.html">Batch processor</a> page</p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

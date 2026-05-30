@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Fonts seem to install, but don't</title>
+<!-- #EndEditable -->
+<script src="../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../index.html">Home</a></li>
+<li><a href="../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../snippets/array.html">Array</a></li>
+          <li><a href="../../snippets/number.html">Number</a></li>
+          <li><a href="../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../../indesign/scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../../indesign/all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../../indesign/custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../../indesign/enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../../indesign/scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+<h1>Fonts seem to install, but don't&#8230;</h1>
+<p>Posted by <em>CreeDeaux</em>. The source is <a href="https://community.adobe.com/t5/indesign/fonts-seem-to-install-but-don-t/m-p/3925595#M12684">here</a>.</p>
+<p>This is an old topic but it comes up on google searches a lot, and I can see the whole issue (and fix) is not completely explained. So I thought I'd sign in and try to do that. Sorry, this reply is really long, but I think it clears up pretty much ALL windows font-related issues like this. Problems like:</p>
+<p>&bull; the font is in the folder, but not available in word or adobe Indesign or whatever</p>
+<p>&bull; the font says it's already installed, but it's not</p>
+<p>&bull; you say "yes, replace the installed font" but still don't see it showing up anywhere</p>
+<p>&bull; you have a ton of duplicated files in the windows font folder, ending in _0, or _1, etc.</p>
+<p>&bull; windows shows some members of a font family but not all of them</p>
+<p>&bull; the installed version of the font is different from some alternate version you're trying to install.</p>
+<p>What I figured out is this - when you install a new font, windows copies the font file to the windows font folder, and <strong>at the same time updates a list of available fonts in the windows registry</strong>.</p>
+<p>This list of fonts is important. If a font exists in the font folder, but the registry list didn't get updated... then you won't see the font in your applications.</p>
+<p>If the font doesn't exist in the windows font folder but exists in the registry list, windows thinks it's installed. Even if it's not working anywhere, even if it's been moved or deleted from the windows font folder, windows considers it "installed" because it's on this list.</p>
+<p>And if you try to install a font that isn't working, but it's on that list... you get that annoying popup error "this font is already installed, do you wish to replace it?"</p>
+<p>If the list has the font, but the list has incorrect info about the font's file name... like the list thinks it's called "font1.ttf" but the actual font file is called "font2.otf"... you can't use the font.</p>
+<p>Also, the windows font folder gives you a weird specialized view of your files, which looks different from other folders. The actual filenames are replaced with the font name, so instead of seeing "<em>times_0.ttf</em>" you see "<em>Times New Roman Regular</em>". The listed fonts can act like "folders" that you can double click to see the full font family within. This 'special' font folder view is controlled by this hidden registry list. So let's say gotham-bold.ttf is in the windows font folder, but it's not in the registry list... gotham bold will NOT show in that special view of the font folder either. It's actually there in <em>C:\windows\fonts\</em> , but you can't see it. And if you right-click <em>gotham-bold.ttf</em> (from any folder) and choose install, you'll get that annoying error about it already being installed. Worse, even if you say "yes, replace it"... you still might not see the font appear in the folder.</p>
+<p>That's how you end up with a ton of duplicate font files with names like font.ttf, font_0.ttf, font_1.ttf, whatever_0.otf, etc. If you are prompted to reinstall the font, and choose yes... windows won't overwrite the file, just create a renamed copy. So you might end up with 2-5 copies of the same font in your windows font folder, and these separately installed files can get listed twice in the registry too.</p>
+<p>Anyway at this point someone's probably thinking "that's great but how do I fix it?"... here's the fix, if you want to install a specific font but keep having trouble getting it to show up and work</p>
+<p>1. Open up an explorer window (e.g. by pressing the windows key + E) and at the top, click in the address bar and paste this: <strong>\\localhost\c$\Windows\Fonts</strong> ...this gives you a true, normal view of the windows font folder, where you see a complete list of the files within your windows font folder, with their actual filenames (e.g. "<em>times.ttf</em>"). Every variation is listed by its filename too, so times italic will be in there as maybe "<em>times_it.ttf</em>" and not combined with (or hidden by) other font names. You don't see the convenient previews and full font names, but you DO see a true, accurate list of your files without the registry list screwing things up by hiding some of them.</p>
+<p>2. Click any font inside the folder, ctrl+A, ctrl+C to copy every font to the clipboard. Then make a new folder (let's call it fontbackup) and ctrl+V to paste all those font files into a backup folder. Now close the backup folder. That's important because you don't want to get the two folders confused.</p>
+<p>3. Keep the original font folder open. Run regedit. If you're unsure about how to do that, I'll let you google that and see all the scary warnings about how you might break the computer if you're not careful. Within regedit, navigate to this "folder": <strong>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Fonts</strong></p>
+<p><em>**note</em>, that's not microsoft\windows, it's microsoft\windows <em><strong>NT</strong></em>\ ....the folder (actually called a key) should definitely be there.</p>
+<p>Once you click it, you should see a bunch of fonts listed on the right. Look for the font that's giving you trouble, click that item in the list (the "list" is actually a bunch of separate registry items called "values", one value per line) and tap delete on the keyboard. Be careful doing this, make sure it's the font you want to fix, not some other font with a similar name. It'll ask you to confirm deletion, say yes. Note it might be in the registry multiple times, so delete multiple values if necessary.</p>
+<p>4. Go back to your font folder (make sure it's the "true view" of the font folder, as described in step 1). Find the file associated with your problem font. Note that sometimes the filenames are a little cryptic, like "<em>Book Antiqua Bold Italic</em>" might be called "<em>ANTQUABI.TTF</em>". You can always double click a file to see a preview and confirm it's the font you're looking for. You want to remove that font from the windows font folder completely, including any copies. So if you're removing Cooper Black, be sure to get cooperbk.ttf, cooperbk.otf, cooperbk_0.ttf, cooperbk_1.ttf, and so on. By "remove" I mean delete, which should be safe if you made a backup in step 2. If you're the cautious type though, you could also ctrl+X to cut a font from the folder, and then ctrl+V to paste it somewhere else, like your desktop.</p>
+<p>5. Now that the font is removed in the registry and from your windows font folder, you can install it "fresh" in a way that won't give errors or problems. Find the font file and install it in the usual way (I like right-click --&gt; install). If you see a warning about "do you want to overwrite the existing font" that means you screwed up somewhere in step 3 or 4 and didn't remove the font from either the registry list or the windows font folder. If you see no warning at all though, everything probably worked fine and you can start using the font immediately in Word, Photoshop, etc.</p>
+<p>6. But even so, reboot just to be safe.</p>
+<p>Optional but recommended - you can search for and delete a bunch of duplicates. This may slightly help with performance but mostly it's just to keep things tidy. The downside is that if you're careless or unlucky you might delete a windows system font. To be honest, though I've actually done that, and it wasn't impossible to recover from. Still, it's a pain, so be careful.</p>
+<p>What I did was open an explorer window, go to <em>\\localhost\c$\Windows\Fonts</em>, and typed this into the search box at the top right: <strong>*_0.ttf</strong> <em>(find all files ending in _0.ttf)</em> ...after finding all those results, I just highlighted all of them and deleted them (actually, I moved them to a backup folder to be safe). Then I repeated the process by doing additional searches... one for <strong>*_1.ttf</strong>, another for <strong>*_2.ttf</strong>, and so on.</p>
+<p>You should also do the searches for opentype font files, so *_0.otf, *_1.otf, etc. And you may have duplicated postscript fonts too, which have filenames like *_0.pfb.</p>
+
+<p>Stick to just those filetypes, other font filetypes are likely to be system fonts. Like some critical windows fonts are just called whatever.fon. So don't delete any FON files.</p>
+<p>Once the duplicate files are gone from the font folder, you also need to nuke them from that registry list. So you just go to HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Fonts and skim over it for any filenames (the data on the right) that end in _0, _1, _2, etc. ...then you delete those items from the list. Again, don't delete any system fonts like arial, times new roman, MS-anything, or any file named something.FON.</p>
+<p>At this point, the only fonts that should exist in the windows font folders are originals (i.e. you should see whatever.ttf, but not whatever_2.ttf) and the registry should only have entries for those originals (so the registry list might have "Whatever Font" on the left, and on the right, it 'points' to the file "whatever.ttf". If it incorrectly points to whatever_2.ttf, you can just double click that item, and retype the name properly in the data box that pops up). If a font is missing from the registry list, you just need to right-click and install it, then refresh that list. But don't do so until you're sure it's NOT in the windows font folder.</p>
+<p>This has solved all of my font problems so far and vastly reduced clutter. Hope this helps others.</p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

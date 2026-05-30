@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Example of a dynamic dialog box - select folder</title>
+<style type="text/css">
+.style1 {font-family: "Courier New", Courier, monospace}
+</style>
+<!-- #EndEditable -->
+<script src="../../../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../../../index.html">Home</a></li>
+<li><a href="../../../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../../all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../../all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../../all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../../all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../../all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../../indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../../all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../../../snippets/array.html">Array</a></li>
+          <li><a href="../../../../snippets/number.html">Number</a></li>
+          <li><a href="../../../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../../../../indesign/scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../../../../indesign/all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../../../../indesign/custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../../../../indesign/enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../../../../indesign/scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>Example of a dynamic &#8220;select folder&#8221; dialog box</h1>
+    <p>Often in my scripting practice I use a a dynamic dialog box for selecting a folder. The term &#8220;dynamic&#8221; means that it changes its size depending on the length of the path being selected.</p>
+    <strong>A short path</strong>
+    <p><img src="../../../../images/all/select_folder/short_path.png" alt="short path" width="206" height="174" /></p>
+    <p><strong>A longer path</strong></p>
+    <p><img src="../../../../images/all/select_folder/longer_path.png" alt="longer path" width="345" height="174" /></p>
+    <p><strong>A very long path</strong></p>
+    <p><img src="../../../../images/all/select_folder/long_path.png" alt="long path" width="337" height="174" /></p>
+    <p>If a path is very long, it is trimmed to the last three levels; all the higher levels are replaced with ellipsis. However, you can see the full path in a help tip if you move the cursor to the trims folder path. (see the screen-shot above)</p>
+    <p>The script &#8220;remembers&#8221; the last selected folder by saving its path using<strong> insertLabel()</strong> method on closing the window. At sart, the script tries to restore the path using the <strong>extractLabel()</strong> method.</p>
+    <p>If the script is run for the first time or the folder doesn&acute;t exist any more, it displays &#8220;No folder has been selected&#8221; message</p>
+    <p><img src="../../../../images/all/select_folder/no_folder_selected.png" alt="no folder" width="224" height="174" /></p>
+    <p>Note that I use a single custom object &#8212; <span class="style1">gSet</span> &#8212; to store multiple setting. It is much more convenient than storing each variable in a separate string. While inserting to label, the object is serialized by<strong> toSource()</strong> method and while extracting the label, reconstructed by<strong> eval()</strong> method.</p>
+    <p>Below is the code:</p>
+    <pre>
+const gScriptName = &quot;Dynamic dialog box&quot;;
+const gScriptVersion = &quot;1.0&quot;;
+var gSet, gGraphicsFolder;
+
+Main() ;
+
+function Main() {
+	if (app.extractLabel(&quot;Kas_&quot; + gScriptName + &quot;_&quot; + gScriptVersion) != &quot;&quot;) {
+		gSet = eval(app.extractLabel(&quot;Kas_&quot; + gScriptName + &quot;_&quot; + gScriptVersion));
+		gGraphicsFolder = new Folder(gSet.graphicsFolder);
+	}
+	else {
+		gSet = {}
+	}
+
+	CreateDialog();
+}
+
+function CreateDialog() {
+	var win = new Window(&quot;dialog&quot;, gScriptName + &quot; - &quot; + gScriptVersion);
+
+	var folderPanel = win.add(&quot;panel&quot;, undefined, &quot;Graphics folder:&quot;);
+	folderPanel.alignment = &quot;fill&quot;;
+	var stTxt = folderPanel.add(&quot;statictext&quot;);
+	if (gGraphicsFolder == undefined || !gGraphicsFolder.exists) {
+		stTxt.text = &quot;No folder has been selected&quot;;
+	}
+	else {
+		stTxt.text = TrimPath(gGraphicsFolder.fsName);
+		stTxt.helpTip = gGraphicsFolder.fsName;
+	}
+	var button = folderPanel.add(&quot;button&quot;, undefined, &quot;Select...&quot;, {name:&quot;set&quot;});
+	button.onClick = SelectFolder;
+	
+	function SelectFolder() {
+		gGraphicsFolder = Folder.selectDialog(&quot;Pick a folder with graphics&quot;);
+		if (gGraphicsFolder != null) {
+			folderPanel.remove(stTxt);
+			folderPanel.remove(button);
+			stTxt = folderPanel.add(&quot;statictext&quot;);
+			stTxt.text = TrimPath(gGraphicsFolder.fsName);
+			stTxt.helpTip = gGraphicsFolder.fsName;
+			button = folderPanel.add(&quot;button&quot;, undefined, &quot;Select...&quot;, {name:&quot;set&quot;});
+			button.onClick = SelectFolder;
+			win.layout.layout(true);
+		}
+	}
+	
+	var okCancelGroup = win.add(&quot;group&quot;);
+	okCancelGroup.orientation = &quot;row&quot;;
+	var okBtn = okCancelGroup.add(&quot;button&quot;, undefined, &quot;Ok&quot;, {name:&quot;ok&quot;});
+	var cancelBtn = okCancelGroup.add(&quot;button&quot;, undefined, &quot;Cancel&quot;, {name:&quot;cancel&quot;});
+
+	var dialogResult = win.show();
+	
+	if (dialogResult== 1) {
+		if (stTxt.text == &quot;No folder has been selected&quot; || gGraphicsFolder == undefined) ErrorExit(&quot;No graphics folder has been selected.&quot;, true);
+		if (!gGraphicsFolder.exists)  ErrorExit(&quot;Folder '&quot; + gGraphicsFolder.displayName + &quot;' doesn't exist.&quot;, true);
+			gSet.graphicsFolder = gGraphicsFolder.fsName;
+			app.insertLabel(&quot;Kas_&quot; + gScriptName + &quot;_&quot; + gScriptVersion, gSet.toSource());
+	}
+	else {
+		exit();
+	}
+}
+
+function TrimPath(path) {
+	var theFile = new File(path);
+	if (File.fs == &quot;Macintosh&quot;) {
+		var trimPath = &quot;...&quot; + theFile.fsName.split(&quot;/&quot;).splice(-3).join(&quot;/&quot;);
+	}
+	else if (File.fs == &quot;Windows&quot; ) {
+		var trimPath = ((theFile.fsName.split(&quot;\\&quot;).length &gt; 3) ? &quot;...\\&quot; : &quot;&quot;) + theFile.fsName.split(&quot;\\&quot;).splice(-3).join(&quot;\\&quot;);
+	}
+	return trimPath;
+}</pre>
+    <p>Here is another -- a more recent and much more better -- example: it has two 'select a folder' panels, but it's easy to add any number of them. Now the <strong>SelectFolder</strong> function is global and expects two arguments: <strong>button</strong> and <strong>prompt</strong> so we can call it from any button and use a specific prompt: for example, &quot;Pick a folder with images/documents/etc.&quot;.</p>
+    <p><img src="../../../../images/all/select_folder/better_dialog_1.png" width="226" height="288" alt=""/></p>
+    <p><img src="../../../../images/all/select_folder/better_dialog_2.png" width="433" height="288" alt=""/></p>
+    <pre>
+var scriptName = &quot;Dynamic dialog box 2.0&quot;,
+set,
+docsFolder = imgsFolder = null;
+
+CreateDialog();
+
+function CreateDialog() {
+	GetDialogSettings();
+	var w = new Window("dialog", scriptName);
+	// Documents folder
+	w.p = w.add("panel", undefined, "Documents folder:");
+	w.p.alignment = "fill";
+	w.p.st = w.p.add("statictext");
+	if (docsFolder == null || !docsFolder.exists) { 
+		w.p.st.text = "No folder has been selected";
+	}
+	else {
+		w.p.st.text = TrimPath(docsFolder.absoluteURI);
+		w.p.st.helpTip = docsFolder.fsName;
+	}
+	w.p.bt = w.p.add("button", undefined, "Select...");
+	w.p.bt.onClick = function() {
+		docsFolder = SelectFolder(this, "Pick a folder with documents.");
+	}
+	// Images folder
+	w.p1 = w.add("panel", undefined, "Images folder:");
+	w.p1.alignment = "fill";
+	w.p1.st = w.p1.add("statictext");
+	if (imgsFolder == null || !imgsFolder.exists) { 
+		w.p1.st.text = "No folder has been selected";
+	}
+	else {
+		w.p1.st.text = TrimPath(imgsFolder.absoluteURI);
+		w.p1.st.helpTip = imgsFolder.fsName;
+	}
+	w.p1.bt = w.p1.add("button", undefined, "Select...");
+	w.p1.bt.onClick = function() {
+		imgsFolder = SelectFolder(this, "Pick a folder with images.");
+	}
+	// Buttons
+	w.g = w.add("group");
+	w.g.orientation = "row";   
+	w.g.alignment = "center";
+	w.g.ok = w.g.add("button", undefined, "OK", {name: "ok" });
+	w.g.ok.onClick = function() { // Use 'children[0]' because the panel is dynamically rebuilt on selecting a new folder so the original references become invalid
+		if ((w.p.children[0].text == "No folder has been selected" || docsFolder == null) && (w.p1.children[0].text == "No folder has been selected" || imgsFolder == null)) {
+			alert("Neither 'Documents' nor 'Images' folders have been selected.", scriptName, true);
+			return;			
+		}
+		else if (w.p.children[0].text == "No folder has been selected" || docsFolder == null) {
+			alert("No 'Documents' folder has been selected.", scriptName, true);
+			return;			
+		}
+		else if (w.p1.children[0].text == "No folder has been selected" || imgsFolder == null) {
+			alert("No 'Images' folder has been selected.", scriptName, true);
+			return;			
+		}
+		else if (docsFolder.absoluteURI == imgsFolder.absoluteURI) {
+			alert("The 'Documents' and 'Images' folders should not be the same.", scriptName, true);
+			return;				
+		}
+		else { // everythin's OK
+			w.close(1);
+		}
+	}
+
+	w.g.cancel = w.g.add("button", undefined, "Cancel", {name: "cancel"});
+	
+	var showDialog = w.show();
+	
+	if (showDialog == 1) {
+		with (set) {	
+			docsFolderPath = (docsFolder != null) ? docsFolder.absoluteURI : "";
+			imgsFolderPath = (imgsFolder != null) ? imgsFolder.absoluteURI : "";
+		}
+		
+		app.insertLabel("Kas_" + scriptName, set.toSource());
+		Main();
+	}	
+}
+
+function SelectFolder(button, prompt) {
+	var folder = Folder.selectDialog(prompt);
+	
+	if (folder != null) {
+		var panel = button.parent;
+		var window = panel.parent;
+		var children = panel.children;
+		var staticText = children[0];
+		var button = button;
+		panel.remove(staticText);
+		panel.remove(button);
+		staticText = panel.add("statictext", undefined, TrimPath(folder.absoluteURI));
+		staticText.helpTip = folder.absoluteURI;
+		button = panel.add("button", undefined, "Select...");
+		button.onClick = function() {
+			SelectFolder(this);
+		}
+		window.layout.layout(true);
+		return folder;		
+	}
+}
+
+function TrimPath(path) {
+	var theFile = new File(path);
+	if (File.fs == "Macintosh") {
+		var trimPath = "..." + theFile.fsName.split("/").splice(-3).join("/");
+	}
+	else if (File.fs == "Windows" ) {
+		var trimPath = ((theFile.fsName.split("/").length > 3) ? ".../" : "") + theFile.fsName.split("/").splice(-3).join("/");
+	}
+	return trimPath;
+}
+
+function GetDialogSettings() {
+	set = eval(app.extractLabel("Kas_" + scriptName));
+	if (set == undefined) {
+		set = {docsFolderPath: "", imgsFolderPath: ""};
+	}
+
+	docsFolder = new Folder(set.docsFolderPath);
+	if (!docsFolder.exists) {
+		docsFolder = null;
+	}
+
+	imgsFolder = new Folder(set.imgsFolderPath);
+	if (!imgsFolder.exists) {
+		imgsFolder = null;
+	}
+
+	return set;
+}	
+
+function Main() {
+	$.writeln("Called Main");
+}
+</pre>
+    <p>When the user clicks the <em>OK</em> button, the script checks if both folders are selected and if they are not the same folder. If the conditions are not met, it gives a warning and returns back to the dialog box so the user has either to meet all the three conditions, or click the <em>Cancel</em> button.</p>
+    <p><img src="../../../../images/all/select_folder/better_dialog_3.png" width="427" height="165" alt=""/></p>
+    <p>Here is a <a href="../../../../downloads/tips/indesign_script/dynamic_dialog_box.zip">link</a> for downloading the both sample scripts.</p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

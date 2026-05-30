@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataroot xmlns:od="urn:schemas-microsoft-com:officedata" generated="2009-03-04T16:04:47">
+<my_emploees>
+<Efirstname>James</Efirstname>
+<Elastname>James</Elastname>
+<Etitle>President</Etitle>
+<Ephone>847-555-1110</Ephone>
+<Eemail>jjames@cookingwithxml.com</Eemail>
+<Ephoto>jjames.jpg</Ephoto>
+</my_emploees>
+<my_emploees>
+<Efirstname>Bill</Efirstname>
+<Elastname>Williams</Elastname>
+<Etitle>Vice-president</Etitle>
+<Ephone>847-555-1111</Ephone>
+<Eemail>bwilliams@cookingwithxml.com</Eemail>
+<Ephoto>bwilliams.jpg</Ephoto>
+</my_emploees>
+<my_emploees>
+<Efirstname>Martin</Efirstname>
+<Elastname>Marty</Elastname>
+<Etitle>CEO</Etitle>
+<Ephone>847-555-1112</Ephone>
+<Eemail>mmarty@cookingwithxml.com</Eemail>
+<Ephoto>mmarty.jpg</Ephoto>
+</my_emploees>
+<my_emploees>
+<Efirstname>Steve</Efirstname>
+<Elastname>Stephens</Elastname>
+<Etitle>Line Supervisor</Etitle>
+<Ephone>847-555-1113</Ephone>
+<Eemail>sstephens@cookingwithxml.com</Eemail>
+<Ephoto>sstephens.jpg</Ephoto>
+</my_emploees>
+<my_emploees>
+<Efirstname>Lillie</Efirstname>
+<Elastname>Lilac</Elastname>
+<Etitle>CFO</Etitle>
+<Ephone>847-555-1114</Ephone>
+<Eemail>llilac@cookingwithxml.com</Eemail>
+<Ephoto>llilac.jpg</Ephoto>
+</my_emploees>
+<my_emploees>
+<Efirstname>Mildred</Efirstname>
+<Elastname>Millie</Elastname>
+<Etitle>Operations Manager</Etitle>
+<Ephone>847-555-1115</Ephone>
+<Eemail>mmillie@cookingwithxml.com</Eemail>
+<Ephoto>mmillie.jpg</Ephoto>
+</my_emploees>
+</dataroot>

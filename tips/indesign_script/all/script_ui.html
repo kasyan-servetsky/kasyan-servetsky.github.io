@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Script UI</title>
+<!-- #EndEditable -->
+<script src="../../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../../index.html">Home</a></li>
+<li><a href="../../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../../snippets/array.html">Array</a></li>
+          <li><a href="../../../snippets/number.html">Number</a></li>
+          <li><a href="../../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../../../indesign/scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../../../indesign/all/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../../../indesign/custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../../../indesign/enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../../../indesign/scripts_written_by_other_people.html">Scripts written by other people</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>Script UI</h1>
+    <p>It is possible to do some crazy stuff with ScriptUI. It can be a bit verbose to code, but, it's pretty solid.</p>
+    <h3><a href="script_ui_bugs.html">Script UI bugs</a></h3>
+    <h3><a href="scriptui_palette.html">Script UI palette</a></h3>
+    <p><strong>Important note:</strong> unfortunately, after CS6 it was no longer  possible to change fonts or type size in ScriptUI panels and dialogs.</p>
+<h3>ScriptUI EditText with custom border (Win &amp; Mac) by <em>Marc Autret</em></h3>
+    <p>On Mac OS, the <strong>EditText</strong> widget is subject to a specific focus ring wich automatically allocates 2 or 3 additional <em>transparent </em>pixels   all around the field! Hence, if the control is nested within a   background-colored group, that color is revealed through this additional   space.<br />
+     From that point you need to apply two fixes:<br />
+    (1)   create a white subgroup between the outer group and the EditText to   make sure that the revealed background fits the EditText background<br />
+    (2) make the EditText borderless to inhibits its own stroke.</p>
+<p><img border="0" src="../../../images/tips/indesign_script/custom_border.png" width="178" height="151" /></p>
+    
+<pre>// ScriptUI EditText with custom border (Win & Mac)
+// ========================== 
+ 
+var STROKE_COLOR = [1,0,0],    // red
+    STROKE_WEIGHT = 1,        // in pixels
+    FILL_COLOR = [1,1,1],    // white
+    INSET_SPACE = 3;        // in pixels -- Mac OS focus ring needs it >=3
+ 
+var u,
+    w = new Window('dialog'),
+    // ---
+    gBorder = w.add('panel').add('group'),
+    gSpacer = gBorder.add('group'),
+    e = gSpacer.add('edittext', u, u, {borderless:true}),
+    // ---
+    bCancel = w.add('button', u, "Cancel"),
+    // ---
+    gx = w.graphics,
+    SOLID_BRUSH = gx.BrushType.SOLID_COLOR;
+ 
+// Edit field settings
+// ---
+e.characters = 12;
+gBorder.margins = STROKE_WEIGHT;
+gBorder.graphics.backgroundColor = gx.newBrush(SOLID_BRUSH, STROKE_COLOR );
+gSpacer.margins = INSET_SPACE;
+gSpacer.graphics.backgroundColor  = e.graphics.backgroundColor = gx.newBrush(SOLID_BRUSH, FILL_COLOR );
+ 
+w.show();</pre>
+<h3>Underlined StaticText by <em>Marc Autret</em></h3>
+<p><img border="0" src="/images/tips/indesign_script/underlined_static_text.png" width="142" height="151" /></p>
+<pre>var u,
+    w = new Window('dialog', "Underline Me!"),
+    s1 = w.add('statictext', u, "Not Underlined"),
+    s2 = w.add('statictext', u, "Underlined"),
+    b = w.add('button', u, "OK"),
+    // ---
+    wgx = w.graphics,
+    linePen = wgx.newPen(wgx.PenType.SOLID_COLOR,[0,0,0], 1);
+ 
+s2.preferredSize[1] += 3;
+ 
+s2.onDraw = function(/*DrawState*/)
+{
+    var gx = this.graphics,
+        sz = this.preferredSize,
+        y = sz[1]-1;
+ 
+    gx.drawOSControl();
+    gx.newPath();
+    gx.moveTo(0, y);
+    gx.lineTo(sz[0],y);
+    gx.strokePath(linePen);
+};
+ 
+w.show();</pre>
+<h3><a href="http://forums.adobe.com/message/4385112#4385112">Custom Radial Buttons</a> by <em>Brett Gonterman</em></h3>
+<h3><img src="../../../images/tips/indesign_script/custom_radial_buttons.png" width="316" height="368" /></h3>
+<p>Click <a href="../../../downloads/tips/indesign_script/custom_radial_buttons.zip">here</a> to download.</p>
+<strong><a href="http://www.indiscripts.com/post/2012/07/indesign-scripting-forum-roundup-3#hd3">ScriptUI Tips and Tricks</a></strong>
+by <em>Marc Autret</em>
+<h3><a href="../../../downloads/tips/indesign_script/testScroller.zip">testScroller.js</a> by <em>Marc Autret</em> &#8212; Demonstrates ScriptUI Scrollbar usage</h3>
+<p><img src="../../../images/tips/indesign_script/testScroller.png" width="458" height="255" /></p>
+<hr>
+<h3>Scrollable panel</h3>
+<p>TIP (by <em>Peter Kahrel</em>): A good alternative to a scrollable  panel is a multi-column list. Scrolling is handles automatically. Much easier to code.</p>
+<h3><a href="http://indisnip.wordpress.com/2010/07/28/scrollable-alert/">Scrollable alert</a> by <em>Marijan Tompa</em> </h3>
+<p><img src="../../../images/tips/indesign_script/scrollable_alert_by_tomaxxi.png" width="596" height="181" /></p>
+<p><a href="../code_examples/script_ui/scrollable_panel_group_in_scriptui/scrollable_panel_group_in_scriptui.html">Scrollable panel group in scriptUI</a></p>
+<p><a href="http://forums.adobe.com/message/2899148#2899148">Scrolling panel</a> by <em>Bob Stucky</em></p>
+<p><a href="../code_examples/script_ui/interactive_scrollable_panel_by_lf_corullon/interactive_scrollable_panel_by_lf_corullon.html">Interactive scrollable panel</a> by <em>Luis Felipe Corull&oacute;n</em></p>
+<hr>
+<p><a href="http://www.indiscripts.com/post/2012/07/indesign-scripting-forum-roundup-3#hd3sb1">Understanding myWidget.onDraw</a></p>
+<p><a href="http://www.indiscripts.com/post/2012/07/indesign-scripting-forum-roundup-3#hd3sb2">Updating Image widgets</a></p>
+<p><a href="http://www.indiscripts.com/post/2012/07/indesign-scripting-forum-roundup-3#hd3sb3">Apply a custom border to an EditText</a></p>
+<h3><a href="http://forums.adobe.com/people/Marc Autret">Spin progress bar</a> by <em>Marc Autret</em></h3>
+<p><img src="../../../images/tips/indesign_script/spin_progress_bar_by_marc_autret.jsx.png" width="315" height="104" /></p>
+<a href="http://www.indiscripts.com/post/2012/05/scriptui-fonts-facts">ScriptUI Fonts Facts</a>
+<p><a href="http://forums.adobe.com/message/5286695#5286695">ScriptUI Custom Events</a> &#8212; <strong>new UIEvent(&#8230;)</strong> works fine in InDesign (CS4/CS5/CS6) <strong>provided that you let the <em>view</em> parameter undefined</strong>.</p>
+<h3><a href="../../../downloads/tips/indesign_script/see_your_swatches_in_script_ui.zip">See Your Swatches in ScriptUI</a> by <em>Marc Autret</em></h3>
+<p><img src="../../../images/tips/indesign_script/png_string_generator.jpg" width="251" height="324" alt=""/></p>
+    <p>This function fails on spot colors that are imported with placed files &mdash; e.g. <em>eps</em> or <em>ai</em> &mdash; when the script attempts to change the space to RGB on the following line:</p>
+    <pre>color.space = RGB;</pre>
+      <p> The original discussion is <a href="https://community.adobe.com/t5/indesign-discussions/get-swatches-in-dropdown-list-with-color-preview/m-p/3171049#M210224">here</a>.</p>
+<p><a href="../code_examples/script_ui/select_folder_dialog_box.html">Example of a dynamic &#8220;folder&#8221; dialog box</a></p>
+<p><a href="../../../snippets/png_creator_function/png_creator_function.html">PNG creator function</a> by <em>Jongware</em></p>
+<p><a href="../code_examples/script_ui/script_ui _graphics_capabilities/script_ui _graphics_capabilities.html">ScriptUIGraphics capabilities example</a> by <em>Marc Autret</em></p>
+<p><a href="https://scriptui.joonas.me/">Online ScriptUI dialog builder</a> by <a href="https://github.com/joonaspaakko"><em>Joonas Pääkkö</em></a> &#8212; the offline version is <a href="https://github.com/joonaspaakko/ScriptUI-Dialog-Builder-Joonas">here</a>.</p>
+<p>&nbsp;</p>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>
