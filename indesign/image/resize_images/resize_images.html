@@ -64,31 +64,113 @@
   <!-- InstanceBeginEditable name="Main" -->
   <div class="main">
     <h1>Resize images</h1>
-    <p><img src="../../../images/all/under-construction-sign-for-web.gif" width="400" height="319" alt=""/></p>
-    <p>Script for InDesign and Photoshop &#8212; version 4.0. <br />
-      Written and tested in versions 2024 and 2026 on Windows.<br />
-    I could'n test it on my Mac because <a href="https://extendscript.docsforadobe.dev/interapplication-communication/bridgetalk-class/">BridgeTalk</a> &#8212; the feature used to comunicate between Adobe apps  &#8212; doesn't work there.</p>
-    <p>This script esizes all  raster images in the current InDesign document and, if possible, sets them to 100%.</p>
-    <p>Currently supported  image formats:</p>
+    <p>Script for InDesign and Photoshop &#8212; version 4.4. Written by <em>Kasyan</em>.<br />
+      Written and tested in InDesign and Photoshop 2024 and 2026 on Windows.<br />
+    I couldn&rsquo;t test it on my Mac because <a href="https://extendscript.docsforadobe.dev/interapplication-communication/bridgetalk-class/">BridgeTalk</a> &#8212; the feature used to communicate between Adobe apps &#8212; doesn&rsquo;t work there.</p>
+    <p>Designers often place large photos in InDesign and scale them down in the layout. A photo scaled to 25% still carries all its original pixels, so the document gets heavy, slow to export and slow to print. Sometimes it&rsquo;s the other way round: an image is enlarged in the layout and its resolution drops below what the printer needs.</p>
+    <p>This script fixes this automatically. For every placed raster image, it measures how much the image is scaled in InDesign, opens the file in Photoshop, resizes it to exactly that size, saves it, and sets the image back to 100% in InDesign. The image looks the same on the page, but its actual resolution now equals its effective resolution (or the resolution you ask for), and the file holds only the pixels it really needs.</p>
+    <h2>Requirements</h2>
     <ul>
-      <li>TIF</li>
-      <li>PSD</li>
-      <li>JPEG</li>
-      <li>PNG</li>
-      <li>ScitexCT</li>
-      <li>PC PaintBrush</li>
-      <li>CompuServe GIF</li>
-      <li>Windows Bitmap</li>
-      <li>WEBP</li>
-      <li>HEIC</li>
+      <li>InDesign and Photoshop installed on the same computer. If Photoshop isn&rsquo;t running, the script offers to start it. Wait until Photoshop has finished loading and run the script again.</li>
+      <li>An open InDesign document that contains images.</li>
+      <li>The document must be saved. A new document that has never been saved, or a document converted from an older InDesign version and not yet saved, is refused.</li>
     </ul>
-    <p><img src="resize_images.jpg" width="654" height="671" alt=""/></p>
+    <p><strong>Important:</strong> unless you turn on <strong>Resize as copy</strong> (see below), the script <u>overwrites the original image files</u>. Make a backup of your images before running it.</p>
+    <h2>Supported image formats</h2>
+    <p>TIFF, PSD, JPEG, PNG, WebP, HEIC/HEIF, CompuServe GIF, Windows Bitmap, PC PaintBrush and Scitex CT.</p>
+    <ul>
+      <li><strong>PNG</strong> images are saved as <strong>PSD</strong> and relinked.</li>
+      <li><strong>WebP</strong> and <strong>HEIC/HEIF</strong> images are saved as <strong>JPEG</strong> (maximum quality) and relinked. WebP files are first converted to JPEG in a <em>Resaved WebP</em> subfolder next to the original, because InDesign reads their resolution incorrectly.</li>
+      <li>If a file&rsquo;s extension doesn&rsquo;t match its real type (for example, a JPEG downloaded from a web site and named <em>.webp</em>), the script copies it with the correct extension into a <em>Corrected extension</em> subfolder, relinks it, and then processes it as usual.</li>
+      <li>JPEG images are saved at maximum quality. A JPEG that is already placed at 100% is left alone.</li>
+    </ul>
+    <h3>Images the script skips</h3>
+    <ul>
+      <li>Missing links and links with any status other than OK (modified links are updated first, so they are processed).</li>
+      <li>Images inside placed InDesign files.</li>
+      <li>1-bit (black-and-white bitmap) images.</li>
+      <li>Images in locked frames or on locked layers.</li>
+      <li>Images in the folders on the <strong>Ignored folders</strong> list.</li>
+      <li>Images excluded by the options in the dialog box (master pages, anchored, pasteboard, already processed, color space).</li>
+      <li>Images placed at 100% &#8212; there&rsquo;s nothing to resize (PNG, WebP and HEIC images are still converted).</li>
+    </ul>
+    <h3>Images placed more than once</h3>
+    <p>If the same file is placed several times, it is processed only once, according to its largest instance, and all instances are relinked to the result. If such an image is scaled non-proportionally (different horizontal and vertical scale), it is skipped, because one file can&rsquo;t match several different distortions.</p>
+    <h2>The dialog box</h2>
+    <p><img src="resize_images.jpg" width="654" height="671" alt="Resize images dialog box"/></p>
+    <p>The script remembers all settings in the dialog box between sessions. The first time you run it, it creates the default settings (listed below for each control).</p>
+    <h3>Ignored folders</h3>
+    <p>Images stored in the folders on this list are never resized. Use it for logos, icons, stock images or any files that must stay untouched. Only the folder itself is ignored, not its subfolders. By default, the list is empty.</p>
+    <ul>
+      <li><strong>List</strong> &#8212; shows the ignored folders. You can select several folders at once to remove them.</li>
+      <li><strong>Add</strong> &#8212; opens a folder selection dialog and adds the chosen folder to the list. If the folder is already there, you get a warning.</li>
+      <li><strong>Remove</strong> &#8212; removes the selected folders from the list.</li>
+      <li><strong>Remove All</strong> &#8212; clears the list.</li>
+    </ul>
+    <h3>Resize as copy and relink to new location</h3>
+    <p>Use this panel if you want to keep the original images intact.</p>
+    <ul>
+      <li><strong>Resize as copy</strong> &#8212; when on, the script doesn&rsquo;t touch the originals. It saves the resized images into the folder you select and relinks the document to them. When off, the originals are resized in place. <em>Default: off.</em></li>
+      <li><strong>Folder path</strong> &#8212; shows the last part of the path of the selected folder, or <em>No folder has been selected</em>. Hover over it to see the full path.</li>
+      <li><strong>Select ...</strong> &#8212; opens a folder selection dialog where you choose the folder for the new images. While <strong>Resize as copy</strong> is on and no folder is selected, the <strong>Resize</strong> button is disabled. If you select the folder where the originals are, the copies get a number added to their names, for example <em>photo_(1).tif</em>, so the originals aren&rsquo;t overwritten.</li>
+    </ul>
+    <p><strong>Color spaces</strong> &#8212; available only when <strong>Resize as copy</strong> is on. Only images in the checked color modes are processed; the rest are left as they are. All four are on by default.</p>
+    <ul>
+      <li><strong>RGB</strong> &#8212; process RGB images.</li>
+      <li><strong>CMYK</strong> &#8212; process CMYK images.</li>
+      <li><strong>Lab</strong> &#8212; process Lab images.</li>
+      <li><strong>Grayscale</strong> &#8212; process grayscale images.</li>
+    </ul>
+    <h3>Options</h3>
+    <ul>
+      <li><strong>Resize images on master pages</strong> &#8212; when on, images placed on master (parent) pages are processed too. Images on the pasteboard of a master spread are processed only if this option and <strong>Resize images on pasteboard</strong> are both on. <em>Default: on.</em></li>
+      <li><strong>Resize anchored images</strong> &#8212; when on, images anchored in text (inline and anchored objects) are processed too. An anchored image in a text frame on the pasteboard is processed only if <strong>Resize images on pasteboard</strong> is also on. <em>Default: on.</em></li>
+      <li><strong>Resize images on pasteboard</strong> &#8212; when on, images lying on the pasteboard, outside the pages, are processed too. They usually don&rsquo;t print, so this is off by default. <em>Default: off.</em></li>
+      <li><strong>Check for missing links</strong> &#8212; before processing, the script looks for missing images. If it finds one, it selects it in the layout; if there are several, it lists them. In both cases, you can stop the script and relink the images first, or continue without them. <em>Default: on.</em></li>
+      <li><strong>Create report on the desktop</strong> &#8212; when on, the script writes a report to <em>Report.txt</em> on your desktop. It lists the processed images and what was done to each one, the skipped images and the reason, the locked images, and the images that couldn&rsquo;t be processed because of an error (for example, damaged files). Each new report is added to the end of the existing file. <em>Default: on.</em></li>
+      <li><strong>Warn if effective ppi is less than [&nbsp;&nbsp;]</strong> &#8212; when on, the script checks the effective resolution of all images before processing and warns you about those below the number you enter. You can stop the script and fix them, or continue. <em>Default: on, 260 ppi.</em></li>
+      <li><strong>Resize only the selected image / Resize only N selected images</strong> &#8212; when on, only the images you selected in the layout before running the script are processed. Select the frames with the Selection tool or the images with the Direct Selection tool. The text of the check box shows how many images are selected. If nothing is selected, the check box is disabled. When this option is on, the master page, anchored and pasteboard options are disabled, because you chose the images yourself. <em>Default: off.</em></li>
+      <li><strong>Desired actual ppi [&nbsp;&nbsp;]</strong> &#8212; when on, the resized images get the resolution you enter here, for example, 300 ppi for offset printing. When off, a reduced image keeps its original resolution and only its pixel dimensions change. <em>Default: on, 300 ppi.</em></li>
+      <li><strong>Don&rsquo;t downsample reduced images if effective ppi is less than desired</strong> &#8212; protects images that are scaled down but still have too few pixels. If an image&rsquo;s effective resolution is already below the <strong>Desired actual ppi</strong>, removing pixels would make it worse. With this option on, such an image is resized <u>without resampling</u>: all pixels are kept, only the resolution is changed to the effective one, so the image can be placed at 100%. <em>Default: on.</em></li>
+      <li><strong>Don&rsquo;t upsample enlarged images</strong> &#8212; when on, enlarged images are resized <u>without resampling</u>: Photoshop doesn&rsquo;t invent new pixels, it only changes the resolution to the effective one so the image can be placed at 100%. When off, enlarged images are upsampled using the method chosen in <strong>Enlarged images</strong>. This option disables the <strong>Enlarged images</strong> list. <em>Default: on.</em></li>
+      <li><strong>Limit downsampling to [&nbsp;&nbsp;] pixels</strong> &#8212; prevents images from becoming too small. If after downsampling the longer side of an image would be shorter than the number you enter, the resizing is undone and the image is reduced only to that number of pixels on its longer side. If the image is already smaller than the limit, it isn&rsquo;t downsampled at all. Useful when the layout may be reused at a bigger size later. <em>Default: off, 3000 pixels.</em></li>
+      <li><strong>Skip already processed images</strong> &#8212; the script marks every image it processes. When this option is on, marked images are skipped, so running the script again on the same document doesn&rsquo;t resize them a second time. <em>Default: off.</em></li>
+      <li><strong>R</strong> (reset button) &#8212; clears the marks, so all images are treated as unprocessed. The script asks for confirmation and shows which images are marked. If you click <strong>Yes</strong>, it closes the dialog box, clears the list and quits; run it again to resize the images.</li>
+    </ul>
+    <h3>Resample method</h3>
+    <p>Choose how Photoshop recalculates the pixels. Hover over a list to see a hint about the selected method.</p>
+    <ul>
+      <li><strong>Reduced images</strong> &#8212; the method used for images scaled down in the layout. <em>Default: Bicubic Sharper.</em></li>
+      <li><strong>Enlarged images</strong> &#8212; the method used for images scaled up in the layout. Disabled when <strong>Don&rsquo;t upsample enlarged images</strong> is on. <em>Default: Bicubic Smoother.</em></li>
+    </ul>
+    <p>Available methods:</p>
+    <ul>
+      <li><strong>Nearest Neighbor</strong> &#8212; preserves hard edges; good for screenshots and pixel art.</li>
+      <li><strong>Bilinear</strong> &#8212; averages the colors of surrounding pixels; medium quality.</li>
+      <li><strong>Bicubic</strong> &#8212; best for smooth gradients.</li>
+      <li><strong>Bicubic Smoother</strong> &#8212; best for enlargement.</li>
+      <li><strong>Bicubic Sharper</strong> &#8212; best for reduction.</li>
+    </ul>
+    <p>An image scaled non-proportionally &#8212; reduced in one direction and enlarged in the other &#8212; is always resampled with Bicubic.</p>
+    <h3>Buttons</h3>
+    <ul>
+      <li><strong>Resize</strong> &#8212; saves the settings and starts processing. A progress bar shows which image is being checked and resized. When it&rsquo;s done, a message tells you how many images were resized and how long it took.</li>
+      <li><strong>Cancel</strong> &#8212; closes the dialog box without doing anything.</li>
+      <li><strong>About</strong> &#8212; opens this page in your web browser.</li>
+    </ul>
+    <h2>Tips</h2>
+    <ul>
+      <li>Try the script on a copy of the document and its images first, or use <strong>Resize as copy</strong>.</li>
+      <li>Keep <strong>Create report on the desktop</strong> on: the report explains what happened to every image and why some were skipped.</li>
+      <li>Turn on <strong>Skip already processed images</strong> if you run the script on the same document several times, for example, after adding new images.</li>
+      <li>After the script finishes, check the Links panel: resized images are placed at 100%, and their actual and effective ppi should be the same.</li>
+    </ul>
     <p>&nbsp;</p>
     <hr/>
     <p>If you have any feedback &#8212; complaints, comments, or suggestions &#8212; feel free to <a href="mailto:askoldich@yahoo.com">send me an e-mail</a> putting <em>Resize images</em> into the subject line. (Warning: unfortunately, I can&rsquo;t reply to all the e-mails I get because  of lack of time. Sorry in advance!)</p>
     <p><span id="docs-internal-guid-f91a61a9-7fff-c95d-5e3e-12d1c2c1fd29">If you found this script useful and want me to develop it further</span>, consider supporting me by donating via <em>PayPal</em> directly to my e-mail: <strong>askoldich</strong> [at] <strong>yahoo</strong> [dot] <strong>com</strong> (Due to PayPal&rsquo;s restrictions for Ukraine, I can&rsquo;t have a <em>Donate</em> button on my site.)</p>
     <hr/>
-    <p>Click here to download the current version of the script<span class="bodyText">.</span>  </p>
+    <p><a href="resize_images.zip">Click here</a> to download the current version of the script.</p>
   </div>
   <!-- InstanceEndEditable -->
   <div class="footer"></div>
