@@ -66,15 +66,16 @@
     <h1>A much better alternative to the Socket object</h1>
     <p>If you want to get some data from the web, you can use the <strong>Socket</strong> object, of course. But there is  an alternative approach &#8212; using platform  specific shell scripts (PC or Mac) called from InDesign&rsquo;s <strong>doScript()</strong> method &#8212; which is  much faster.</p>
     <p>You can test it yourself by running the code below (you can  download the snippet from <a href="../../../downloads/tips/indesign_script/alternative_to_socket.zip">here</a>) which downloads the html code of the main page from  my site using both approaches and writes it into the <em>ESTK Console</em>. Note that it  takes the whole five seconds for the <em>Socket</em> and zero secs for the shell scripts both on Mac  and PC.</p>
+    <p><strong>Note:</strong> My site has moved to GitHub Pages, which works over HTTPS only. The <em>Socket</em> object can&rsquo;t make HTTPS connections, so now it gets only a short <em>301 Moved Permanently</em> reply instead of the page, while the shell scripts download the page as before. One more reason to use the shell approach.</p>
     <h3>Windows</h3>
-    <p><img src="../../../images/tips/indesign_script/alternative_to_socket_001.png"/></p>
+    <p><img src="../../../images/tips/indesign_script/alternative_to_socket_001.png" width="203" height="159" alt=""/></p>
     <h3>Mac</h3>
-    <p><img src="../../../images/tips/indesign_script/alternative_to_socket_002.png"/></p>
+    <p><img src="../../../images/tips/indesign_script/alternative_to_socket_002.png" width="491" height="228" alt=""/></p>
 	  
     <pre>Main();
 
 function Main() {
-	var webAddress = "kasyan.ho.ua";	
+	var webAddress = "kasyan-servetsky.github.io";	
 	var startTime = new Date();
 	GetDataFromSocket(webAddress);
 	var endTime = new Date();
@@ -113,14 +114,14 @@ function GetDataFromSocket(webAddress) {
 }
 
 function GetDataFromDoShell(webAddress) {  
-	var appleScript = 'do shell script "curl http://' + webAddress + '/"';
+	var appleScript = 'do shell script "curl https://' + webAddress + '/"';
 	var result = app.doScript(appleScript, ScriptLanguage.APPLESCRIPT_LANGUAGE);
 	$.writeln("Output from AppleScript:\n" + result);
 }
 
 function GetDataFromWshShell(webAddress) {  
 	var vbs = 'Dim str\r';
-	vbs += 'URL = "http://' + webAddress + '"\r';
+	vbs += 'URL = "https://' + webAddress + '"\r';
 	vbs += 'Set http = CreateObject("Microsoft.XmlHttp")\r'; 
 	vbs += 'On Error Resume Next\r';  
 	vbs += 'http.open "GET", URL, False\r';
