@@ -47,16 +47,16 @@
       </li>
 <li><a href="../../indesign/scripts.html" class="MenuBarItemSubmenu">Scripts</a>
   <ul>
-    <li><a href="../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../indesign/scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
     <li><a href="../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
     <li><a href="../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
     <li><a href="../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
     <li><a href="../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
     <li><a href="../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
     <li><a href="../../indesign/my_workflow_scripts.html">Scripts for my own workflow</a></li>
-    <li><a href="../../indesign/custom_scripts.html">Scripts written on request of other people</a></li>
+    <li><a href="../../indesign/custom_scripts.html">Scripts on request</a></li>
     <li><a href="../../indesign/enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
-    <li><a href="../../indesign/scripts_written_by_other_people.html">Scripts written by other people</a></li>
+    <li><a href="../../indesign/scripts_by_other_authors.html">Scripts by other authors</a></li>
   </ul>
 </li>
 </ul>
@@ -75,14 +75,14 @@
       Here&rsquo;s a quote from the XML rules chapter (page 200-201):<br />
       Due to the one-pass nature of this implementation, the  following XPath expressions are specifically<br />
       excluded:<br />
-       No ancestor or preceding-sibling axes, including .., ancestor::,  preceding-sibling::.<br />
-       No path specifications in predicates; for example, foo[bar/c].<br />
-       No last() function.<br />
-       No text() function or text comparisons; however, you can  use InDesign scripting to examine the text<br />
+       No ancestor or preceding-sibling axes, including .., ancestor::,  preceding-sibling::.<br />
+       No path specifications in predicates; for example, foo[bar/c].<br />
+       No last() function.<br />
+       No text() function or text comparisons; however, you can  use InDesign scripting to examine the text<br />
       content of an XML element matched by a given XML rule.<br />
-       No compound Boolean predicates; for example, foo[@bar=font  or @c=size].<br />
-       No relational predicates; for example, foo[@bar &lt; font  or @c &gt; 3].<br />
-       No relative paths; for example, doc/chapter.</p>
+       No compound Boolean predicates; for example, foo[@bar=font  or @c=size].<br />
+       No relational predicates; for example, foo[@bar &lt; font  or @c &gt; 3].<br />
+       No relative paths; for example, doc/chapter.</p>
     <p>Frankly speaking, I&rsquo;m not an xPath-man and don&rsquo;t quite understand  what it means. But my client wanted the script to work with the last() function.<br />
       When I tried to use it with xml-rules, the script wrote the  following error to console: &ldquo;Adobe InDesign cannot process^1XPath expression  '^2', line: 43&rdquo;.<br />
       But with evaluateXPathExpression it worked as expected.<br />
