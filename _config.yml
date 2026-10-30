@@ -1,0 +1,19 @@
+# GitHub Pages (Jekyll) settings for kasyan-servetsky.github.io
+# The site itself is plain HTML managed by Dreamweaver; Jekyll copies it unchanged.
+# This file only turns on the automatic sitemap.
+
+url: "https://kasyan-servetsky.github.io"
+
+plugins:
+  - jekyll-sitemap
+
+# Pages to leave out of sitemap.xml (they stay on the site, just not listed)
+defaults:
+  - scope:
+      path: "personal/tmp.html"
+    values:
+      sitemap: false
+  - scope:
+      path: "Templates"
+    values:
+      sitemap: false

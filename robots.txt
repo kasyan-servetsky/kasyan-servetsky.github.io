@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kasyan-servetsky.github.io/sitemap.xml
