@@ -64,9 +64,9 @@
   <!-- InstanceBeginEditable name="Main" -->
   <div class="main">
     <h1>Resize images</h1>
-    <p>Script for InDesign and Photoshop &#8212; version 4.4. Written by <em>Kasyan</em>.<br />
+    <p>Script for InDesign and Photoshop &#8212; version 4.6. Written by <em>Kasyan</em>.<br />
       Written and tested in InDesign and Photoshop 2024 and 2026 on Windows.<br />
-    I couldn&rsquo;t test it on my Mac because <a href="https://extendscript.docsforadobe.dev/interapplication-communication/bridgetalk-class/">BridgeTalk</a> &#8212; the feature used to communicate between Adobe apps &#8212; doesn&rsquo;t work there.</p>
+    Also tested on Mac in InDesign 2026 and Photoshop 2024.</p>
     <p>Designers often place large photos in InDesign and scale them down in the layout. A photo scaled to 25% still carries all its original pixels, so the document gets heavy, slow to export and slow to print. Sometimes it&rsquo;s the other way round: an image is enlarged in the layout and its resolution drops below what the printer needs.</p>
     <p>This script fixes this automatically. For every placed raster image, it measures how much the image is scaled in InDesign, opens the file in Photoshop, resizes it to exactly that size, saves it, and sets the image back to 100% in InDesign. The image looks the same on the page, but its actual resolution now equals its effective resolution (or the resolution you ask for), and the file holds only the pixels it really needs.</p>
     <h2>Requirements</h2>
@@ -83,6 +83,8 @@
       <li><strong>WebP</strong> and <strong>HEIC/HEIF</strong> images are saved as <strong>JPEG</strong> (maximum quality) and relinked. WebP files are first converted to JPEG in a <em>Resaved WebP</em> subfolder next to the original, because InDesign reads their resolution incorrectly.</li>
       <li>If a file&rsquo;s extension doesn&rsquo;t match its real type (for example, a JPEG downloaded from a web site and named <em>.webp</em>), the script copies it with the correct extension into a <em>Corrected extension</em> subfolder, relinks it, and then processes it as usual.</li>
       <li>JPEG images are saved at maximum quality. A JPEG that is already placed at 100% is left alone.</li>
+      <li>Resized JPEG images always get the <em>.jpg</em> extension, because that&rsquo;s how Photoshop saves them. A file named <em>photo.jpeg</em> is saved as <em>photo.jpg</em> and relinked.</li>
+      <li>A file can store two different resolutions, for example, 300 ppi and 72 ppi in the same JPEG, and InDesign and Photoshop may read different ones. The script always uses the resolution InDesign reads, so the image keeps its size on the page.</li>
     </ul>
     <h3>Images the script skips</h3>
     <ul>
@@ -127,7 +129,7 @@
       <li><strong>Resize anchored images</strong> &#8212; when on, images anchored in text (inline and anchored objects) are processed too. An anchored image in a text frame on the pasteboard is processed only if <strong>Resize images on pasteboard</strong> is also on. <em>Default: on.</em></li>
       <li><strong>Resize images on pasteboard</strong> &#8212; when on, images lying on the pasteboard, outside the pages, are processed too. They usually don&rsquo;t print, so this is off by default. <em>Default: off.</em></li>
       <li><strong>Check for missing links</strong> &#8212; before processing, the script looks for missing images. If it finds one, it selects it in the layout; if there are several, it lists them. In both cases, you can stop the script and relink the images first, or continue without them. <em>Default: on.</em></li>
-      <li><strong>Create report on the desktop</strong> &#8212; when on, the script writes a report to <em>Report.txt</em> on your desktop. It lists the processed images and what was done to each one, the skipped images and the reason, the locked images, and the images that couldn&rsquo;t be processed because of an error (for example, damaged files). Each new report is added to the end of the existing file. <em>Default: on.</em></li>
+      <li><strong>Create report on the desktop</strong> &#8212; when on, the script writes a report to <em>Report.txt</em> on your desktop. It lists the processed images and what was done to each one, the skipped images and the reason, the locked images, and the images that couldn&rsquo;t be processed because of an error (for example, damaged files, or no answer from Photoshop). If the resized file can&rsquo;t be found after processing, the image is left as it was and listed in the report. Each new report is added to the end of the existing file. <em>Default: on.</em></li>
       <li><strong>Warn if effective ppi is less than [&nbsp;&nbsp;]</strong> &#8212; when on, the script checks the effective resolution of all images before processing and warns you about those below the number you enter. You can stop the script and fix them, or continue. <em>Default: on, 260 ppi.</em></li>
       <li><strong>Resize only the selected image / Resize only N selected images</strong> &#8212; when on, only the images you selected in the layout before running the script are processed. Select the frames with the Selection tool or the images with the Direct Selection tool. The text of the check box shows how many images are selected. If nothing is selected, the check box is disabled. When this option is on, the master page, anchored and pasteboard options are disabled, because you chose the images yourself. <em>Default: off.</em></li>
       <li><strong>Desired actual ppi [&nbsp;&nbsp;]</strong> &#8212; when on, the resized images get the resolution you enter here, for example, 300 ppi for offset printing. When off, a reduced image keeps its original resolution and only its pixel dimensions change. <em>Default: on, 300 ppi.</em></li>

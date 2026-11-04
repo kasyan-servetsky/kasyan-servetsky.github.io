@@ -127,12 +127,17 @@
     <p>While the main script is working, a progress window shows the school, the class and the current step.</p>
     <p><img src="images/progress.png" width="606" height="166" alt=""/></p>
     <h3>Night Shift Runner</h3>
-    <p>A big batch can take hours, so this season I added a way to run it at night. When the <strong>Run unattended</strong> option is on, the main script runs silently with the saved settings: no alerts, only messages in the log. A small VBScript, <em>NightShiftRunner.vbs</em>, is started by the Windows Task Scheduler at about 2 a.m. It launches InDesign, runs the main script, writes a log to the <em>Log</em> subfolder, and quits InDesign. In the morning, the print files are waiting.</p>
+    <p>A big batch can take hours, so this season I added a way to run it at night. When the <strong>Run unattended</strong> option is on, the main script runs silently with the saved settings: no alerts, only messages in the log. A small VBScript, <em>NightShiftRunner.vbs</em>, is started by the Windows Task Scheduler at about 2 a.m. It launches InDesign, runs the main script through COM, keeps its own log, and then starts the <a href="output_checker.html">Output Checker</a>. In the morning, the print files and a report for every school are waiting. The details, the setup and the troubleshooting are on the <a href="night_shift_runner.html">Night Shift Runner</a> page.</p>
     <!-- TODO: screenshot of the task in Windows Task Scheduler -->
+    <p>A long unattended run has its own problems. Sometimes InDesign stops responding in the middle of a batch, with no error; I wrote about the causes in <a href="indesign_stops_responding.html">When InDesign stops responding</a> and about the safety net for it in <a href="watchdog.html">Watchdog</a>. And a scheduled task may not see the network drives that you see in Explorer: see <a href="mapped_drives_and_elevated_tasks.html">Mapped drives and elevated tasks</a>.</p>
     <p>This script was written for a particular company and its workflow, so it won&rsquo;t work for you as it is. But I hope that some of the ideas will be useful if you are building something similar: an automated workflow where InDesign makes thousands of personalised pages from a spreadsheet, a folder of pictures and a set of templates.</p>
 	  
     <h2>Pages about this project</h2>
     <ul>
+      <li><a href="night_shift_runner.html">Night Shift Runner</a></li>
+      <li><a href="watchdog.html">Watchdog</a></li>
+      <li><a href="indesign_stops_responding.html">When InDesign stops responding</a></li>
+      <li><a href="mapped_drives_and_elevated_tasks.html">Mapped drives and elevated tasks</a></li>
       <li><a href="output_checker.html">Output Checker</a></li>
     </ul>
 

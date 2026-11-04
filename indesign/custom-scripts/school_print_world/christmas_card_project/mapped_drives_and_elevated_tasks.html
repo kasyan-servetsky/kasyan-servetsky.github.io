@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Mapped drives and elevated tasks</title>
+<!-- #EndEditable -->
+<script src="../../../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../../../index.html">Home</a></li>
+<li><a href="../../../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../../../tips/all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../../../tips/all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../../../tips/all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../../../tips/all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../../../tips/all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../../../tips/indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../../../tips/all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../../../snippets/array.html">Array</a></li>
+          <li><a href="../../../../snippets/number.html">Number</a></li>
+          <li><a href="../../../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../../../../tips/indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../../../scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../../../my_workflow/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../../custom-scripts.html">Scripts on request</a></li>
+    <li><a href="../../../enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../../../scripts_by_other_authors/scripts_by_other_authors.html">Scripts by other authors</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1>Mapped drives and elevated tasks</h1>
+    <p>While setting up the <a href="night_shift_runner.html">Night Shift Runner</a>, I ran into a Windows trap that has nothing to do with InDesign but can break any scheduled script: a mapped network drive that&rsquo;s right there in <em>Explorer</em>, but doesn&rsquo;t exist for the scheduled task. The main script then reports that its <em>Templates</em> folder doesn&rsquo;t exist, and in unattended mode it just stops. InDesign opens and closes, and that&rsquo;s it.</p>
+
+    <h2>What is an elevated program?</h2>
+    <p>Even if you log in as an administrator, Windows doesn&rsquo;t give programs full admin rights by default. This is how <em>User Account Control</em> (UAC) works. When you log in, Windows creates two &ldquo;keys&rdquo; (tokens) for your session:</p>
+    <ul>
+      <li><strong>a normal key</strong> with limited rights. Everything you start usually runs with this one: <em>Explorer</em>, InDesign, Excel, the browser;</li>
+      <li><strong>an admin key</strong> with full rights: changing system files, installing software, editing protected parts of the registry. Windows hands it out only when a program needs it &mdash; that&rsquo;s the &ldquo;Do you want to allow this app to make changes to your device?&rdquo; prompt. After you click <strong>Yes</strong>, the program runs <strong>elevated</strong>.</li>
+    </ul>
+    <p>You see elevation in a few places: a small shield icon on a button, <strong>Run as administrator</strong> in the context menu, &ldquo;Administrator: Command Prompt&rdquo; in a window title &mdash; and in the <em>Task Scheduler</em>, the <strong>Run with highest privileges</strong> checkbox, which runs the task with the admin key without asking.</p>
+
+    <h2>Why it matters for mapped drives</h2>
+    <p>Windows treats the two keys almost like two separate sessions. A drive mapped in the normal session (by you in <em>Explorer</em>, or reconnected by Windows at login) belongs to the normal key only. An elevated program doesn&rsquo;t see it: for that program, the drive simply doesn&rsquo;t exist.</p>
+    <p>There&rsquo;s a second side effect for scripts like mine: an elevated program and a normal one can&rsquo;t talk to each other through COM. If InDesign is already open normally and an elevated runner calls <code>GetObject(, &quot;InDesign.Application&quot;)</code>, it doesn&rsquo;t find it, and may start a second InDesign or fail.</p>
+
+    <h2>Other ways a drive disappears for a task</h2>
+    <ul>
+      <li><strong>&ldquo;Run whether user is logged on or not&rdquo;.</strong> The task runs in a background session that has no mapped drives at all (and InDesign can&rsquo;t work properly there anyway).</li>
+      <li><strong>The drive is &ldquo;disconnected&rdquo;.</strong> Windows reconnects mapped drives lazily. After a reboot or a long idle time, a drive may show a red cross until someone opens it in <em>Explorer</em>, and a script&rsquo;s first access fails.</li>
+      <li><strong>The other computer is asleep.</strong> If the drive is on another PC and that PC sleeps at night, the drive is gone at 3 a.m. This one, of course, can&rsquo;t be reproduced in a daytime test.</li>
+    </ul>
+
+    <h2>How to check</h2>
+    <p>Make the runner write down what the task actually sees. A few lines before <code>DoScript</code> are enough:</p>
+    <pre>Dim p, oExec
+For Each p In Array(&quot;H:\Templates&quot;, &quot;H:\Schools&quot;, scriptPath)
+    Log &quot;Exists? &quot; &amp; (fso.FolderExists(p) Or fso.FileExists(p)) &amp; &quot; - &quot; &amp; p
+Next
+Set oExec = CreateObject(&quot;WScript.Shell&quot;).Exec(&quot;cmd /c net use&quot;)
+Log &quot;net use:&quot; &amp; vbCrLf &amp; oExec.StdOut.ReadAll</pre>
+    <p><code>net use</code> lists every mapped drive with its real network path (for example, <em>H: \\OFFICE-PC\Data</em>) and its state: <em>OK</em>, <em>Disconnected</em> or <em>Unavailable</em>. Run the task once from the <em>Task Scheduler</em> (right-click &gt; <strong>Run</strong>) and read the log. Then compare with a run of the same script by hand in a normal <em>Command Prompt</em>: if it works by hand but not as a task, the cause is the task&rsquo;s context.</p>
+
+    <h2>How to solve it</h2>
+    <ul>
+      <li><strong>Fix the task settings</strong>: &ldquo;Run only when user is logged on&rdquo;, <strong>Run with highest privileges</strong> unticked. Nothing in this workflow needs admin rights: InDesign, Excel and the runner only read and write ordinary files. Often, that&rsquo;s all it takes.</li>
+      <li><strong>Use the network path instead of the drive letter.</strong> A path like <em>\\OFFICE-PC\Data\Templates</em> doesn&rsquo;t depend on the session or on reconnecting. ExtendScript accepts it on Windows written as <code>//OFFICE-PC/Data/Templates/</code>. Remember that settings saved earlier still hold the drive letter, so the folder has to be picked again.</li>
+      <li><strong>Let the runner connect the drive itself</strong> before starting InDesign (<code>net use H: \\OFFICE-PC\Data</code>), then check that the folders exist, and if they don&rsquo;t, wait a minute and try again a few times before giving up with a clear message in the log.</li>
+      <li><strong>Keep the other computer awake</strong> at night, at least during the busy season.</li>
+      <li>If the task really must run elevated (unlikely), the registry value <code>EnableLinkedConnections = 1</code> under <em>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System</em> makes mapped drives visible to elevated programs after a restart. Unticking the checkbox is simpler.</li>
+      <li>The most robust option: <strong>work locally</strong>. The runner copies the night&rsquo;s work to the local disk, InDesign processes only local files, and the results are copied back. That also removes a common reason for <a href="indesign_stops_responding.html">InDesign freezing</a> in the middle of a run.</li>
+    </ul>
+
+    <h2>Pages about this project</h2>
+    <ul>
+      <li><a href="christmas_card_project.html">Christmas card project</a></li>
+      <li><a href="night_shift_runner.html">Night Shift Runner</a></li>
+      <li><a href="watchdog.html">Watchdog</a></li>
+      <li><a href="indesign_stops_responding.html">When InDesign stops responding</a></li>
+      <li><a href="mapped_drives_and_elevated_tasks.html">Mapped drives and elevated tasks</a></li>
+      <li><a href="output_checker.html">Output Checker</a></li>
+    </ul>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>

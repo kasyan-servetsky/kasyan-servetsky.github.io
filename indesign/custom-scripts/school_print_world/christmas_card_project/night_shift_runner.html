@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template_new.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- #BeginEditable "doctitle" -->
+<title>Night Shift Runner</title>
+<!-- #EndEditable -->
+<script src="../../../../SpryAssets/SpryMenuBar.js" type="text/javascript"></script>
+<link href="../../../../SpryAssets/SpryMenuBarHorizontal.css" rel="stylesheet" type="text/css" />
+<link href="../../../../CSS/main.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="container">
+  <div class="header"><img src="../../../../images/all/logo.gif" alt="Site logo" width="600" height="60" /></div>
+  <div class="navbar">
+    <ul id="NavBar" class="MenuBarHorizontal">
+<li><a href="../../../../index.html">Home</a></li>
+<li><a href="../../../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+  <ul>
+    <li><a href="../../../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../../../personal/my_resume.html">My resume</a></li>
+    <li><a href="../../../../personal/contact.html">Contact</a></li>
+  </ul>
+</li>
+      <li><a href="../../../../tips/all/tips_tricks.html" class="MenuBarItemSubmenu">Tips &amp; Tricks</a>
+        <ul>
+          <li><a href="../../../../tips/all/tips_tricks.html">Tips &amp; Tricks</a></li>
+          <li><a href="../../../../tips/all/scripting_resources.html">Scripting resources</a></li>
+          <li><a href="../../../../tips/all/info_for_beginners.html">Information for beginners</a></li>
+          <li><a href="../../../../tips/all/miscellaneous_scripting_tips.html">Miscellaneous scripting tips &amp; tricks</a></li>
+		  <li><a href="../../../../tips/indesign_usage/indesign_usage_tips.html">InDesign usage tips</a></li>
+          <li><a href="../../../../tips/all/useful_links.html">Useful links</a></li>
+        </ul>
+      </li>
+      <li><a class="MenuBarItemSubmenu" href="../../../../snippets/snippets.html">Useful snippets</a>
+        <ul>
+          <li><a href="../../../../snippets/snippets.html">Useful snippets</a></li>
+          <li><a href="../../../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../../../snippets/photoshop.html"> Photoshop</a></li>
+          <li><a href="../../../../snippets/array.html">Array</a></li>
+          <li><a href="../../../../snippets/number.html">Number</a></li>
+          <li><a href="../../../../snippets/date_time.html">Date</a></li>
+          <li><a href="../../../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../../../../tips/indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
+        </ul>
+      </li>
+<li><a href="../../../scripts.html" class="MenuBarItemSubmenu">Scripts</a>
+  <ul>
+    <li><a href="../../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
+    <li><a href="../../../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
+    <li><a href="../../../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
+    <li><a href="../../../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
+    <li><a href="../../../my_workflow/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../../custom-scripts.html">Scripts on request</a></li>
+    <li><a href="../../../enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
+    <li><a href="../../../scripts_by_other_authors/scripts_by_other_authors.html">Scripts by other authors</a></li>
+  </ul>
+</li>
+</ul>
+  </div>
+  <!-- InstanceBeginEditable name="Main" -->
+  <div class="main">
+    <h1><em>Night Shift Runner</em> for the Christmas card project</h1>
+    <p>A big batch of the <a href="christmas_card_project.html">Christmas card project</a> can take many hours: hundreds of schools, thousands of classes, a print file for every product of every class. Nobody wants to sit in front of InDesign all day waiting for it, so this season I added a way to run the whole thing at night. You set it up once, go home, and in the morning the print files are waiting.</p>
+    <p>There are three parts: the <strong>Run unattended</strong> option in the main script, a small VBScript called <em>NightShiftRunner.vbs</em>, and a task in the Windows <em>Task Scheduler</em> that starts it.</p>
+
+    <h2>Why not just start InDesign from the Task Scheduler?</h2>
+    <p>InDesign has no command-line switch that runs a script, so you can&rsquo;t simply tell the <em>Task Scheduler</em> to start <em>InDesign.exe</em> with a script. Instead, a VBScript attaches to InDesign through COM (or starts it) and calls <code>DoScript</code> on the main script &mdash; exactly what you&rsquo;d do from Visual Basic. An AI agent or any other clever tool isn&rsquo;t needed: a scheduled task and twenty lines of VBScript are simpler and much more predictable.</p>
+
+    <h2>Run unattended</h2>
+    <p>The project is split into two scripts on purpose. <em>Settings.jsx</em> only shows the dialog box and saves the settings into the application (with <code>app.insertLabel</code>). <em>Main.jsx</em> never shows a dialog: it reads the saved settings back and works on its own. So you set the options during the day, tick <strong>Run unattended</strong>, and the night run uses them.</p>
+    <p>In unattended mode, the main script:</p>
+    <ul>
+      <li>sets <code>app.scriptPreferences.userInteractionLevel</code> to <code>NEVER_INTERACT</code>, so no missing-font or missing-link warning can stop it, and restores it at the end in a <code>finally</code> block;</li>
+      <li>never calls <code>alert()</code>: an error is written to the log, and then the script <em>throws</em> instead of exiting, so the <code>catch</code> around the current school or class skips just that item and goes on with the next one;</li>
+      <li>writes its logs to the desktop (there&rsquo;s no open document to put a <em>Logs</em> folder next to), and at the end a run summary: one line per school with the number of errors and PDFs.</li>
+    </ul>
+
+    <h2>The runner</h2>
+    <p>Here&rsquo;s the heart of <em>NightShiftRunner.vbs</em>, without the logging details:</p>
+    <pre>Const JAVASCRIPT_LANG = 1246973031    ' idScriptLanguage.javascript
+
+On Error Resume Next
+' Attach to a running InDesign, or start one
+Set myInDesign = GetObject(, &quot;InDesign.Application&quot;)
+If Err.Number &lt;&gt; 0 Then
+    Err.Clear
+    Log &quot;No running InDesign found, starting a new one...&quot;
+    Set myInDesign = CreateObject(&quot;InDesign.Application&quot;)
+End If
+
+Log &quot;InDesign version: &quot; &amp; myInDesign.Version
+Err.Clear
+myInDesign.DoScript scriptPath, JAVASCRIPT_LANG
+If Err.Number &lt;&gt; 0 Then
+    Log &quot;ERROR during DoScript: &quot; &amp; Err.Description
+Else
+    Log &quot;Main script finished.&quot;
+End If</pre>
+    <p>A few things that are easy to miss:</p>
+    <ul>
+      <li><code>DoScript</code> doesn&rsquo;t return until the main script has finished. The runner simply waits for hours on that line.</li>
+      <li>The runner keeps its own log, <em>C:\NightShiftRunner\Logs\vbs_run.log</em>, in a place that&rsquo;s always writable. It&rsquo;s the first thing to look at when something goes wrong, because it shows whether InDesign started at all and whether <code>DoScript</code> failed.</li>
+      <li>The same runner file works on every computer: it looks for the project folder (the one with <em>Christmas cards - Main.jsx</em>) in a few known places and picks the schools folder the same way the main script does. The only things to edit are a couple of constants at the top.</li>
+      <li>When the main script is done, the runner starts the <a href="output_checker.html">Output Checker</a>, so in the morning every school has a short report saying whether it&rsquo;s ready to print.</li>
+    </ul>
+
+    <h2>Setting up the task</h2>
+    <p>In the <em>Task Scheduler</em> (<em>taskschd.msc</em>), use <strong>Create Task</strong>, not <strong>Create Basic Task</strong>, so you can see all the options:</p>
+    <ul>
+      <li><strong>General</strong>: &ldquo;Run only when user is logged on&rdquo;. A locked screen is fine, but the user must be logged on: InDesign needs a desktop session. Leave <strong>Run with highest privileges</strong> unticked (see <a href="mapped_drives_and_elevated_tasks.html">Mapped drives and elevated tasks</a> for why).</li>
+      <li><strong>Triggers</strong>: daily at 02:00, Monday to Friday.</li>
+      <li><strong>Actions</strong>: Start a program &mdash; <strong>Program/script</strong>: <em>wscript.exe</em>, <strong>Add arguments</strong>: the full path to <em>NightShiftRunner.vbs</em> in quotes, <strong>Start in</strong>: the folder that contains it.</li>
+      <li><strong>Settings</strong>: &ldquo;Stop the task if it runs longer than 6 hours&rdquo;.</li>
+    </ul>
+    <!-- TODO: screenshot of the task in Windows Task Scheduler -->
+    <p>Also check the computer itself: it must not go to sleep or hibernate at night, and InDesign should be opened by hand once after every update, so that any first-run or sign-in dialog is dismissed before the night run meets it.</p>
+
+    <h2>When it doesn&rsquo;t work</h2>
+    <h3>InDesign opens and closes again</h3>
+    <p>The most common report: at the set time, InDesign opens, closes after a few seconds, no errors, nothing processed. The closing itself is normal. When the runner starts InDesign through COM, InDesign quits as soon as the runner lets go of it. So InDesign closing quickly means the runner finished quickly, and that usually means the main script stopped at once:</p>
+    <ul>
+      <li>the runner couldn&rsquo;t find the main script (a path written for another computer);</li>
+      <li>the main script couldn&rsquo;t find its <em>Templates</em> or schools folder &mdash; very often a mapped network drive that the scheduled task can&rsquo;t see;</li>
+      <li>there was nothing to process in the selected folder.</li>
+    </ul>
+    <p>Both logs tell you which: the runner&rsquo;s <em>vbs_run.log</em> and the main script&rsquo;s <em>Error Log</em> on the desktop. In the <strong>History</strong> tab of the task, look at the times of &ldquo;Task Started&rdquo; and &ldquo;Task completed&rdquo;: if they are in the same second, the runner didn&rsquo;t even get as far as waiting for the main script.</p>
+    <h3>Test it during the day</h3>
+    <p>You don&rsquo;t have to wait for 2 a.m. Set the trigger a minute ahead, or right-click the task and choose <strong>Run</strong>. A daytime test is also a good diagnosis: during the day, the network drives are connected and the other computers are awake, so if it fails then, the problem is in the setup, not in something that happens only at night.</p>
+    <p>Another test is to run the runner by hand in a <em>Command Prompt</em>:</p>
+    <pre>cscript //nologo &quot;C:\path\to\NightShiftRunner.vbs&quot;</pre>
+    <p>If it works there but not from the <em>Task Scheduler</em>, the problem is in the task&rsquo;s settings (privileges, session, drives). If it fails there too, you see the error on the screen.</p>
+    <h3>&ldquo;How do you want to open this file?&rdquo;</h3>
+    <p>If Windows asks at night which program to use to open a file, some task is starting a <em>.vbs</em> or <em>.jsx</em> file directly instead of through <em>wscript.exe</em> &mdash; often an old copy of the task left over from an earlier test. Don&rsquo;t pick a program: Windows will remember the choice. Close the window, look through the whole <em>Task Scheduler Library</em> list, and disable the task you don&rsquo;t need.</p>
+
+    <h2>What it doesn&rsquo;t solve</h2>
+    <p>The runner starts the job, but if InDesign freezes in the middle of a run, the runner freezes with it: it&rsquo;s waiting on the <code>DoScript</code> line. I wrote about the causes in <a href="indesign_stops_responding.html">When InDesign stops responding</a>, and about the safety net for it in <a href="watchdog.html">Watchdog</a>.</p>
+
+    <h2>Pages about this project</h2>
+    <ul>
+      <li><a href="christmas_card_project.html">Christmas card project</a></li>
+      <li><a href="night_shift_runner.html">Night Shift Runner</a></li>
+      <li><a href="watchdog.html">Watchdog</a></li>
+      <li><a href="indesign_stops_responding.html">When InDesign stops responding</a></li>
+      <li><a href="mapped_drives_and_elevated_tasks.html">Mapped drives and elevated tasks</a></li>
+      <li><a href="output_checker.html">Output Checker</a></li>
+    </ul>
+  </div>
+  <!-- InstanceEndEditable -->
+  <div class="footer"></div>
+</div>
+<script type="text/javascript">
+var MenuBar1 = new Spry.Widget.MenuBar("NavBar", {imgDown:"SpryAssets/SpryMenuBarDownHover.gif", imgRight:"SpryAssets/SpryMenuBarRightHover.gif"});
+</script>
+</body>
+<!-- InstanceEnd --></html>
