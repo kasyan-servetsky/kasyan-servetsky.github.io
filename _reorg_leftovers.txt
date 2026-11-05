@@ -1,0 +1,120 @@
+Files still in images/ and downloads/ after the reorganisation
+
+== Used by several pages (21) ==
+images/all/indd_recovery.jpg   <- indesign/indd_recovery/indd_recovery.html, tips/indesign_usage/damaged_documents/damaged_documents.html
+images/all/logo.gif   <- 475 pages
+images/all/new-icon.jpg   <- bridge/scripts_for_bridge.html, indesign/batch_process_scripts/scripts_for_batch_processor/scripts_for_batch_processor.html, indesign/custom-scripts/custom-scripts.html, indesign/scripts_by_categories/scripts_by_categories.html, indesign/text/find_overset_text/find_overset_text.html
+images/all/under_construction.png   <- acrobat/scripts_for_acrobat.html, tips/xml/evaluateXPathExpression_vs_XML-rules/evaluateXPathExpression_vs_XML-rules.html
+images/indesign/normalize_cmyk.png   <- indesign/swatch_color/normalize_cmyk/normalize_cmyk.html, snippets/swatch.html
+images/indesign/batch_process_scripts/package_for_print_bp-2.png   <- indesign/batch_process_scripts/arguments_file/arguments_file.html, indesign/batch_process_scripts/package/package.html
+images/indesign/batch_process_scripts/package_for_print_bp-3.png   <- indesign/batch_process_scripts/arguments_file/arguments_file.html, indesign/batch_process_scripts/package/package.html
+downloads/all/BookOfSelectedFolder.zip   <- indesign/scripts_by_categories/scripts_by_categories.html, snippets/sort_file_names_function.html
+downloads/all/LinkExport_Pro1a_EN.zip   <- indesign/csv_file.html, indesign/scripts_by_categories/scripts_by_categories.html
+downloads/all/Open All RGB Files.zip   <- indesign/my_workflow/my_workflow_scripts/my_workflow_scripts.html, indesign/scripts_by_categories/scripts_by_categories.html
+downloads/all/make_list_of_installed_fonts.zip   <- indesign/font/make_list_of_installed_fonts/make_list_of_installed_fonts.html, tips/indesign_script/all/everyItem_getElement/everyItem_getElement.html
+downloads/all/rename_layers_in_ps.zip   <- indesign/enfocus_switch_scripts/resize_images_for_power_switch/resize_images_for_power_switch.html, indesign/enfocus_switch_scripts/scripts_for_enfocus_power_switch.html
+downloads/scripts_for_indesign/open_image_in_photoshop_right_after_placing.zip   <- indesign/event_scripts/open_image_in_photoshop_right_after_placing.html, tips/indesign_script/all/bridgetalk/bridgetalk.html
+downloads/scripts_for_indesign/batch_process_scripts/change_fonts_samples.zip   <- indesign/batch_process_scripts/change_fonts/change_fonts.html, indesign/font/change_fonts_csv/change_fonts_csv.html
+downloads/scripts_for_indesign/my_workflow/process_footnotes.zip   <- indesign/my_workflow/my_workflow_scripts/my_workflow_scripts.html, indesign/text/protect_local_styling/protect_local_styling.html
+downloads/scripts_for_indesign/scripts_for_eric/small_scripts/clear_all_overrides_1.0.zip   <- indesign/custom-scripts/eric/eric.html, indesign/scripts_by_categories/scripts_by_categories.html
+downloads/scripts_for_indesign/scripts_for_eric/small_scripts/clear_character_overrides_1.0.zip   <- indesign/custom-scripts/eric/eric.html, indesign/scripts_by_categories/scripts_by_categories.html
+downloads/scripts_for_indesign/scripts_for_hyperlinks/expand_main_text_frames_to_the_bottom_of_page.zip   <- indesign/custom-scripts/scripts_for_hyperlinks/expand_main_text_frames_to_the_bottom_of_page/expand_main_text_frames_to_the_bottom_of_page.html, indesign/custom-scripts/scripts_for_hyperlinks/scripts_for_hyperlinks_1/scripts_for_hyperlinks_1.html
+downloads/scripts_for_indesign/scripts_for_hyperlinks/unexpand_main_text_frames_at_the_bottom_of_page.zip   <- indesign/custom-scripts/scripts_for_hyperlinks/expand_main_text_frames_to_the_bottom_of_page/expand_main_text_frames_to_the_bottom_of_page.html, indesign/custom-scripts/scripts_for_hyperlinks/scripts_for_hyperlinks_1/scripts_for_hyperlinks_1.html
+downloads/scripts_for_indesign/swatch/amazing_swatch_sorter.zip   <- indesign/scripts_by_categories/scripts_by_categories.html, indesign/scripts_by_other_authors/jongware/jongware.html
+downloads/tips/indesign_script/see_your_swatches_in_script_ui.zip   <- indesign/apply_alternating_pattern_to_quasi-tables/apply_alternating_pattern_to_quasi-tables.html, tips/indesign_script/all/script_ui/script_ui.html
+
+== Used by index.html (1) ==
+images/all/my-photo.jpg
+
+== Not linked from any page (91) ==
+images/all/_AG_2762_fmt.jpeg
+images/all/clip_image002.gif
+images/all/missing_apid_plugin_ic.jpg
+images/all/missing_apid_plugin_id.png
+images/all/mm_arrow.gif
+images/all/my_photo.jpg
+images/all/pic1.jpeg
+images/all/place_images1.png
+images/all/under-construction-sign-for-web.gif
+images/all/apply_styles_based_on_tag_hierarchy/apply_styles_based_on_tag_hierarchy_1.jpg
+images/all/apply_styles_based_on_tag_hierarchy/apply_styles_based_on_tag_hierarchy_2.jpg
+images/all/apply_styles_based_on_tag_hierarchy/apply_styles_based_on_tag_hierarchy_3.jpg
+images/all/apply_styles_based_on_tag_hierarchy/apply_styles_based_on_tag_hierarchy_4.jpg
+images/all/apply_styles_based_on_tag_hierarchy/apply_styles_based_on_tag_hierarchy_5.jpg
+images/all/queries/Picture 10.png
+images/all/queries/Picture 11.png
+images/all/queries/Picture 4.png
+images/all/queries/Picture 5.png
+images/all/queries/Picture 7.png
+images/all/queries/Picture 8.png
+images/all/scripting_reference/adobe_pdf_resets.png
+images/all/scripts_for_hyperlinks/comments/comments_1.jpg
+images/all/scripts_for_hyperlinks/comments/comments_2.jpg
+images/all/scripts_for_hyperlinks/comments/comments_3.jpg
+images/all/scripts_for_hyperlinks/comments/comments_4.jpg
+images/indesign/2018/delete_all_grep_styles_inside_all_paragraphs_styles_2.png
+images/indesign/batch_process_scripts/change_fonts/change_fonts_10.png
+images/indesign/batch_process_scripts/change_fonts/change_fonts_9.png
+images/indesign/enfocus_switch/add_barcode/add_barcode1.jpg
+images/indesign/enfocus_switch/package_for_power_switch/abracadabra.png
+images/indesign/enfocus_switch/package_for_power_switch/creation_error.png
+images/indesign/enfocus_switch/package_for_power_switch/error_in_switch.png
+images/indesign/enfocus_switch/package_for_power_switch/windows_path.png
+images/indesign/eric/SNAG-0133.png
+images/indesign/eric/create_text_anchors_3.png
+images/tips/estk/appnap-false.png
+images/tips/evaluatexpathexpression_vs_xml-rules/evaluatexpathexpression_vs_xml-rules-1.jpg
+images/tips/evaluatexpathexpression_vs_xml-rules/evaluatexpathexpression_vs_xml-rules-2.jpg
+images/tips/evaluatexpathexpression_vs_xml-rules/evaluatexpathexpression_vs_xml-rules-3.jpg
+images/tips/evaluatexpathexpression_vs_xml-rules/evaluatexpathexpression_vs_xml-rules-4.jpg
+images/tips/evaluatexpathexpression_vs_xml-rules/evaluatexpathexpression_vs_xml-rules-5.jpg
+images/tips/evaluatexpathexpression_vs_xml-rules/evaluatexpathexpression_vs_xml-rules-6.jpg
+images/tips/evaluatexpathexpression_vs_xml-rules/evaluatexpathexpression_vs_xml-rules-7.jpg
+images/tips/indesign_script/process footnotes.jsx
+images/tips/indesign_script/underlined_static_text.png
+images/tips/row_has_no_cells/07-01-2017 18-22-07.png
+images/tips/row_has_no_cells/07-01-2017 19-12-38.png
+images/tips/row_has_no_cells/07-01-2017 19-12-59.png
+images/tips/row_has_no_cells/07-01-2017 19-14-21.png
+images/tips/row_has_no_cells/07-01-2017 20-43-30.png
+images/tips/row_has_no_cells/07-01-2017 21-21-26.png
+images/tips/row_has_no_cells/07-01-2017 21-22-26.png
+downloads/all/CheckProfile.zip
+downloads/all/CreateInspectorInBridge1.zip
+downloads/all/RecordFindChange_CS3_Kas.zip
+downloads/all/SavePsdPngDel3.zip
+downloads/all/SavePsdPngDelete.zip
+downloads/all/automate_pdf_export_6.zip
+downloads/all/clean_up_index_topics.zip
+downloads/all/close_all_open_documents_without_saving_start_up.zip
+downloads/all/identify.zip
+downloads/all/observing_changes_to_user selection.zip
+downloads/all/prepare_xml-attributes.zip
+downloads/all/simple_resize_script.zip
+downloads/scripts_for_indesign/batch_process_scripts/batch_process_scripts-sample_clean_up_scripts_ver_1.zip
+downloads/scripts_for_indesign/batch_process_scripts/change_fonts_csv.zip
+downloads/scripts_for_indesign/batch_process_scripts/update_all_outdated_links.zip
+downloads/scripts_for_indesign/event_scripts/open_image_in_photoshop_right_after_placing.zip
+downloads/scripts_for_indesign/font/make_font_catalog_debug.zip
+downloads/scripts_for_indesign/scripts_for_eric/simplified_titre_1.0.zip
+downloads/scripts_for_indesign/scripts_for_eric/small_scripts/apply_paragraph_style_'corps.chapeau'_1.0.zip
+downloads/scripts_for_indesign/scripts_for_hyperlinks/Test_flyfisher200.zip
+downloads/scripts_for_indesign/scripts_for_hyperlinks/Test_flyfisher200_After.zip
+downloads/scripts_for_indesign/scripts_for_hyperlinks/Test_flyfisher200_Before.zip
+downloads/scripts_for_indesign/scripts_for_hyperlinks/add-bookmarks.zip
+downloads/scripts_for_indesign/scripts_for_hyperlinks/my_book.pdf
+downloads/snippets/sample_book.zip
+downloads/snippets/functions/create_text _anchors.zip
+downloads/snippets/libraries/stdbrouw-Extendables-d393a40.zip
+downloads/temp/CementAutomaticPageNumbersInPlace.zip
+downloads/temp/InDesignSample5.zip
+downloads/temp/PhotoshopSample5.zip
+downloads/temp/Test-Before-2.indd.zip
+downloads/temp/Test_220817.zip
+downloads/temp/load_file_from_web-2.zip
+downloads/temp/resizeImages_2-26.zip
+downloads/temp/sample1.zip
+downloads/temp/test_make_xrefs.zip
+downloads/temp/timb20222292_sample_1.zip
+downloads/temp/xmlfile.xml
+downloads/tips/indesign_script/xmlfile.xml

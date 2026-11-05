@@ -16,9 +16,9 @@
   <div class="navbar">
     <ul id="NavBar" class="MenuBarHorizontal">
 <li><a href="../../../index.html">Home</a></li>
-<li><a href="../../../personal/about_me.html" class="MenuBarItemSubmenu">About me</a>
+<li><a href="../../../personal/about_me/about_me.html" class="MenuBarItemSubmenu">About me</a>
   <ul>
-    <li><a href="../../../personal/about_me.html">A little about me</a></li>
+    <li><a href="../../../personal/about_me/about_me.html">A little about me</a></li>
     <li><a href="../../../personal/my_resume.html">My resume</a></li>
     <li><a href="../../../personal/contact.html">Contact</a></li>
   </ul>
@@ -36,24 +36,24 @@
       <li><a class="MenuBarItemSubmenu" href="../../../snippets/snippets.html">Useful snippets</a>
         <ul>
           <li><a href="../../../snippets/snippets.html">Useful snippets</a></li>
-          <li><a href="../../../snippets/indesign.html">InDesign</a></li>
+          <li><a href="../../../snippets/indesign/indesign.html">InDesign</a></li>
           <li><a href="../../../snippets/photoshop.html"> Photoshop</a></li>
           <li><a href="../../../snippets/array.html">Array</a></li>
           <li><a href="../../../snippets/number.html">Number</a></li>
-          <li><a href="../../../snippets/date_time.html">Date</a></li>
-          <li><a href="../../../snippets/file_folder.html">File and Folder</a></li>
+          <li><a href="../../../snippets/date_time/date_time.html">Date</a></li>
+          <li><a href="../../../snippets/file_folder/file_folder.html">File and Folder</a></li>
           <li><a href="../../../tips/indesign_script/code_examples/indesign_code_examples.html">InDesign code examples</a></li>
         </ul>
       </li>
 <li><a href="../../scripts.html" class="MenuBarItemSubmenu">Scripts</a>
   <ul>
-    <li><a href="../../scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
-    <li><a href="../../../photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
+    <li><a href="../../scripts_by_categories/scripts_by_categories.html">Scripts sorted by categories for InDesign</a></li>
+    <li><a href="../../../photoshop/scripts_for_photoshop/scripts_for_photoshop.html">Scripts for Photoshop</a></li>
     <li><a href="../../../illustrator/scripts_for_illustrator.html">Scripts for Illustrator</a></li>
     <li><a href="../../../bridge/scripts_for_bridge.html">Scripts for Bridge</a></li>
     <li><a href="../../../acrobat/scripts_for_acrobat.html">Scripts for Acrobat</a></li>
     <li><a href="../../../incopy/scripts_for_incopy.html">Scripts for InCopy</a></li>
-    <li><a href="../../my_workflow/my_workflow_scripts.html">Scripts for my own workflow</a></li>
+    <li><a href="../../my_workflow/my_workflow_scripts/my_workflow_scripts.html">Scripts for my own workflow</a></li>
     <li><a href="../../custom-scripts/custom-scripts.html">Scripts on request</a></li>
     <li><a href="../../enfocus_switch_scripts/scripts_for_enfocus_power_switch.html">Scripts for Enfocus Power Switch</a></li>
     <li><a href="../../scripts_by_other_authors/scripts_by_other_authors.html">Scripts by other authors</a></li>
@@ -64,7 +64,7 @@
   <!-- InstanceBeginEditable name="Main" -->
   <div class="main">
     <h1>Warn about documents open on DropBox</h1>
-    <p>This is an <a href="../event_scripts.html">event script</a> so it should be installed in the <a href="../../../tips/indesign_script/all/start_up_folder.html">startup scripts folder</a>. Written by <em>Kasyan</em> in InDesign 2020. It&rsquo;s experimental and untested so far.</p>
+    <p>This is an <a href="../event_scripts.html">event script</a> so it should be installed in the <a href="../../../tips/indesign_script/all/start_up_folder/start_up_folder.html">startup scripts folder</a>. Written by <em>Kasyan</em> in InDesign 2020. It&rsquo;s experimental and untested so far.</p>
     <p>Since 2018 we switched from our office network to DropBox working mostly from our homes. It&rsquo;s a much better solution since we have much less crashes in InDesign, wholly foolproof because DropBox keeps all document revisions for a month, so if someone spoils or deletes a document, you can restore it, and, if there&rsquo;s an urgent matter, it&rsquo;s even possible to send a file from your smartphone to someone while you&rsquo;re walking in the park. However, there&rsquo;s a problem: unlike on the network, two or more users can open a document at the same time. DropBox handles such a situation as good as it can: it doesn&rsquo;t overwrite changes made by others and creates &lsquo;conflicted copies&rsquo;. Of course, that&rsquo;s much better than losing someone&rsquo;s edits made for hours, but you still have to lose time to compare the &lsquo;conflicted copies&rsquo; to figure out which one contains the most recent editing.</p>
     <p>To solve this problem, I wrote this script that remotely resembles the &lsquo;lock file approach&rsquo; used by Adobe for InDesign documents. The key is the user name: it&rsquo;s supposed to be filled in and different for all users.</p>
     <p><img src="warn_about_docs_open_on_dropbox-1.png" alt="" /></p>
